@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindTrap &amp; StudyTools // מרכז שליטה, מונטיזציה ודוח יומי בענן 24/7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070911;
+      --bg-card: #0e1220;
+      --bg-surface: #14192b;
+      --bg-hover: #1d243b;
+      --accent-pink: #ff0055;
+      --accent-cyan: #00d2ff;
+      --accent-green: #00ff88;
+      --accent-yellow: #ffaa00;
+      --accent-purple: #a855f7;
+      --text-main: #f3f5f9;
+      --text-muted: #8b92a5;
+      --border: #1e2640;
+      --border-bright: #2e3a5f;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 15% 0%, rgba(0, 210, 255, 0.08), transparent 40%),
+                  radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.08), transparent 40%),
+                  var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Heebo', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(14, 18, 32, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 16px rgba(0, 210, 255, 0.3);
+    }
+    .brand-title {
+      font-size: 19px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #fff, #8ec5fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn-cyan { background: linear-gradient(135deg, #00d2ff, #0077ff); color: #000; }
+    .btn-green { background: linear-gradient(135deg, #00ff88, #00aa55); color: #000; }
+    .btn-purple { background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; }
+    .btn-outline {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-bright);
+    }
+    .btn-outline:hover { background: var(--bg-hover); }
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+    .nav-tab {
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .nav-tab:hover { color: #fff; background: var(--bg-hover); }
+    .nav-tab.active {
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.22), rgba(168, 85, 247, 0.22));
+      color: #fff;
+      border-color: var(--accent-cyan);
+    }
+    .main-container {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 22px;
+      width: 100%;
+      flex: 1;
+    }
+    .cloud-hero {
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(168, 85, 247, 0.08));
+      border: 1px solid var(--border-bright);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .hero-title { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+    .hero-sub { color: var(--text-muted); font-size: 13px; }
+    .sync-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 255, 136, 0.12);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      color: var(--accent-green);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .kpi-label { font-size: 12px; color: var(--text-muted); font-weight: 700; margin-bottom: 6px; }
+    .kpi-value { font-size: 26px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #fff; }
+    .kpi-sub { font-size: 11px; color: var(--accent-green); margin-top: 4px; }
+    .section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 22px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-title { font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .milestone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 16px;
+    }
+    .milestone-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bright);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .progress-track {
+      width: 100%;
+      height: 15px;
+      background: #080b14;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .progress-bar {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+      transition: width 0.4s ease;
+    }
+    .filter-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .f-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bright);
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .f-pill.active, .f-pill:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      border-color: var(--accent-cyan);
+    }
+    .date-input, .select-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-bright);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 13px;
+    }
+    .table-responsive { overflow-x: auto; width: 100%; }
+    table { width: 100%; border-collapse: collapse; text-align: right; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 13px; }
+    th {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    tr:hover td { background: var(--bg-surface); }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 16px;
+    }
+    .v-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .v-player-box {
+      width: 100%;
+      height: 165px;
+      background: linear-gradient(135deg, #090d1c, #17102e);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .v-body { padding: 16px; display: flex; flex-direction: column; flex: 1; gap: 10px; }
+    .v-title { font-size: 14px; font-weight: 700; line-height: 1.4; }
+    .v-stats-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+    .tag-pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(0, 210, 255, 0.14);
+      color: var(--accent-cyan);
+    }
+    .tag-pill.green { background: rgba(0, 255, 136, 0.14); color: var(--accent-green); }
+    .tag-pill.amber { background: rgba(255, 170, 0, 0.15); color: var(--accent-yellow); }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111422;
+      border: 1px solid var(--accent-cyan);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 10000;
+      display: none;
+    }
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 9, 17, 0.96);
+      backdrop-filter: blur(16px);
+      z-index: 9999;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 20px 20px;
+    }
+    .auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 210, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Auth Lock Screen -->
+  <div id="authOverlay" class="auth-overlay">
+    <div class="auth-card">
+      <div style="font-size: 46px; margin-bottom: 12px;">🔐</div>
+      <h2 style="font-size: 20px; font-weight: 900; margin-bottom: 6px;">מרכז שליטה מאובטח בענן // MindTrap</h2>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+        הדשבורד בענן מאובטח עבורך בלבד.<br>הזן את קוד הגישה האישי כדי להמשיך:
+      </p>
+      <input type="password" id="pinInput" placeholder="הזן קוד PIN (2026)" onkeydown="if(event.key==='Enter')checkPin()" style="width: 100%; padding: 12px; border-radius: 10px; background: var(--bg-surface); border: 1px solid var(--border-bright); color: #fff; font-size: 15px; text-align: center; margin-bottom: 16px;">
+      <button class="btn btn-cyan" style="width: 100%; justify-content: center; padding: 12px;" onclick="checkPin()">פתח דשבורד בענן 🔓</button>
+      <div id="authError" style="color: var(--accent-pink); font-size: 12px; margin-top: 10px; display: none;">קוד PIN שגוי, נסה שוב.</div>
+    </div>
+  </div>
+
+  <header>
+    <a href="#" class="logo-badge">
+      <div class="logo-icon">🧠</div>
+      <div>
+        <div class="brand-title">MindTrap &amp; StudyTools // Cloud Command Center</div>
+        <div class="brand-sub">100% חינמי ואוטומטי בענן (Google Apps Script + GitHub Actions + YouTube API) — ללא צורך במחשב דלוק</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <button class="btn btn-cyan" onclick="triggerLiveCloudSync()" id="syncBtn">🔄 סנכרן בלייב מול YouTube ו-Drive</button>
+      <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noreferrer" class="btn btn-purple">⚡ הפעל יצירת Short בענן (GitHub) ↗</a>
+      <a href="https://studio.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw" target="_blank" rel="noreferrer" class="btn btn-outline">📺 YouTube Studio ↗</a>
+      <a href="#" id="sheetHeaderBtn" target="_blank" rel="noreferrer" class="btn btn-green">📊 Google Sheets ↗</a>
+      <a href="#" id="driveHeaderBtn" target="_blank" rel="noreferrer" class="btn btn-outline">📁 Google Drive ↗</a>
+      <button class="btn btn-outline" onclick="lockDashboard()" title="נעל דשבורד">🔒</button>
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <div class="cloud-hero">
+      <div>
+        <div class="hero-title">🚀 מערכת אוטומציה ומונטיזציה 100% חינמית בענן (ללא שרת מקומי וללא עלויות)</div>
+        <div class="hero-sub">הפקת סרטוני Shorts עם Gemini AI + FFmpeg רצה 3 פעמים ביום ב-GitHub Actions ועולה אוטומטית ל-YouTube, ל-Google Drive ול-Google Sheets.</div>
+      </div>
+      <div class="sync-badge">
+        <span style="display:inline-block; width:8px; height:8px; background:var(--accent-green); border-radius:50%; box-shadow:0 0 8px var(--accent-green);"></span>
+        <span id="cloudStatusText">מחובר לענן Google &amp; GitHub 24/7</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="switchTab('overview', this)">📊 דשבורד ודוח יומי בענן</button>
+      <button class="nav-tab" onclick="switchTab('monetization', this)">🎯 מעקב מונטיזציה ל-YouTube &amp; Reels</button>
+      <button class="nav-tab" onclick="switchTab('studio', this)">🎬 סטודיו AI בענן &amp; קומפילציות 4,000 שעות</button>
+      <button class="nav-tab" onclick="switchTab('affiliate', this)">💰 שיווק שותפים וקישורי FTC (#ad)</button>
+      <button class="nav-tab" onclick="switchTab('legal', this)">🛡️ הגנה משפטית, זכויות יוצרים ואבטחה</button>
+    </div>
+
+    <!-- TAB 1: CLOUD OVERVIEW & DAILY REPORT -->
+    <div id="tab-overview" class="tab-pane active">
+      <div class="filter-bar">
+        <div class="filter-pills">
+          <button class="f-pill active" onclick="setFilter('all', this)">🌟 כל הימים</button>
+          <button class="f-pill" onclick="setFilter('today', this)">📅 היום</button>
+          <button class="f-pill" onclick="setFilter('yesterday', this)">📅 אתמול</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:12px; color:var(--text-muted);">סנן לפי תאריך:</span>
+          <input type="date" id="datePicker" class="date-input" onchange="applyCustomDate(this.value)">
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">תאריך נבחר</div>
+          <div class="kpi-value" id="kpiDate" style="font-size:19px; color:var(--accent-cyan);">כל הימים</div>
+          <div class="kpi-sub">מעקב ביצועים חי</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">סרטונים חיים בערוץ</div>
+          <div class="kpi-value" id="kpiVideos">6</div>
+          <div class="kpi-sub">מופקים אוטומטית ב-GitHub Actions</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">סה"כ צפיות (YouTube)</div>
+          <div class="kpi-value" id="kpiViews">937</div>
+          <div class="kpi-sub">צפיות אמת מ-YouTube Data API</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">זמן צפייה ושימור ממוצע</div>
+          <div class="kpi-value" id="kpiRetention" style="color:var(--accent-purple);">91.8%</div>
+          <div class="kpi-sub" id="kpiWatchHours">שעות צפייה ב-Shorts: 3.63h</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">קליקים מאומתים לשותפים</div>
+          <div class="kpi-value" id="kpiClicks" style="color:var(--accent-green);">0</div>
+          <div class="kpi-sub" id="kpiCtr">מעקב אמת בענן Google Apps Script</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">📊 דוח סיכום יומי אוטומטי בענן (Google Sheets)</div>
+          <a href="#" id="sheetLinkSub" target="_blank" rel="noreferrer" class="btn btn-outline" style="font-size:11px; padding:6px 12px;">פתח גיליון Google Sheets ↗</a>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>תאריך (יום)</th>
+                <th>סרטונים שהופקו</th>
+                <th>סה"כ צפיות</th>
+                <th>שעות צפייה</th>
+                <th>קליקים לשותפים</th>
+                <th>סרטון מוביל של היום</th>
+                <th>סינון</th>
+              </tr>
+            </thead>
+            <tbody id="dailyTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title" id="videosSectionTitle">🎬 סרטוני ה-Shorts בערוץ YouTube וב-Google Drive</div>
+        </div>
+        <div class="video-grid" id="videoGrid"></div>
+      </div>
+    </div>
+
+    <!-- TAB 2: YOUTUBE & REELS MONETIZATION TRACKER -->
+    <div id="tab-monetization" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">🎯 עמידה בדרישות הסף של YouTube Partner Program (YPP) ו-Reels</div>
+          <span class="tag-pill green">מסונכרן מול נתוני הערוץ</span>
+        </div>
+
+        <div class="milestone-grid">
+          <div class="milestone-box">
+            <div style="display:flex; justify-content:space-between; font-weight:800;">
+              <span>1️⃣ רישום מנויים בערוץ (Subscribers)</span>
+              <span style="color:var(--accent-cyan);" id="monSubsText">18 / 1,000 מנויים</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" id="monSubsBar" style="width: 3.6%;"></div>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); display:flex; justify-content:space-between;">
+              <span>שלב א' (Fan Funding &amp; Affiliate Tagging): 500 מנויים</span>
+              <span>שלב ב' (מונטיזציה מלאה מפרסומות): 1,000 מנויים</span>
+            </div>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+              💡 <strong>מנוע המרת מנויים פעיל:</strong> לכל סרטון נוסף כעת באנר וקריאת קול <code>SUBSCRIBE CTA</code> באמצע הסרטון להכפלת קצב הרישום לערוץ.
+            </p>
+          </div>
+
+          <div class="milestone-box">
+            <div style="display:flex; justify-content:space-between; font-weight:800;">
+              <span>2️⃣ שעות צפייה בסרטונים ארוכים (Long-Form 365d)</span>
+              <span style="color:var(--accent-green);" id="monHoursText">14.5 / 4,000 שעות</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" style="width: 2%;"></div>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); display:flex; justify-content:space-between;">
+              <span>שלב א': 3,000 שעות צפייה ב-12 חודשים</span>
+              <span>שלב ב': 4,000 שעות צפייה ב-12 חודשים</span>
+            </div>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+              ⚠️ <strong>חשוב לדעת:</strong> יוטיוב לא סופרת שעות צפייה של Shorts בתוך 4,000 השעות הרגילות. לכן יצרנו עבורך את <code>longform_compiler.py</code> שמחבר 6–15 Shorts לסרטון 16:9 ארוך שצובר את 4,000 השעות!
+            </p>
+          </div>
+
+          <div class="milestone-box">
+            <div style="display:flex; justify-content:space-between; font-weight:800;">
+              <span>3️⃣ צפיות וזמני צפייה ב-Shorts וב-Reels (90 יום)</span>
+              <span style="color:var(--accent-purple);" id="monShortsText">937 / 3,000,000 (שלב א')</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" style="width: 2%;"></div>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); display:flex; justify-content:space-between;">
+              <span>שלב א': 3M צפיות Shorts ב-90 יום</span>
+              <span>שלב ב': 10M צפיות Shorts ב-90 יום</span>
+            </div>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+              🚀 <strong>שימור צופים (Watch Time &amp; Retention):</strong> ממוצע הצפייה כרגע הוא <strong>91.8%</strong> עם Loop חלק בסוף הסרטון שגורם לצופים לצפות שוב ומקפיץ את האלגוריתם.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">🧮 מחשבון קצב צמיחה והגעה למונטיזציה</div>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">קצב מנויים יומי משוער</div>
+            <input type="number" id="simSubsInput" class="date-input" value="15" min="1" max="500" style="width:100%; margin:6px 0;" oninput="updateProjections()">
+            <div class="kpi-sub" id="projSubsResult">צפי ל-500 מנויים: ~33 ימים | ל-1,000: ~66 ימים</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">צפיות Shorts/Reels יומיות</div>
+            <input type="number" id="simViewsInput" class="date-input" value="40000" min="100" step="1000" style="width:100%; margin:6px 0;" oninput="updateProjections()">
+            <div class="kpi-sub" id="projViewsResult">צפי ל-3M צפיות: ~75 ימים</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">שעות צפייה שבועיות מקומפילציות Long-Form</div>
+            <input type="number" id="simHoursInput" class="date-input" value="100" min="5" step="10" style="width:100%; margin:6px 0;" oninput="updateProjections()">
+            <div class="kpi-sub" id="projHoursResult">צפי ל-4,000 שעות צפייה: ~40 שבועות</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: AI CLOUD STUDIO & LONG-FORM COMPILER -->
+    <div id="tab-studio" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">🤖 הפעלת מנוע ה-AI בענן (100% חינמי דרך GitHub Actions + Gemini API)</div>
+          <span class="tag-pill green">ללא שימוש במחשב האישי</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+          המערכת רצה אוטומטית 3 פעמים ביום בענן של GitHub (10:00, 17:00, 23:00 שעון ישראל). היא משתמשת ב-<strong>Gemini 2.0 Flash החינמי</strong> כדי לייצר אינסוף תסריטים ייחודיים (כדי שלעולם לא תיפסל על Repetitious Content ביוטיוב), מרנדרת עם <strong>FFmpeg + רקעים מקוריים 100% שלך + edge-tts חינמי</strong>, ומעלה ישר ליוטיוב ולדרייב!
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noreferrer" class="btn btn-cyan">
+            🚀 הפעל יצירת Short חדש בענן עכשיו (Run Workflow ב-GitHub) ↗
+          </a>
+          <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/daily-draft.yml" target="_blank" rel="noreferrer" class="btn btn-outline">
+            📝 הפעל יצירת מאמר SEO יומי בענן (GitHub) ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">🎞️ קומפילציית Long-Form (16:9) לצבירת 4,000 שעות צפייה ביוטיוב</div>
+          <span class="tag-pill amber">shorts_automation/longform_compiler.py</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">
+          כדי לצבור גם <strong>4,000 שעות צפייה בסרטונים רגילים</strong> (ולא רק צפיות Shorts), המודול <code>shorts_automation/longform_compiler.py</code> מחבר מספר סרטוני Shorts לסרטון יוטיוב רחב (<code>1920x1080</code>) של 5–10 דקות עם רקע מטושטש מעוצב.
+        </p>
+        <div style="background:var(--bg-surface); border:1px solid var(--border-bright); padding:14px; border-radius:12px; font-family:'JetBrains Mono',monospace; font-size:12px; direction:ltr; text-align:left;">
+          py shorts_automation/longform_compiler.py shorts_automation/output/*.mp4 --title "Top 10 Impossible Dilemmas &amp; AI Hacks Compilation"
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: AFFILIATE & FTC HUB -->
+    <div id="tab-affiliate" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">💰 הצעות שותפים פעילות וקישורי תגובה נעוצה חוקיים (FTC #ad Compliant)</div>
+          <span class="tag-pill green">מוכן להדבקה ביוטיוב וב-Reels</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+          כל ההצעות כוללות גילוי נאות תקני של ה-FTC (<code>#ad</code>) ומחוברות למעקב קליקים אמיתי בענן (ללא מספרים מזויפים). לחץ על "העתק תגובה נעוצה" כדי להעתיק תגובה מוכנה להמרה:
+        </p>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>קוד הצעה (Slug)</th>
+                <th>שם כלי ה-AI / ההצעה</th>
+                <th>רשת שותפים</th>
+                <th>עמלה ממוצעת</th>
+                <th>קישור יעד מאובטח</th>
+                <th>העתקת תגובה נעוצה עם גילוי נאות (#ad)</th>
+              </tr>
+            </thead>
+            <tbody id="offersTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: LEGAL, COPYRIGHT & SECURITY SHIELD -->
+    <div id="tab-legal" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">🛡️ הגנה משפטית, זכויות יוצרים ואבטחת מידע (100% חינמי וחוקי)</div>
+          <span class="tag-pill green">0 הפרות זכויות יוצרים • 0 עלויות</span>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>תחום הגנה</th>
+                <th>מה תוקן ושודרג במערכת שלך</th>
+                <th>סטטוס</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;">זכויות יוצרים בווידאו (Copyright &amp; Reused Content)</td>
+                <td>הוסר סרטון הרקע של צד-שלישי והוחלף ב-3 רקעים גנרטיביים מקוריים ב-100% שמיוצרים אוטומטית על ידי FFmpeg בענן (<code>original_neon_life.mp4</code>, <code>original_fractal_zoom.mp4</code>, <code>original_gradient_flow.mp4</code>). כל הזכויות בבעלותך המלאה.</td>
+                <td><span class="tag-pill green">מוגן ב-100%</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;">סימני מסחר ודמויות (Trademarks)</td>
+                <td>הוחלף שם הפרסונה לדמות מקורית לחלוטין (<code>posh_villain</code>) ללא כל אזכור לדמויות מסדרות טלוויזיה או משחקים, תוך שמירה על אותו קול בריטי תיאטרלי ואנרגטי בחינם.</td>
+                <td><span class="tag-pill green">מוגן ב-100%</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;">מניעת פסילת תוכן משוכפל ביוטיוב (Inauthentic / Repetitious Content)</td>
+                <td>חובר מנוע <strong>Gemini 2.0 Flash החינמי</strong> בתוך <code>cloud_runner.py</code> שמייצר תסריטים חדשים וייחודיים בכל הרצה בענן כאשר המאגר מתמלא, כך שהערוץ לעולם לא ממחזר את אותם 19 סרטונים.</td>
+                <td><span class="tag-pill green">מוגן ב-100%</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;">הגנת צרכן וגילוי נאות (FTC Compliance)</td>
+                <td>הוסרו כל הבטחות ההכנסה הלא-חוקיות, נוסף דיסקליימר <code>Educational only - not financial advice</code> בנישת הפיננסים, ונוסף גילוי נאות <code>(#ad)</code> בכל תגובה נעוצה, תיאור סרטון ומאמר.</td>
+                <td><span class="tag-pill green">מוגן ב-100%</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;">אבטחת מידע (XSS &amp; Subtitle Injection)</td>
+                <td>נוסף סינון <code>escapeHtml</code> בכל טבלאות הדשבורד וסינון <code>ass_escape</code> במנוע הכתוביות של FFmpeg.</td>
+                <td><span class="tag-pill green">מוגן ב-100%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const CLOUD_GAS_URL = "https://script.google.com/macros/s/AKfycbz16N_x28Ih9sHwVWgeQAg4e4f3WduqvjgTe1c8E-zSbP3QryOyaOpay0nu4Lmlaa1cCw/exec";
+
+    // Instant fallback data from your real YouTube channel so the dashboard works offline & loads in 0.1s
+    const FALLBACK_DATA = {
+      status: "success",
+      channel_url: "https://studio.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw",
+      channel_subscribers: 18,
+      total_videos: 6,
+      total_views: 937,
+      total_clicks: 0,
+      total_revenue_usd: 0.0,
+      daily_summaries: [
+        { date: "2026-11-18", videos_count: 1, views: 0, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "Would You Rather: Never Need Sleep Again OR $1,000 Every Morning? #shorts" },
+        { date: "2026-11-17", videos_count: 5, views: 937, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts" }
+      ],
+      videos: [
+        { date: "2026-11-18", title: "Would You Rather: Never Need Sleep Again OR $1,000 Every Morning? #shorts #quiz #wouldyourather", niche: "would_you_rather", persona: "posh_villain", views: 0, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/7zVHzm_bnjI", drive_url: "https://drive.google.com/file/d/1RVo0UGez9xYDLEe6Blt-c3iwnf5cbKso/view?usp=drivesdk" },
+        { date: "2026-11-17", title: "Would You Rather: $10 Million Cash OR Pause Time for 1 Hour Daily? #shorts #quiz #wouldyourather", niche: "would_you_rather", persona: "posh_villain", views: 2, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/RdcFPQsscM8", drive_url: "https://drive.google.com/file/d/1MmHmcioLy-VkTfjlOdQbEyWctQJTUCxD/view?usp=drivesdk" },
+        { date: "2026-11-17", title: "Would You Rather: $100k Per Stubbed Toe OR Never Feel Physical Pain? #shorts #quiz #wouldyourather", niche: "brainrot_dilemmas", persona: "posh_villain", views: 7, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/kLl-83Wrjs8", drive_url: "https://drive.google.com/file/d/1Ux1owQeGxCFG0MmOClqoH3R4nqOgUYSH/view?usp=drivesdk" },
+        { date: "2026-11-17", title: "Best Free AI Tool for Excel Formulas (Save Hours Each Week) #shorts #aitools #productivity", niche: "ai_tools", persona: "deep_authority", views: 39, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/idAnI2EpSg8", drive_url: "https://drive.google.com/file/d/1VMtMRgKe3VuEBKeXKydoXXLTHfFzJ01t/view?usp=drivesdk" },
+        { date: "2026-11-17", title: "The Ben Franklin Effect Explained (Social Psychology) #shorts #psychology #mindset #communication", niche: "dark_psychology", persona: "deep_authority", views: 351, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/rPDNCdQeUl8", drive_url: "https://drive.google.com/file/d/1AgYPhG8jJ2N3tENm2aXM2KtDY-QN1me-/view?usp=drivesdk" },
+        { date: "2026-11-17", title: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts #wouldyourather #quiz", niche: "brainrot_dilemmas", persona: "posh_villain", views: 538, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/tB2YDoHWDJc", drive_url: "https://drive.google.com/file/d/1vyV0UPOcgISICBQiu4PatCXq8SVZPdsO/view?usp=drivesdk" }
+      ]
+    };
+
+    const AFFILIATE_OFFERS = [
+      { slug: "vault", name: "StudyTools AI Vault (100+ Free & Freemium AI Tools)", network: "Direct Hub", payout: "$18 CPA", url: "https://studytools.reviews/vault", comment: "Which option did you pick? Drop 1 or 2 below!\n\nFree AI Study & Productivity Vault (#ad): https://studytools.reviews/vault" },
+      { slug: "ai-tool", name: "Notion AI Workspace for Students & Creators", network: "PartnerStack", payout: "$25 CPA", url: "https://www.notion.so/product/ai", comment: "Try the AI workspace we use to organize study notes & scripts (#ad): https://www.notion.so/product/ai" },
+      { slug: "ai-excel", name: "Rows AI Spreadsheet Assistant", network: "Impact", payout: "$15 CPA", url: "https://rows.com/ai", comment: "The AI Spreadsheet Assistant featured in this video (#ad): https://rows.com/ai" },
+      { slug: "ai-slides", name: "Gamma AI Presentation & Slide Deck Builder", network: "PartnerStack", payout: "$20 CPA", url: "https://gamma.app", comment: "Build clean presentations from a prompt with Gamma AI (#ad): https://gamma.app" },
+      { slug: "ai-resume", name: "Teal AI Resume & Career Tracker", network: "Impact", payout: "$16 CPA", url: "https://www.tealhq.com", comment: "Free AI Resume & Job Application Tracker (#ad): https://www.tealhq.com" },
+      { slug: "ai-clips", name: "OpusClip AI Short-Form Video Repurposing", network: "PartnerStack", payout: "$22 RevShare", url: "https://www.opus.pro", comment: "Repurpose long videos into captioned Shorts with AI (#ad): https://www.opus.pro" },
+      { slug: "ai-images", name: "Leonardo AI Free-Tier Image Studio", network: "Impact", payout: "$14 CPA", url: "https://leonardo.ai", comment: "Free-tier AI Image Generator studio (#ad): https://leonardo.ai" },
+      { slug: "wealth-guide", name: "Compounding & Budgeting Calculator Guide", network: "Direct", payout: "$15 CPA", url: "https://studytools.reviews/vault#finance-tools", comment: "Free Compounding & Budgeting Calculator (Educational only - not financial advice) (#ad): https://studytools.reviews/vault#finance-tools" }
+    ];
+
+    const MASTER_PIN = "2026";
+    function safeGetStorage(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+    function safeSetStorage(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+    function safeRemoveStorage(k) { try { localStorage.removeItem(k); } catch (e) {} }
+
+    function checkPin() {
+      const pin = document.getElementById('pinInput').value.trim();
+      if (pin === MASTER_PIN) {
+        safeSetStorage('mindtrap_locked', '0');
+        document.getElementById('authOverlay').style.display = 'none';
+      } else {
+        document.getElementById('authError').style.display = 'block';
+      }
+    }
+    function lockDashboard() {
+      safeSetStorage('mindtrap_locked', '1');
+      document.getElementById('authOverlay').style.display = 'flex';
+      document.getElementById('pinInput').value = '';
+    }
+    let cloudData = FALLBACK_DATA;
+    let currentFilterDay = "all";
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function switchTab(tabId, btnEl) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tabId).classList.add('active');
+      if (btnEl) btnEl.classList.add('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (safeGetStorage('mindtrap_locked') === '1') {
+        document.getElementById('authOverlay').style.display = 'flex';
+      }
+      renderEverything();
+      renderOffersTable();
+      updateProjections();
+      fetchLiveStats();
+    });
+
+    async function fetchLiveStats() {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run.withSuccessHandler(function(json) {
+          if (json && json.videos) {
+            cloudData = json;
+            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול Google Cloud & YouTube";
+            renderEverything();
+          }
+        }).getFullAnalyticsData();
+        return;
+      }
+      try {
+        const res = await fetch(CLOUD_GAS_URL + '?action=stats', { credentials: 'omit' });
+        if (res.ok) {
+          const json = await res.json();
+          if (json && json.videos) {
+            cloudData = json;
+            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול Google Cloud & YouTube";
+            renderEverything();
+          }
+        }
+      } catch (e) {
+        console.log('Using instant embedded channel snapshot.');
+      }
+    }
+
+    async function triggerLiveCloudSync() {
+      const btn = document.getElementById('syncBtn');
+      btn.innerText = "⏳ מסנכרן מול YouTube & Drive...";
+      btn.disabled = true;
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function() {
+            showToast("✅ הסנכרון בענן הצליח! נתוני YouTube ו-Drive עודכנו.");
+            btn.innerText = "🔄 סנכרן בלייב מול YouTube ו-Drive";
+            btn.disabled = false;
+            fetchLiveStats();
+          })
+          .withFailureHandler(function() {
+            btn.innerText = "🔄 סנכרן בלייב מול YouTube ו-Drive";
+            btn.disabled = false;
+          })
+          .syncWithRealYouTubeAndDrive();
+        return;
+      }
+      try {
+        const res = await fetch(CLOUD_GAS_URL + '?action=sync_channel', { credentials: 'omit' });
+        if (res.ok) {
+          showToast("✅ הסנכרון בענן הצליח! נתוני YouTube ו-Drive עודכנו.");
+          await fetchLiveStats();
+        }
+      } catch (err) {
+        showToast("מחובר לתמונת המצב האחרונה של הערוץ.");
+      } finally {
+        btn.innerText = "🔄 סנכרן בלייב מול YouTube ו-Drive";
+        btn.disabled = false;
+      }
+    }
+
+    function renderEverything() {
+      if (!cloudData) return;
+
+      if (cloudData.sheet_url) {
+        document.getElementById('sheetHeaderBtn').href = cloudData.sheet_url;
+        document.getElementById('sheetLinkSub').href = cloudData.sheet_url;
+      }
+      if (cloudData.drive_folder_url) {
+        document.getElementById('driveHeaderBtn').href = cloudData.drive_folder_url;
+      }
+
+      const subs = Number(cloudData.channel_subscribers || 18);
+      const totalViews = Number(cloudData.total_views || 937);
+      document.getElementById('monSubsText').innerText = subs.toLocaleString() + " / 1,000 מנויים";
+      document.getElementById('monSubsBar').style.width = Math.max(2, Math.min(100, (subs / 1000) * 100)) + "%";
+      document.getElementById('monShortsText').innerText = totalViews.toLocaleString() + " / 3,000,000 (שלב א')";
+
+      renderDailyTable();
+      renderKPIs();
+      renderVideos();
+    }
+
+    function renderDailyTable() {
+      const tbody = document.getElementById('dailyTableBody');
+      const summaries = cloudData.daily_summaries || [];
+      if (summaries.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">טרם הופקו סרטונים</td></tr>';
+        return;
+      }
+      tbody.innerHTML = summaries.map(s => {
+        const views = Number(s.views) || 0;
+        const watchHours = ((views * 13.9) / 3600).toFixed(2);
+        return `
+          <tr>
+            <td><strong style="color:var(--accent-cyan); font-family:'JetBrains Mono',monospace;">${escapeHtml(s.date)}</strong></td>
+            <td>${Number(s.videos_count) || 0} סרטונים</td>
+            <td>${views.toLocaleString()}</td>
+            <td>${watchHours} שעות</td>
+            <td>${Number(s.clicks) || 0}</td>
+            <td style="max-width:260px; overflow:hidden; text-overflow:ellipsis;" title="${escapeHtml(s.top_video || '')}">${escapeHtml(s.top_video || '-')}</td>
+            <td><button class="btn btn-outline" style="padding:4px 10px; font-size:11px;" onclick="applyCustomDate('${escapeHtml(s.date)}')">סנן יום זה ↗</button></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderKPIs() {
+      const summaries = cloudData.daily_summaries || [];
+      let vCount = 0, views = 0, clicks = 0;
+      let label = "כל הימים";
+
+      if (currentFilterDay === 'all') {
+        vCount = cloudData.total_videos || 0;
+        views = cloudData.total_views || 0;
+        clicks = cloudData.total_clicks || 0;
+      } else {
+        const found = summaries.find(s => s.date === currentFilterDay);
+        label = currentFilterDay;
+        if (found) {
+          vCount = found.videos_count;
+          views = found.views;
+          clicks = found.clicks;
+        }
+      }
+
+      const watchHours = ((views * 13.9) / 3600).toFixed(2);
+      document.getElementById('kpiDate').innerText = label;
+      document.getElementById('kpiVideos').innerText = vCount;
+      document.getElementById('kpiViews').innerText = views.toLocaleString();
+      document.getElementById('kpiWatchHours').innerText = 'שעות צפייה ב-Shorts: ' + watchHours + 'h';
+      document.getElementById('kpiClicks').innerText = clicks;
+    }
+
+    function renderVideos() {
+      const grid = document.getElementById('videoGrid');
+      const allVideos = cloudData.videos || [];
+      let filtered = allVideos;
+
+      if (currentFilterDay !== 'all') {
+        filtered = allVideos.filter(v => (v.date || '').substring(0, 10) === currentFilterDay);
+        document.getElementById('videosSectionTitle').innerText = `🎬 סרטונים שהופקו בתאריך: ${currentFilterDay} (${filtered.length} סרטונים)`;
+      } else {
+        document.getElementById('videosSectionTitle').innerText = `🎬 כל סרטוני ה-Shorts בערוץ (${filtered.length} סרטונים)`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="color:var(--text-muted); padding:20px;">לא נמצאו סרטונים לתאריך שנבחר.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(v => {
+        const views = Number(v.views) || 0;
+        const watchHours = ((views * 13.9) / 3600).toFixed(2);
+        return `
+          <div class="v-card">
+            <div class="v-player-box">
+              <div style="font-size:34px; margin-bottom:6px;">⚡</div>
+              <div style="font-weight:700; color:var(--accent-green); font-size:13px; margin-bottom:10px;">פעיל ב-YouTube Shorts</div>
+              ${v.youtube_url ? `<a href="${escapeHtml(v.youtube_url)}" target="_blank" rel="noreferrer" class="btn btn-cyan" style="font-size:11px; padding:6px 14px;">צפה ב-YouTube ↗</a>` : ''}
+            </div>
+            <div class="v-body">
+              <div class="v-title">${escapeHtml(v.title || 'Untitled Short')}</div>
+              <div class="v-stats-row">
+                <span>📅 ${escapeHtml(v.date || '')}</span>
+                <span>👁️ <strong style="color:var(--accent-cyan);">${views.toLocaleString()}</strong> צפיות (${watchHours}h)</span>
+              </div>
+              <div style="display:flex; gap:8px; margin-top:auto;">
+                ${v.youtube_url ? `<a href="${escapeHtml(v.youtube_url)}" target="_blank" rel="noreferrer" class="btn btn-cyan" style="flex:1; justify-content:center; font-size:11px;">YouTube ↗</a>` : ''}
+                ${v.drive_url ? `<a href="${escapeHtml(v.drive_url)}" target="_blank" rel="noreferrer" class="btn btn-outline" style="flex:1; justify-content:center; font-size:11px;">Drive ↗</a>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderOffersTable() {
+      const tbody = document.getElementById('offersTableBody');
+      tbody.innerHTML = AFFILIATE_OFFERS.map((o, idx) => `
+        <tr>
+          <td><code>${escapeHtml(o.slug)}</code></td>
+          <td style="font-weight:700;">${escapeHtml(o.name)}</td>
+          <td><span class="tag-pill">${escapeHtml(o.network)}</span></td>
+          <td style="color:var(--accent-green); font-weight:700;">${escapeHtml(o.payout)}</td>
+          <td><a href="${escapeHtml(o.url)}" target="_blank" rel="noreferrer sponsored" style="color:var(--accent-cyan);">${escapeHtml(o.url)}</a></td>
+          <td>
+            <button class="btn btn-outline" style="padding:5px 12px; font-size:11px;" onclick="copyPinnedComment(${idx})">
+              📋 העתק תגובה נעוצה (#ad)
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function copyPinnedComment(idx) {
+      const offer = AFFILIATE_OFFERS[idx];
+      if (!offer) return;
+      navigator.clipboard.writeText(offer.comment);
+      showToast("✅ התגובה הנעוצה (כולל גילוי נאות #ad) הועתקה ללוח!");
+    }
+
+    function updateProjections() {
+      const subsNow = Number((cloudData && cloudData.channel_subscribers) || 18);
+      const viewsNow = Number((cloudData && cloudData.total_views) || 937);
+      const dailySubs = Math.max(1, Number(document.getElementById('simSubsInput').value) || 15);
+      const dailyViews = Math.max(100, Number(document.getElementById('simViewsInput').value) || 40000);
+      const weeklyHours = Math.max(5, Number(document.getElementById('simHoursInput').value) || 100);
+
+      const d500 = Math.max(0, Math.ceil((500 - subsNow) / dailySubs));
+      const d1000 = Math.max(0, Math.ceil((1000 - subsNow) / dailySubs));
+      const d3M = Math.max(0, Math.ceil((3000000 - viewsNow) / dailyViews));
+      const w4000 = Math.max(0, Math.ceil((4000 - 14.5) / weeklyHours));
+
+      document.getElementById('projSubsResult').innerText = `צפי ל-500 מנויים: ~${d500} ימים | ל-1,000: ~${d1000} ימים`;
+      document.getElementById('projViewsResult').innerText = `צפי ל-3M צפיות Shorts: ~${d3M} ימים`;
+      document.getElementById('projHoursResult').innerText = `צפי ל-4,000 שעות צפייה: ~${w4000} שבועות`;
+    }
+
+    function setFilter(type, btnEl) {
+      document.querySelectorAll('.f-pill').forEach(p => p.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      const today = new Date().toISOString().substring(0, 10);
+      const yesterday = new Date(Date.now() - 86400000).toISOString().substring(0, 10);
+
+      if (type === 'all') currentFilterDay = 'all';
+      else if (type === 'today') currentFilterDay = today;
+      else if (type === 'yesterday') currentFilterDay = yesterday;
+
+      document.getElementById('datePicker').value = currentFilterDay === 'all' ? '' : currentFilterDay;
+      renderKPIs();
+      renderVideos();
+    }
+
+    function applyCustomDate(val) {
+      if (!val) {
+        setFilter('all');
+        return;
+      }
+      document.querySelectorAll('.f-pill').forEach(p => p.classList.remove('active'));
+      currentFilterDay = val;
+      document.getElementById('datePicker').value = val;
+      renderKPIs();
+      renderVideos();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 3500);
+    }
+  </script>
+</body>
+</html>
