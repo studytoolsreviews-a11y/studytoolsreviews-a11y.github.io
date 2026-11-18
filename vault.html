@@ -14,19 +14,21 @@
       --surface: #14192b;
       --cyan: #00d2ff;
       --green: #00ff88;
+      --purple: #a855f7;
       --text: #f3f5f9;
       --muted: #939bb4;
       --border: #1e2640;
+      --border-bright: #2e3a5f;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
+      background: radial-gradient(circle at 20% 0%, rgba(0, 210, 255, 0.08), transparent 40%), var(--bg);
       color: var(--text);
       font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.5;
-      padding: 28px 18px;
+      padding: 28px 18px 60px;
     }
-    .wrap { max-width: 1100px; margin: 0 auto; }
+    .wrap { max-width: 1120px; margin: 0 auto; }
     .disclosure {
       background: rgba(255, 170, 0, 0.1);
       border: 1px solid rgba(255, 170, 0, 0.35);
@@ -36,25 +38,56 @@
       font-size: 13px;
       margin-bottom: 24px;
     }
-    h1 { font-size: 28px; font-weight: 900; margin-bottom: 8px; }
-    .sub { color: var(--muted); font-size: 15px; margin-bottom: 24px; }
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.12), rgba(168, 85, 247, 0.1));
+      border: 1px solid var(--border-bright);
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    h1 { font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+    .sub { color: var(--muted); font-size: 15px; }
+    .yt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: #ff0033;
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+    }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
       gap: 18px;
+      margin-bottom: 36px;
     }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 20px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover, .card.highlighted {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(0, 210, 255, 0.14);
     }
     .badge {
       display: inline-block;
-      padding: 3px 10px;
+      padding: 4px 10px;
       border-radius: 999px;
       font-size: 11px;
       font-weight: 700;
@@ -66,7 +99,7 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      padding: 11px 16px;
+      padding: 12px 16px;
       border-radius: 10px;
       background: linear-gradient(135deg, var(--cyan), #0077ff);
       color: #040814;
@@ -74,55 +107,163 @@
       font-size: 13px;
       text-decoration: none;
       margin-top: auto;
+      cursor: pointer;
+    }
+    .calc-box {
+      background: var(--card);
+      border: 1px solid var(--border-bright);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+    .calc-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 6px;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="disclosure">
-      <strong>FTC Affiliate Disclosure (#ad):</strong> StudyTools Reviews is reader- and viewer-supported. Some links on this page are affiliate links. If you try or purchase a tool through them, we may earn a commission at no extra cost to you. Financial calculators and guides are for educational purposes only and do not constitute financial advice.
+      <strong>FTC Affiliate Disclosure (#ad):</strong> StudyTools Reviews &amp; MindTrap is viewer-supported. Some links on this page are affiliate links. If you try or purchase a tool through them, we may earn a commission at no extra cost to you. Financial calculators are for educational purposes only and do not constitute financial advice.
     </div>
-    <h1>⚡ StudyTools Reviews // Free AI &amp; Study Tools Vault</h1>
-    <p class="sub">Every tool featured in our YouTube Shorts, Reels, and in-depth student guides — vetted for generous free tiers.</p>
+
+    <div class="hero">
+      <div>
+        <h1>⚡ MindTrap &amp; StudyTools // Free AI Tools Vault</h1>
+        <p class="sub">Every tool &amp; calculator featured in our YouTube Shorts and Compilations — vetted for generous free tiers.</p>
+      </div>
+      <a class="yt-btn" href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+        ▶ Subscribe on YouTube
+      </a>
+    </div>
 
     <div class="grid">
-      <div class="card">
+      <div class="card" id="offer-ai-tool">
         <span class="badge">Workspace &amp; Notes • #ad</span>
         <h3>Notion AI Workspace</h3>
-        <p style="font-size:13px; color:var(--muted);">Organize lecture notes, summarize readings, and manage daily study tasks in one AI workspace.</p>
-        <a class="btn" href="https://www.notion.so/product/ai" target="_blank" rel="noopener noreferrer sponsored">Try Notion AI (#ad) ↗</a>
+        <p style="font-size:13px; color:var(--muted);">Organize lecture notes, summarize readings, and manage daily study tasks and creator scripts in one AI workspace.</p>
+        <a class="btn" href="https://www.notion.so/product/ai" target="_blank" rel="noopener noreferrer sponsored" onclick="trackOfferClick('ai-tool')">Try Notion AI Free (#ad) ↗</a>
       </div>
-      <div class="card">
+
+      <div class="card" id="offer-ai-excel">
         <span class="badge">Spreadsheets &amp; Data • #ad</span>
         <h3>Rows AI Spreadsheet Assistant</h3>
-        <p style="font-size:13px; color:var(--muted);">Translate plain-English questions into spreadsheet formulas, charts, and clean tables in seconds.</p>
-        <a class="btn" href="https://rows.com/ai" target="_blank" rel="noopener noreferrer sponsored">Try Rows AI (#ad) ↗</a>
+        <p style="font-size:13px; color:var(--muted);">Translate plain-English questions into spreadsheet formulas, pivot tables, and clean charts in seconds.</p>
+        <a class="btn" href="https://rows.com/ai" target="_blank" rel="noopener noreferrer sponsored" onclick="trackOfferClick('ai-excel')">Try Rows AI Free (#ad) ↗</a>
       </div>
-      <div class="card">
+
+      <div class="card" id="offer-ai-slides">
         <span class="badge">Presentations • #ad</span>
         <h3>Gamma AI Slide Deck Builder</h3>
-        <p style="font-size:13px; color:var(--muted);">Turn study outlines or a single prompt into structured presentation slides with visual layouts.</p>
-        <a class="btn" href="https://gamma.app" target="_blank" rel="noopener noreferrer sponsored">Try Gamma AI (#ad) ↗</a>
+        <p style="font-size:13px; color:var(--muted);">Turn study outlines or a single prompt into structured presentation slides with clean visual layouts.</p>
+        <a class="btn" href="https://gamma.app" target="_blank" rel="noopener noreferrer sponsored" onclick="trackOfferClick('ai-slides')">Try Gamma AI Free (#ad) ↗</a>
       </div>
-      <div class="card">
+
+      <div class="card" id="offer-ai-resume">
         <span class="badge">Career &amp; CV • #ad</span>
         <h3>Teal AI Resume &amp; Career Tracker</h3>
-        <p style="font-size:13px; color:var(--muted);">Compare your resume against any job description and highlight your relevant skills clearly.</p>
-        <a class="btn" href="https://www.tealhq.com" target="_blank" rel="noopener noreferrer sponsored">Try Teal AI (#ad) ↗</a>
+        <p style="font-size:13px; color:var(--muted);">Compare your resume against any job description and highlight missing keywords and relevant skills.</p>
+        <a class="btn" href="https://www.tealhq.com" target="_blank" rel="noopener noreferrer sponsored" onclick="trackOfferClick('ai-resume')">Try Teal AI Free (#ad) ↗</a>
       </div>
-      <div class="card">
+
+      <div class="card" id="offer-ai-clips">
         <span class="badge">Creator Automation • #ad</span>
         <h3>OpusClip AI Video Repurposing</h3>
-        <p style="font-size:13px; color:var(--muted);">Turn long lectures, podcasts, and videos into captioned vertical Shorts automatically.</p>
-        <a class="btn" href="https://www.opus.pro" target="_blank" rel="noopener noreferrer sponsored">Try OpusClip (#ad) ↗</a>
+        <p style="font-size:13px; color:var(--muted);">Turn long lectures, podcasts, and videos into captioned vertical Shorts automatically with AI hooks.</p>
+        <a class="btn" href="https://www.opus.pro" target="_blank" rel="noopener noreferrer sponsored" onclick="trackOfferClick('ai-clips')">Try OpusClip Free (#ad) ↗</a>
       </div>
-      <div class="card">
+
+      <div class="card" id="offer-ai-images">
         <span class="badge">Design &amp; Images • #ad</span>
         <h3>Leonardo AI Free-Tier Image Studio</h3>
         <p style="font-size:13px; color:var(--muted);">Create high-resolution illustrations and project visuals with daily refreshing free tokens.</p>
-        <a class="btn" href="https://leonardo.ai" target="_blank" rel="noopener noreferrer sponsored">Try Leonardo AI (#ad) ↗</a>
+        <a class="btn" href="https://leonardo.ai" target="_blank" rel="noopener noreferrer sponsored" onclick="trackOfferClick('ai-images')">Try Leonardo AI Free (#ad) ↗</a>
       </div>
     </div>
+
+    <!-- Interactive Compounding & Rule of 72 Calculator (Featured in Money Rules Shorts) -->
+    <div class="calc-box" id="finance-tools">
+      <span class="badge" style="margin-bottom:8px;">Free Interactive Tool • Educational Only</span>
+      <h2 style="font-size:20px; font-weight:800; margin-bottom:4px;">📈 Compounding &amp; Rule of 72 Calculator</h2>
+      <p style="font-size:13px; color:var(--muted);">Compare how monthly contributions compound over time (Educational only — not financial advice).</p>
+      <div class="calc-grid">
+        <div>
+          <label style="font-size:12px; color:var(--muted);">Starting Amount ($)</label>
+          <input type="number" id="cStart" class="calc-input" value="1000" oninput="runCalc()">
+        </div>
+        <div>
+          <label style="font-size:12px; color:var(--muted);">Monthly Contribution ($)</label>
+          <input type="number" id="cMonth" class="calc-input" value="200" oninput="runCalc()">
+        </div>
+        <div>
+          <label style="font-size:12px; color:var(--muted);">Annual Return (%)</label>
+          <input type="number" id="cRate" class="calc-input" value="8" step="0.5" oninput="runCalc()">
+        </div>
+        <div>
+          <label style="font-size:12px; color:var(--muted);">Years to Compound</label>
+          <input type="number" id="cYears" class="calc-input" value="10" oninput="runCalc()">
+        </div>
+      </div>
+      <div id="calcOutput" style="background:var(--surface); padding:16px; border-radius:12px; font-weight:800; color:var(--green); font-size:16px;"></div>
+    </div>
   </div>
+
+  <script>
+    const CLOUD_GAS_URL = "https://script.google.com/macros/s/AKfycbz16N_x28Ih9sHwVWgeQAg4e4f3WduqvjgTe1c8E-zSbP3QryOyaOpay0nu4Lmlaa1cCw/exec";
+    const params = new URLSearchParams(window.location.search);
+    const vid = params.get('vid') || '';
+    const offerParam = params.get('offer') || 'vault';
+
+    function trackOfferClick(slug) {
+      try {
+        fetch(CLOUD_GAS_URL + '?action=track_click&slug=' + encodeURIComponent(slug) + '&vid=' + encodeURIComponent(vid), { mode: 'no-cors' });
+      } catch (e) {}
+    }
+
+    function runCalc() {
+      const start = Number(document.getElementById('cStart').value) || 0;
+      const month = Number(document.getElementById('cMonth').value) || 0;
+      const rate = (Number(document.getElementById('cRate').value) || 0) / 100;
+      const years = Math.max(1, Number(document.getElementById('cYears').value) || 1);
+      const rMonth = rate / 12;
+      const months = years * 12;
+      let total = start * Math.pow(1 + rMonth, months);
+      if (rMonth > 0) {
+        total += month * ((Math.pow(1 + rMonth, months) - 1) / rMonth);
+      } else {
+        total += month * months;
+      }
+      const contributed = start + (month * months);
+      const rule72 = rate > 0 ? (72 / (rate * 100)).toFixed(1) : '∞';
+      document.getElementById('calcOutput').innerText =
+        `Projected Balance: $${Math.round(total).toLocaleString()} (Total Contributed: $${Math.round(contributed).toLocaleString()} | Rule of 72 Doubling Time: ~${rule72} years)`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      runCalc();
+      if (offerParam && document.getElementById('offer-' + offerParam)) {
+        const el = document.getElementById('offer-' + offerParam);
+        el.classList.add('highlighted');
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (vid || params.get('offer')) {
+        trackOfferClick(offerParam);
+      }
+    });
+  </script>
 </body>
 </html>
