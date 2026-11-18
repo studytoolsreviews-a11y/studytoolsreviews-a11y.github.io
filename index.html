@@ -443,8 +443,8 @@
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kpi-label">סרטונים חיים בערוץ YouTube</div>
-        <div class="kpi-value" id="kpiVideos">7</div>
-        <div class="kpi-sub">עולים אוטומטית 5 פעמים ביום + קומפילציה</div>
+        <div class="kpi-value" id="kpiVideos">9</div>
+        <div class="kpi-sub">90% מיני-דוקו (הודו/מדע) • רק 10% דילמות</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">סה"כ צפיות אמיתיות (YouTube)</div>
@@ -680,16 +680,18 @@
       drive_folder_url: "https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i",
       channel_url: "https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts",
       channel_subscribers: 1,
-      total_videos: 7,
-      total_views: 939,
+      total_videos: 9,
+      total_views: 940,
       total_clicks: 0,
       total_revenue_usd: 0.0,
       daily_summaries: [
-        { date: "2026-11-18", videos_count: 2, views: 1, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "Master Every Instrument OR Speak Every Language Fluently? #shorts #quiz #skills" },
+        { date: "2026-11-18", videos_count: 4, views: 2, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts #india #engineering #facts" },
         { date: "2026-11-17", videos_count: 5, views: 938, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts" }
       ],
       videos: [
-        { date: "2026-11-18", title: "Master Every Instrument OR Speak Every Language Fluently? #shorts #quiz #skills", niche: "brainrot_dilemmas", persona: "cartoon_gremlin", views: 0, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/JbDUZwHUkFw", drive_url: "https://drive.google.com/file/d/1hNdfl5RlQXSD6MbHxByFVQMygiCBewLI/view?usp=drivesdk" },
+        { date: "2026-11-18", title: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts #india #engineering #facts", niche: "india_marvels_doc", persona: "deep_authority", views: 0, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/zIOnMNxZSig", drive_url: "https://drive.google.com/file/d/1bCQc2dI_RPGUQD01ricxwoTLxVUA23j3/view?usp=drivesdk" },
+        { date: "2026-11-18", title: "What If You Touched A Teaspoon of a Neutron Star? #shorts #space #science #astronomy #facts", niche: "science_space_doc", persona: "deep_authority", views: 0, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/wHO7DKSQ8po", drive_url: "https://drive.google.com/file/d/1HGPBWA5GhVGGgs0J9sZ8A2zcSyr79GxL/view?usp=drivesdk" },
+        { date: "2026-11-18", title: "Master Every Instrument OR Speak Every Language Fluently? #shorts #quiz #skills", niche: "brainrot_dilemmas", persona: "cartoon_gremlin", views: 1, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/JbDUZwHUkFw", drive_url: "https://drive.google.com/file/d/1hNdfl5RlQXSD6MbHxByFVQMygiCBewLI/view?usp=drivesdk" },
         { date: "2026-11-18", title: "Would You Rather: Never Need Sleep Again OR $1,000 Every Morning? #shorts #quiz #wouldyourather", niche: "would_you_rather", persona: "posh_villain", views: 1, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/7zVHzm_bnjI", drive_url: "https://drive.google.com/file/d/1RVo0UGez9xYDLEe6Blt-c3iwnf5cbKso/view?usp=drivesdk" },
         { date: "2026-11-17", title: "Would You Rather: $10 Million Cash OR Pause Time for 1 Hour Daily? #shorts #quiz #wouldyourather", niche: "would_you_rather", persona: "posh_villain", views: 2, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/RdcFPQsscM8", drive_url: "https://drive.google.com/file/d/1MmHmcioLy-VkTfjlOdQbEyWctQJTUCxD/view?usp=drivesdk" },
         { date: "2026-11-17", title: "Would You Rather: $100k Per Stubbed Toe OR Never Feel Physical Pain? #shorts #quiz #wouldyourather", niche: "brainrot_dilemmas", persona: "posh_villain", views: 7, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/kLl-83Wrjs8", drive_url: "https://drive.google.com/file/d/1Ux1owQeGxCFG0MmOClqoH3R4nqOgUYSH/view?usp=drivesdk" },
@@ -856,7 +858,7 @@
 
     function renderVideos() {
       const grid = document.getElementById('videoGrid');
-      const allVideos = (cloudData.videos || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      const allVideos = (cloudData.videos || []).slice().reverse().sort((a, b) => String(b.date).localeCompare(String(a.date)));
       let filtered = allVideos;
 
       if (currentFilterDay !== 'all') {
