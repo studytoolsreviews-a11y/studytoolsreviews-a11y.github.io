@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindTrap // Creator Revenue OS</title>
+  <title>MindTrap Workbench // Creator Revenue OS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
@@ -343,7 +343,7 @@
     <a class="brand" href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer">
       <div class="brand-mark">MT</div>
       <div>
-        <div class="brand-name">MindTrap OS</div>
+        <div class="brand-name">MindTrap Workbench</div>
         <div class="brand-sub"><span class="live-dot"></span><span id="syncState">מחובר לענן 24/7</span></div>
       </div>
     </a>
@@ -359,7 +359,7 @@
       <span class="ico">💰</span> סימולטור RPM ושיווק שותפים
     </button>
     <button class="nav-item" onclick="openView('pipeline', this)">
-      <span class="ico">⚡</span> תור 3D ובודק כותרות
+      <span class="ico">⚡</span> תור 3D והפצה (TikTok/Reels)
     </button>
     <button class="nav-item" onclick="openView('ideas', this)">
       <span class="ico">🛡️</span> מקורות רעיונות וחוקיות
@@ -712,6 +712,34 @@
           </div>
         </div>
 
+        <!-- CROSS-PLATFORM TIKTOK CREATOR REWARDS & INSTAGRAM REELS -->
+        <div class="card" style="margin-bottom:18px;">
+          <div class="card-head">
+            <div>
+              <div class="card-title">📱 הפצה כפולה: TikTok Creator Rewards (60s+) &amp; Instagram Reels</div>
+              <div class="card-sub">כל סרטוני ה-3D מעל 60 שניות — זכאים ל-RPM גבוה ב-TikTok Rewards ($0.40–$1.00 / 1K צפיות). הורד MP4 והעתק תיאור בלחיצה!</div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <a class="btn" href="https://www.tiktok.com/tiktokstudio/upload" target="_blank" rel="noopener noreferrer">העלאה ל-TikTok ↗</a>
+              <a class="btn" href="https://business.facebook.com/latest/reels_composer" target="_blank" rel="noopener noreferrer">העלאה ל-Reels ↗</a>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>סרטון 3D (60s+)</th>
+                  <th>אורך / זכאות</th>
+                  <th>הורדת MP4</th>
+                  <th>תיאור מוכן ל-TikTok</th>
+                  <th>תיאור מוכן ל-Reels</th>
+                </tr>
+              </thead>
+              <tbody id="crossPlatformBody"></tbody>
+            </table>
+          </div>
+        </div>
+
         <!-- 14-EPISODE 3D STUDIO QUEUE -->
         <div class="card">
           <div class="card-head">
@@ -840,7 +868,7 @@
       overview: 'סקירה ופאנל הכנסות',
       videos: 'ניתוח סרטונים ו-Outliers',
       revenue: 'סימולטור RPM ושיווק שותפים',
-      pipeline: 'תור 3D ובודק כותרות',
+      pipeline: 'תור 3D, בודק כותרות והפצה ל-TikTok/Reels',
       ideas: 'מקורות רעיונות והגנה משפטית'
     };
 
@@ -1281,6 +1309,70 @@
       document.getElementById('scoreFeedback').innerHTML = notes.join(' &nbsp;•&nbsp; ');
     }
 
+    let crossFeedItems = [];
+
+    async function fetchCrossPlatformFeed() {
+      try {
+        const res = await fetch('./cross_platform_feed.json', { cache: 'no-store' });
+        if (res.ok) {
+          const j = await res.json();
+          if (j && Array.isArray(j.items)) {
+            crossFeedItems = j.items;
+            renderCrossPlatform();
+            return;
+          }
+        }
+      } catch (e) {}
+      renderCrossPlatform();
+    }
+
+    function renderCrossPlatform() {
+      const tbody = document.getElementById('crossPlatformBody');
+      if (!tbody) return;
+      const items = crossFeedItems.length ? crossFeedItems : (data.videos || []).filter(is3DVideo).map(v => {
+        const cleanT = String(v.title || '').split('#')[0].trim();
+        const dUrl = String(v.drive_url || '');
+        let dl = dUrl;
+        if (dUrl.includes('/file/d/')) {
+          const fid = dUrl.split('/file/d/')[1].split('/')[0];
+          dl = `https://drive.google.com/uc?export=download&id=${fid}`;
+        }
+        return {
+          title: cleanT,
+          duration_sec: 75,
+          tiktok_rewards_eligible: true,
+          direct_mp4_download: dl,
+          drive_url: dUrl,
+          tiktok_caption: `${cleanT}\n\nFree AI & Math Tools Vault (#ad) in bio -> ${LIVE_VAULT_URL}\n#mindtrap #psychology #3danimation #learnontiktok #howitworks`,
+          reels_caption: `${cleanT} — built in 3D miniature on our workbench.\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #3danimation #visualexplainer #reels`
+        };
+      });
+
+      if (!items.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--muted);">ממתין לסרטוני 3D מוכנים להפצה...</td></tr>';
+        return;
+      }
+
+      window._cpItems = items;
+      tbody.innerHTML = items.map((it, idx) => `
+        <tr>
+          <td><strong>${esc(it.title)}</strong></td>
+          <td><span class="pill pill-green">${it.duration_sec || 75}s • זכאי Rewards ✓</span></td>
+          <td>${it.direct_mp4_download ? `<a class="btn btn-primary" style="padding:4px 9px; font-size:11px;" href="${esc(it.direct_mp4_download)}" target="_blank" rel="noopener noreferrer">⬇️ הורד MP4</a>` : `<a class="btn" style="padding:4px 9px; font-size:11px;" href="https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i" target="_blank" rel="noopener noreferrer">פתח Drive ↗</a>`}</td>
+          <td><button class="btn" style="padding:4px 9px; font-size:11px;" onclick="copyCp(${idx}, 'tiktok')">📋 העתק TikTok</button></td>
+          <td><button class="btn" style="padding:4px 9px; font-size:11px;" onclick="copyCp(${idx}, 'reels')">📋 העתק Reels</button></td>
+        </tr>
+      `).join('');
+    }
+
+    function copyCp(idx, platform) {
+      const it = (window._cpItems || [])[idx];
+      if (!it) return;
+      const txt = platform === 'tiktok' ? it.tiktok_caption : it.reels_caption;
+      navigator.clipboard.writeText(txt);
+      toast(platform === 'tiktok' ? '✅ תיאור + האשטאגים ל-TikTok הועתקו!' : '✅ תיאור + האשטאגים ל-Instagram Reels הועתקו!');
+    }
+
     function toast(msg) {
       const t = document.getElementById('toast');
       t.innerText = msg;
@@ -1300,6 +1392,7 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
       fetchLive();
+      fetchCrossPlatformFeed();
     });
   </script>
 </body>
