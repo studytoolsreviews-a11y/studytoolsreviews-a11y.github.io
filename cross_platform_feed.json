@@ -1,8 +1,22 @@
 {
-  "updated_at": "2026-11-19T08:21:11Z",
+  "updated_at": "2026-11-19T09:32:10Z",
   "channel_name": "MindTrap Workbench",
   "tiktok_rewards_rule": "Videos >= 60s qualify for TikTok Creator Rewards Program (higher Tier-1 RPM).",
   "items": [
+    {
+      "episode_id": "loss_aversion_scale",
+      "title": "Why Losing $100 Hurts Twice As Much As Winning $100",
+      "niche": "mind_traps",
+      "diorama": "balance_scale",
+      "duration_sec": 75.7,
+      "tiktok_rewards_eligible": true,
+      "renderedAt": "2026-11-19T09:32:09.939550",
+      "youtube_url": "https://www.youtube.com/shorts/9Y6mdItITW4",
+      "drive_url": "https://drive.google.com/file/d/1JSNtf_ebruI_l0v_vfiUcuIIzIupbIL0/view?usp=drivesdk",
+      "direct_mp4_download": "https://drive.google.com/uc?export=download&id=1JSNtf_ebruI_l0v_vfiUcuIIzIupbIL0",
+      "tiktok_caption": "Why Losing $100 Hurts Twice As Much As Winning $100\n\nHave you ever kept a subscription or item purely because letting go of it felt like a loss?\n\nFree AI & Math Tools Vault (#ad) in bio -> https://studytoolsreviews-a11y.github.io/vault.html\n#mindtrap #psychology #cognitivebias #3danimation #learnontiktok #howitworks",
+      "reels_caption": "Why Losing $100 Hurts Twice As Much As Winning $100 — built in 3D miniature on our workbench.\n\nHave you ever kept a subscription or item purely because letting go of it felt like a loss?\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #behavioraleconomics #3danimation #visualexplainer #reels"
+    },
     {
       "episode_id": "monty_hall_trap",
       "title": "Why Switching Doors Doubles Your Odds (The Monty Hall Trap)",
