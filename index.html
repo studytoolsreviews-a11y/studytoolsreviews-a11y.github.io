@@ -3,40 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindTrap &amp; StudyTools // מרכז שליטה בענן 24/7</title>
+  <title>MindTrap 3D Studio // מרכז שליטה בענן 24/7</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #060810;
-      --bg-card: #0e1222;
-      --bg-surface: #151b30;
-      --bg-hover: #1e2744;
-      --accent-red: #ff0033;
-      --accent-cyan: #00d2ff;
-      --accent-green: #00ff88;
-      --accent-yellow: #ffaa00;
+      --bg-dark: #0b0a09;
+      --bg-card: #151210;
+      --bg-surface: #1e1916;
+      --bg-hover: #29221d;
+      --accent-red: #d93829;
+      --accent-gold: #e0ad48;
+      --accent-cyan: #2ab7ca;
+      --accent-green: #22c55e;
       --accent-purple: #a855f7;
-      --text-main: #f3f5f9;
-      --text-muted: #949db5;
-      --border: #1e2640;
-      --border-bright: #2e3b63;
+      --text-main: #f6f1e9;
+      --text-muted: #a99f91;
+      --border: #2e2620;
+      --border-bright: #473a30;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: radial-gradient(circle at 15% 0%, rgba(0, 210, 255, 0.08), transparent 40%),
-                  radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.08), transparent 40%),
+      background: radial-gradient(circle at 15% 0%, rgba(224, 173, 72, 0.10), transparent 42%),
+                  radial-gradient(circle at 85% 12%, rgba(217, 56, 41, 0.08), transparent 40%),
                   var(--bg-dark);
       color: var(--text-main);
       font-family: 'Heebo', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      line-height: 1.5;
+      line-height: 1.55;
     }
     header {
-      background: rgba(14, 18, 34, 0.96);
+      background: rgba(21, 18, 16, 0.96);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       position: sticky;
@@ -60,21 +60,17 @@
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
-      box-shadow: 0 4px 16px rgba(255, 0, 51, 0.3);
+      box-shadow: 0 4px 16px rgba(217, 56, 41, 0.35);
     }
-    .brand-title {
-      font-size: 19px;
-      font-weight: 900;
-      color: #fff;
-    }
+    .brand-title { font-size: 19px; font-weight: 900; color: #fff; }
     .brand-sub {
       font-size: 12px;
-      color: var(--accent-green);
+      color: var(--accent-gold);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -104,16 +100,12 @@
       font-family: inherit;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-red { background: linear-gradient(135deg, #ff0033, #cc0029); color: #fff; box-shadow: 0 4px 14px rgba(255, 0, 51, 0.25); }
-    .btn-cyan { background: linear-gradient(135deg, #00d2ff, #0077ff); color: #050811; }
-    .btn-green { background: linear-gradient(135deg, #00ff88, #00b359); color: #050811; }
+    .btn-red { background: linear-gradient(135deg, #d93829, #a82317); color: #fff; box-shadow: 0 4px 14px rgba(217, 56, 41, 0.28); }
+    .btn-gold { background: linear-gradient(135deg, #e0ad48, #c28624); color: #120e0a; }
+    .btn-green { background: linear-gradient(135deg, #22c55e, #15803d); color: #05120a; }
     .btn-purple { background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; }
-    .btn-outline {
-      background: var(--bg-surface);
-      color: var(--text-main);
-      border: 1px solid var(--border-bright);
-    }
-    .btn-outline:hover { background: var(--bg-hover); border-color: var(--accent-cyan); }
+    .btn-outline { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border-bright); }
+    .btn-outline:hover { background: var(--bg-hover); border-color: var(--accent-gold); }
 
     .main-container {
       max-width: 1320px;
@@ -123,9 +115,22 @@
       flex: 1;
     }
 
-    /* Quick Cloud Launchpad */
+    .upgrade-banner {
+      background: linear-gradient(135deg, rgba(224, 173, 72, 0.15), rgba(217, 56, 41, 0.12));
+      border: 1px solid rgba(224, 173, 72, 0.42);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .upgrade-banner strong { color: var(--accent-gold); }
+
     .launchpad {
-      background: linear-gradient(135deg, rgba(21, 27, 48, 0.95), rgba(14, 18, 34, 0.95));
+      background: linear-gradient(135deg, rgba(30, 25, 22, 0.95), rgba(21, 18, 16, 0.95));
       border: 1px solid var(--border-bright);
       border-radius: 18px;
       padding: 20px 22px;
@@ -139,18 +144,12 @@
       gap: 12px;
       margin-bottom: 14px;
     }
-    .launchpad-title {
-      font-size: 17px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .launchpad-title { font-size: 17px; font-weight: 900; display: flex; align-items: center; gap: 8px; }
     .account-note {
       font-size: 12px;
-      color: var(--accent-yellow);
-      background: rgba(255, 170, 0, 0.1);
-      border: 1px solid rgba(255, 170, 0, 0.3);
+      color: var(--accent-gold);
+      background: rgba(224, 173, 72, 0.12);
+      border: 1px solid rgba(224, 173, 72, 0.32);
       padding: 5px 12px;
       border-radius: 8px;
     }
@@ -160,10 +159,9 @@
       gap: 10px;
     }
 
-    /* KPIs */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 14px;
       margin-bottom: 22px;
     }
@@ -175,9 +173,8 @@
     }
     .kpi-label { font-size: 12px; color: var(--text-muted); font-weight: 700; margin-bottom: 6px; }
     .kpi-value { font-size: 28px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #fff; }
-    .kpi-sub { font-size: 11px; color: var(--accent-green); margin-top: 4px; }
+    .kpi-sub { font-size: 11px; color: var(--accent-gold); margin-top: 4px; }
 
-    /* Navigation Tabs */
     .nav-tabs {
       display: flex;
       gap: 8px;
@@ -202,9 +199,9 @@
     }
     .nav-tab:hover { color: #fff; background: var(--bg-hover); }
     .nav-tab.active {
-      background: linear-gradient(135deg, rgba(0, 210, 255, 0.22), rgba(168, 85, 247, 0.22));
+      background: linear-gradient(135deg, rgba(224, 173, 72, 0.26), rgba(217, 56, 41, 0.22));
       color: #fff;
-      border-color: var(--accent-cyan);
+      border-color: var(--accent-gold);
     }
 
     .section-card {
@@ -248,9 +245,9 @@
       cursor: pointer;
     }
     .f-pill.active, .f-pill:hover {
-      background: var(--accent-cyan);
-      color: #000;
-      border-color: var(--accent-cyan);
+      background: var(--accent-gold);
+      color: #14100c;
+      border-color: var(--accent-gold);
     }
     .date-input {
       background: var(--bg-card);
@@ -290,30 +287,35 @@
     .v-thumb {
       width: 100%;
       height: 175px;
-      background: #090d1c;
+      background: #0d0b0a;
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .v-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-      transition: transform 0.3s;
-    }
+    .v-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: transform 0.3s; }
     .v-card:hover .v-thumb img { transform: scale(1.04); opacity: 1; }
     .v-badge-live {
       position: absolute;
       top: 10px;
       right: 10px;
-      background: rgba(0, 0, 0, 0.78);
+      background: rgba(0, 0, 0, 0.80);
       border: 1px solid var(--accent-green);
       color: var(--accent-green);
       font-size: 11px;
       font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .v-badge-3d {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(217, 56, 41, 0.92);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
       padding: 3px 10px;
       border-radius: 999px;
     }
@@ -336,7 +338,7 @@
     .progress-track {
       width: 100%;
       height: 14px;
-      background: #080b14;
+      background: #0c0a09;
       border: 1px solid var(--border);
       border-radius: 999px;
       overflow: hidden;
@@ -345,12 +347,12 @@
     .progress-bar {
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
       transition: width 0.4s ease;
     }
     .step-box {
       background: var(--bg-surface);
-      border-right: 4px solid var(--accent-cyan);
+      border-right: 4px solid var(--accent-gold);
       border-radius: 12px;
       padding: 16px 18px;
       margin-bottom: 12px;
@@ -364,11 +366,11 @@
       border-radius: 999px;
       font-size: 11px;
       font-weight: 800;
-      background: rgba(0, 210, 255, 0.14);
-      color: var(--accent-cyan);
+      background: rgba(224, 173, 72, 0.16);
+      color: var(--accent-gold);
     }
-    .tag-pill.green { background: rgba(0, 255, 136, 0.14); color: var(--accent-green); }
-    .tag-pill.amber { background: rgba(255, 170, 0, 0.15); color: var(--accent-yellow); }
+    .tag-pill.green { background: rgba(34, 197, 94, 0.16); color: var(--accent-green); }
+    .tag-pill.red { background: rgba(217, 56, 41, 0.18); color: #ff7b6b; }
 
     .tab-pane { display: none; }
     .tab-pane.active { display: block; }
@@ -377,8 +379,8 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      background: #111422;
-      border: 1px solid var(--accent-cyan);
+      background: #171310;
+      border: 1px solid var(--accent-gold);
       color: #fff;
       padding: 12px 24px;
       border-radius: 12px;
@@ -386,7 +388,7 @@
       font-weight: 800;
       z-index: 10000;
       display: none;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.65);
     }
   </style>
 </head>
@@ -394,50 +396,58 @@
 
   <header>
     <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="logo-badge">
-      <div class="logo-icon">▶</div>
+      <div class="logo-icon">🧠</div>
       <div>
-        <div class="brand-title">MindTrap &amp; StudyTools // Cloud Control</div>
+        <div class="brand-title">MindTrap 3D Studio // Cloud Control</div>
         <div class="brand-sub">
           <span class="dot-live"></span>
-          <span id="cloudStatusText">100% בענן (GitHub Actions + Google Cloud + YouTube) — אפס תלות במחשב</span>
+          <span id="cloudStatusText">מנוע 3D Miniature Workbench פעיל 24/7 בענן — 0% Brainrot • 0% תוכן הודי • 100% חוקי</span>
         </div>
       </div>
     </a>
     <div style="display:flex; gap:8px; flex-wrap:wrap;">
-      <button class="btn btn-cyan" onclick="triggerLiveCloudSync()" id="syncBtn">🔄 סנכרן נתונים חיים מ-YouTube</button>
+      <button class="btn btn-gold" onclick="triggerLiveCloudSync()" id="syncBtn">🔄 סנכרן נתונים חיים מ-YouTube</button>
       <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red">▶️ צפה בערוץ ה-YouTube החי ↗</a>
     </div>
   </header>
 
   <div class="main-container">
 
-    <!-- DIRECT CLOUD LAUNCHPAD (ALL LINKS WORK INSTANTLY) -->
+    <div class="upgrade-banner">
+      <div style="font-size:14px;">
+        <strong>✨ מנוע חדש באוויר (MindTrap 3D Workbench v3):</strong>
+        אנימציית תלת-ממד פרוצדורלית על שולחן מעבדה (Three.js + WebGL2), קריינות נעימה וברורה (<code>AndrewMultilingualNeural</code>), מוזיקת רקע אקוסטית מקורית 100%, כתוביות מינימליות נקיות (2–4 מילים עם הבלטת גלולה), ואורך טבעי של <strong>60–105 שניות</strong>!
+      </div>
+      <span class="tag-pill green">✅ 100% ללא זכויות יוצרים וללא עלות</span>
+    </div>
+
+    <!-- DIRECT CLOUD LAUNCHPAD -->
     <div class="launchpad">
       <div class="launchpad-top">
         <div class="launchpad-title">🚀 קישורים ישירים לכל מערכות הענן שלך (לחיצה אחת)</div>
-        <div class="account-note">💡 לניהול ב-Studio או ב-GitHub ודא שאתה מחובר בדפדפן לחשבון: <strong>studytools.reviews@gmail.com</strong></div>
+        <div class="account-note">💡 לניהול ב-Studio או ב-GitHub ודא שאתה מחובר לחשבון: <strong>studytools.reviews@gmail.com</strong></div>
       </div>
       <div class="launch-grid">
         <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red">
-          ▶️ הערוץ הציבורי ב-YouTube (נפתח תמיד) ↗
+          ▶️ הערוץ הציבורי ב-YouTube ↗
         </a>
         <a href="https://studio.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/videos/short" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          🎛️ ניהול הערוץ ב-YouTube Studio ↗
+          🎛️ YouTube Studio ↗
         </a>
         <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer" class="btn btn-purple">
-          ⚡ רובוט הייצור בענן (GitHub Actions) ↗
+          ⚡ רובוט ה-3D בענן (GitHub Actions) ↗
         </a>
         <a href="https://docs.google.com/spreadsheets/d/13-ITmQGdetgKz-NPPceDri8Fwze5EtZG-x-3UzjWNjI/edit" id="sheetHeaderBtn" target="_blank" rel="noopener noreferrer" class="btn btn-green">
-          📊 גיליון הדוח היומי (Google Sheets) ↗
+          📊 גיליון הדוח היומי (Sheets) ↗
         </a>
         <a href="https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i" id="driveHeaderBtn" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          📁 תיקיית הסרטונים (Google Drive) ↗
+          📁 גיבוי הסרטונים (Drive) ↗
         </a>
         <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          💰 דף נחיתה ושיווק שותפים (AI Vault) ↗
+          💰 דף ה-AI Vault (שותפים) ↗
         </a>
         <a href="https://studytoolsreviews-a11y.github.io/stories.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          🌐 אתר מאמרי ה-SEO והווידאו (Google Index) ↗
+          🌐 ארכיון ה-SEO והווידאו (Google) ↗
         </a>
       </div>
     </div>
@@ -446,34 +456,35 @@
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kpi-label">סרטונים חיים בערוץ YouTube</div>
-        <div class="kpi-value" id="kpiVideos">9</div>
-        <div class="kpi-sub">90% מיני-דוקו (הודו/מדע) • רק 10% דילמות</div>
+        <div class="kpi-value" id="kpiVideos">10</div>
+        <div class="kpi-sub">100% MindTrap 3D Workbench • אפס Brainrot</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">סה"כ צפיות אמיתיות (YouTube)</div>
-        <div class="kpi-value" id="kpiViews" style="color:var(--accent-cyan);">939</div>
-        <div class="kpi-sub" id="kpiWatchHours">שעות צפייה שנצברו: 3.63h</div>
+        <div class="kpi-value" id="kpiViews" style="color:var(--accent-gold);">943</div>
+        <div class="kpi-sub" id="kpiWatchHours">שעות צפייה משוערות: 3.65h</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">לוח שידורים גלובלי (Tier-1)</div>
+        <div class="kpi-value" style="font-size:20px; color:var(--accent-green);">4 סרטוני 3D ביום 🟢</div>
+        <div class="kpi-sub">12:00 • 15:30 • 19:00 • 22:30 UTC + 16:9 בראשון</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">קליקים לדף השותפים (AI Vault)</div>
-        <div class="kpi-value" id="kpiClicks" style="color:var(--accent-green);">0</div>
-        <div class="kpi-sub">מעקב קליקים חי מהלינק בביו ומהסרטונים</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">מנוע ויראלי רב-ערוצי 24/7</div>
-        <div class="kpi-value" style="font-size:18px; color:var(--accent-green);">9 פורמטים פעילים 🟢</div>
-        <div class="kpi-sub">5 Shorts ביום + קומפילציית 16:9 שבועית</div>
+        <div class="kpi-value" id="kpiClicks" style="color:var(--accent-cyan);">0</div>
+        <div class="kpi-sub">מעקב קליקים חי מהביו ומהתיאורים (#ad)</div>
       </div>
     </div>
 
-    <!-- CLEAR 3-TAB NAVIGATION -->
+    <!-- 4-TAB NAVIGATION -->
     <div class="nav-tabs">
       <button class="nav-tab active" onclick="switchTab('overview', this)">🎬 הסרטונים החיים והדוח היומי</button>
-      <button class="nav-tab" onclick="switchTab('money', this)">💰 תוכנית העבודה להכנסות (איך באמת עושים מזה כסף)</button>
-      <button class="nav-tab" onclick="switchTab('automation', this)">🤖 הפעלת יצירת סרטונים וקומפילציות בענן</button>
+      <button class="nav-tab" onclick="switchTab('studio3d', this)">🎨 סטודיו 3D, פורמטים ולוחות זמנים</button>
+      <button class="nav-tab" onclick="switchTab('ideas', this)">💡 מאגר רעיונות והגנה משפטית 100%</button>
+      <button class="nav-tab" onclick="switchTab('money', this)">💰 תוכנית מונטיזציה ושותפים</button>
     </div>
 
-    <!-- TAB 1: VIDEOS & DAILY REPORT -->
+    <!-- TAB 1: LIVE VIDEOS & DAILY REPORT -->
     <div id="tab-overview" class="tab-pane active">
       <div class="section-card">
         <div class="section-header">
@@ -518,153 +529,214 @@
       </div>
     </div>
 
-    <!-- TAB 2: REALISTIC MONEY & MONETIZATION PLAN -->
-    <div id="tab-money" class="tab-pane">
+    <!-- TAB 2: NEW 3D STUDIO & SCHEDULE -->
+    <div id="tab-studio3d" class="tab-pane">
       <div class="section-card">
         <div class="section-header">
-          <div class="section-title">💰 האמת המלאה: איך הערוץ הזה הופך לכסף אמיתי (ומה כבר תוקן עבורך)</div>
-          <span class="tag-pill green">תוכנית עבודה תכל'ס</span>
+          <div class="section-title">🎨 המודל החדש: MindTrap 3D Miniature Workbench (ללא Brainrot וללא תוכן הודי)</div>
+          <span class="tag-pill green">Three.js WebGL2 + Andrew Neural TTS + FFmpeg</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px;">
+          מבוסס על ניתוח העומק של <strong>@SkygearStories</strong> (55.8M צפיות ב-17 יום) — אך מותאם <strong>100% לנושא של הערוץ שלך (MindTrap)</strong> ללא שום העתקה של מכוניות ישנות או נשק. כל סרטון בנוי כדיורמת 3D מונפשת על שולחן מעבדה מעץ ופליז, עם תאורת אולפן, חתכי זכוכית שקופים, קריינות נעימה ורגועה, כתוביות נקיות של 2–4 מילים בלבד, ואורך טבעי של <strong>60–105 שניות</strong>.
+        </p>
+
+        <div class="table-responsive" style="margin-bottom:20px;">
+          <table>
+            <thead>
+              <tr>
+                <th>קוד נישה ב-GitHub</th>
+                <th>עמוד התווך של הערוץ (MindTrap)</th>
+                <th>משקל</th>
+                <th>דיורמות 3D מונפשות שנבנו במנוע</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>mind_traps</code></td>
+                <td><strong>🧠 מלכודות תודעה והטיות פסיכולוגיות</strong></td>
+                <td>35%</td>
+                <td>דלפק פופקורן (Decoy Effect), מאזני פליז (Loss Aversion / Ben Franklin), מבוך סופרמרקט (Milk Trap), שולחן 24 צנצנות ריבה (Choice Overload), מיכל זכוכית דולף (Zeigarnik Effect).</td>
+              </tr>
+              <tr>
+                <td><code>decision_paradoxes</code></td>
+                <td><strong>♟️ פרדוקסים של החלטות, תורת המשחקים והסתברות</strong></td>
+                <td>25%</td>
+                <td>במת 3 דלתות (Monty Hall), טבעת 23 דמויות ו-253 חוטי זהב (Birthday Paradox), עיר מיניאטורית עם גשר קיצור (Braess's Paradox), מאזני תמריצים (Goodhart's Law).</td>
+              </tr>
+              <tr>
+                <td><code>money_math_traps</code></td>
+                <td><strong>💰 מלכודות כסף, תמחור ומתמטיקה יומיומית</strong></td>
+                <td>20%</td>
+                <td>מגדלי מטבעות ריבית דריבית (Compounding &amp; Rule of 72), מיכל מנויים דולף ב-9 ברזים ($9.99 Drip Illusion), קליבר פליז וקופסה מתכווצת בשקיפות (Shrinkflation Geometry).</td>
+              </tr>
+              <tr>
+                <td><code>ai_system_secrets</code></td>
+                <td><strong>🤖 איך AI, אלגוריתמים ולולאות קשב עובדים באמת</strong></td>
+                <td>20%</td>
+                <td>סמארטפון צמוד למכונת מזל שקופה (Infinite Scroll &amp; Algorithms), קוביית זכוכית מוזיאלית עם כדורי וקטור וקרני לייזר (AI Tokens &amp; Self-Attention).</td>
+              </tr>
+              <tr>
+                <td><code>longform_compilation</code></td>
+                <td><strong>🎞️ קומפילציית דוקו רחבה (16:9 Long-Form) בכל יום ראשון</strong></td>
+                <td>שבועי</td>
+                <td>מאחדת 4 פרקי 3D Workbench לסרטון רחב (1920x1080) באורך ~5–6 דקות לצבירת 4,000 שעות צפייה וקישורים לחיצים!</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="step-box">
-          <h4>✅ מה המערכת בענן כבר עושה בשבילך 100% אוטומטית (בלי שתדליק את המחשב):</h4>
+          <h4>🕒 לוח הזמנים הגלובלי החדש (שעות שיא ארה"ב, אירופה וישראל — ללא מכסת יתר ב-API):</h4>
           <p>
-            1. <strong>מייצרת ומעלה 5 סרטוני Shorts ויראליים ביום מ-9 פורמטים שונים</strong> (טריוויה מדורגת 3 שלבים, חידות בלשיות, כפתור אדום, עובדות מטורפות, דילמות, כלי AI וכו') עם תסריטים ייחודיים של Gemini AI + קריינות + רקעים מקוריים 100% שלך.<br>
-            2. <strong>מייצרת ומעלה אוטומטית סרטון מגה-קומפילציה רחב (16:9 Long-Form)</strong> בכל יום ראשון (וניתן להפעלה בלחיצה בכל רגע) — כי ביוטיוב רק סרטונים רחבים צוברים את 4,000 שעות הצפייה למונטיזציה, ורק בהם הקישורים בתיאור ובתגובה הנעוצה לחיצים!<br>
-            3. <strong>מפנה את כל הצופים לדף הנחיתה החי שלך בענן (ששמת בביו ובתיאור):</strong> <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" style="color:var(--accent-cyan);">https://studytoolsreviews-a11y.github.io/vault.html</a>
+            • <strong>סלוט 1:</strong> <code>12:00 UTC</code> (14:00 ישראל / 08:00 ארה"ב מזרח / 12:00 בריטניה)<br>
+            • <strong>סלוט 2:</strong> <code>15:30 UTC</code> (17:30 ישראל / 11:30 ארה"ב מזרח / 15:30 בריטניה)<br>
+            • <strong>סלוט 3:</strong> <code>19:00 UTC</code> (21:00 ישראל / 15:00 ארה"ב מזרח / 19:00 פריים אירופה)<br>
+            • <strong>סלוט 4:</strong> <code>22:30 UTC</code> (00:30 ישראל / 18:30 פריים ארה"ב מזרח / 15:30 ארה"ב מערב)<br>
+            • <strong>סרטון 16:9 שבועי:</strong> כל יום ראשון ב-<code>17:00 UTC</code> (19:00 ישראל).<br>
+            <em>למה 4 ביום + 1 בראשון?</em> מכסת ה-YouTube Data API החינמית היא 10,000 יחידות ליום (העלאה = 1,600 יחידות), כך ש-4–5 העלאות משאירות מרווח ביטחון מושלם ומונעות שגיאות חסימה, וכל MP4 מוגבל אוטומטית מתחת ל-18.5MB כדי שהעלאה ל-Google Apps Script תצליח ב-100%!
           </p>
         </div>
 
-        <div class="step-box" style="border-right-color: var(--accent-yellow);">
-          <h4>⚠️ 2 פעולות שאתה (בעל החשבון) צריך לעשות פעם אחת כדי שהכסף ייכנס לחשבון שלך:</h4>
-          <p>
-            <strong>פעולה א' (דקה אחת ביוטיוב):</strong> ב-Shorts יוטיוב לא מאפשרת ללחוץ על קישורים בתגובות, אלא רק על <strong>הקישור הראשי בפרופיל הערוץ (Channel Bio Link)</strong>. היכנס ל-<a href="https://studio.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/editing/profile" target="_blank" style="color:var(--accent-cyan);">YouTube Studio -> Customization -> Links</a> והדבק שם את הלינק לדף הנחיתה שלך:<br>
-            <code style="color:var(--accent-green); user-select:all;">https://studytoolsreviews-a11y.github.io/vault.html</code><br><br>
-            <strong>פעולה ב' (חיבור חשבון התשלומים האישי שלך לשותפים):</strong> דף ה-Vault שלך מציג כרגע 6 כלי AI מובילים (Notion, Rows, Gamma, Teal, OpusClip, Leonardo). כדי שהעמלות ($15–$25 להרשמה) ייכנסו לחשבון הבנק או ה-PayPal שלך, הירשם בחינם לתוכנית השותפים שלהן (דרך <strong>PartnerStack.com</strong> או <strong>Impact.com</strong>), קבל את ה-Affiliate Link האישי שלך, ושלח לי אותו (או הדבק ב-<code>docs/vault.html</code>).
-          </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+          <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer" class="btn btn-purple">
+            🚀 הפעל יצירת סרטון 3D בענן עכשיו (Run Workflow) ↗
+          </a>
+          <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red">
+            ▶️ צפה בערוץ החי ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: IDEA SOURCES & 100% LEGAL SHIELD -->
+    <div id="tab-ideas" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">💡 מאיפה לוקחים אינסוף רעיונות ויראליים לנושא של הערוץ (MindTrap) — 100% בחינם וכחוק</div>
+          <span class="tag-pill">מנוע idea_researcher.py מובנה בענן</span>
         </div>
 
-        <div class="milestone-grid" style="margin-top:18px;">
+        <div class="table-responsive" style="margin-bottom:20px;">
+          <table>
+            <thead>
+              <tr>
+                <th>מקור רעיונות חינמי וחוקי</th>
+                <th>מה שואבים ממנו לערוץ MindTrap</th>
+                <th>דוגמאות לנושאים שמביאים מיליוני צפיות</th>
+                <th>קישור ישיר</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Wikipedia: List of Cognitive Biases</strong></td>
+                <td>מעל 185 הטיות פסיכולוגיות מאומתות מחקרית (עובדות אינן מוגנות בזכויות יוצרים!).</td>
+                <td>Sunk Cost, Spotlight Effect, IKEA Effect, Anchoring, Halo Effect, Framing, Bystander Effect.</td>
+                <td><a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
+              </tr>
+              <tr>
+                <td><strong>Wikipedia: List of Paradoxes</strong></td>
+                <td>מעל 200 פרדוקסים בתורת המשחקים, הסתברות, מתמטיקה ולוגיקה.</td>
+                <td>Monty Hall, Braess's Paradox, Simpson's Paradox, Birthday Paradox, Prisoner's Dilemma, Secretary Problem.</td>
+                <td><a href="https://en.wikipedia.org/wiki/List_of_paradoxes" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
+              </tr>
+              <tr>
+                <td><strong>כלכלה התנהגותית וניסויים קלאסיים</strong></td>
+                <td>ניסויי אוניברסיטה מפורסמים (Kahneman &amp; Tversky, Iyengar, Skinner, Zeigarnik).</td>
+                <td>Mental Accounting, Endowment Effect, Hyperbolic Discounting, Pain of Paying, Choice Overload.</td>
+                <td><a href="https://en.wikipedia.org/wiki/Behavioral_economics" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
+              </tr>
+              <tr>
+                <td><strong>עקרונות AI, מערכות ואלגוריתמים</strong></td>
+                <td>הסברים ויזואליים פשוטים על טכנולוגיה שכולם משתמשים בה ולא מבינים מבפנים.</td>
+                <td>Vector Embeddings, Self-Attention, Overfitting, Shannon Entropy, Variable-Ratio Feeds, Filter Bubbles.</td>
+                <td><a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
+              </tr>
+              <tr>
+                <td><strong>עיצוב יומיומי חכם (Choice Architecture)</strong></td>
+                <td>התבוננות בסביבה: סופרמרקטים, תפריטי מסעדות, אריזות, מחירי .99, ממשקי אפליקציות.</td>
+                <td>Why Milk Is at the Back, Shrinkflation Cutaway, Charm Pricing, No-Clock Casino Design, Infinite Scroll.</td>
+                <td><a href="https://en.wikipedia.org/wiki/Choice_architecture" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="step-box" style="border-right-color: var(--accent-green);">
+          <h4>🛡️ הגנה משפטית 100% — אפס זכויות יוצרים ואפס חשיפה לתביעות:</h4>
+          <p>
+            1. <strong>ויזואל 3D מקורי ב-100%:</strong> כל קובייה, זכוכית, פליז, צל וטקסטורת עץ נוצרים בזמן אמת מקוד Three.js שלנו — <strong>אפס</strong> צילומי מסך, <strong>אפס</strong> תמונות צד ג', <strong>אפס</strong> קטעי סרטים/משחקים, ו<strong>אפס</strong> לוגואים מסחריים על אובייקטים.<br>
+            2. <strong>אודיו ומוזיקה מקוריים ב-100%:</strong> מוזיקת הרקע הנעימה מסונתזת מתמטית בקוד Python (<code>ambient_audio.py</code>) — אפס Content ID ואפס תביעות מוזיקה. הקריינות מופקת מ-Microsoft Neural TTS.<br>
+            3. <strong>תסריטים נקיים מלשון הרע:</strong> כל הפרקים מדברים על תופעות מדעיות/כלכליות גנריות ("דלפק קולנוע", "אריזת מזון", "פיד חברתי") — אף פעם לא מאשימים חברה מסחרית מסוימת או אדם חי.<br>
+            4. <strong>שקיפות FTC ודיסקליימרים:</strong> פרקי מתמטיקה פיננסית כוללים גילוי נאות <code>Educational only — not financial advice</code>, וכל קישור ל-AI Vault מסומן <code>#ad</code> כחוק.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: MONETIZATION -->
+    <div id="tab-money" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">💰 מונטיזציה וצמיחה (YouTube Partner Program + AI Vault)</div>
+          <span class="tag-pill green">מנוע 60–105 שניות = RPM וזמן צפייה גבוהים בהרבה</span>
+        </div>
+
+        <div class="milestone-grid">
           <div class="milestone-box">
             <div style="display:flex; justify-content:space-between; font-weight:800;">
-              <span>1️⃣ מנויים לערוץ (יעד מונטיזציה מפרסומות יוטיוב)</span>
-              <span style="color:var(--accent-cyan);" id="monSubsText">1 / 1,000 מנויים</span>
+              <span>1️⃣ מנויים לערוץ (יעד YPP מלא)</span>
+              <span style="color:var(--accent-gold);" id="monSubsText">1 / 1,000 מנויים</span>
             </div>
             <div class="progress-track">
               <div class="progress-bar" id="monSubsBar" style="width: 2%;"></div>
             </div>
             <div style="font-size:12px; color:var(--text-muted);">
-              שלב א': 500 מנויים | שלב ב' (חלוקת רווחי פרסומות מלאה): 1,000 מנויים. בכל סרטון מופיע באנר SUBSCRIBE להגדלת הרשמות.
+              סרטוני 3D איכותיים מעל 60 שניות מייצרים שיעור הרשמה וזמן צפייה גבוה פי 4–8 מסרטוני 15 שניות.
             </div>
           </div>
 
           <div class="milestone-box">
             <div style="display:flex; justify-content:space-between; font-weight:800;">
-              <span>2️⃣ צפיות Shorts ב-90 יום (או 4,000 שעות בסרטוני 16:9)</span>
-              <span style="color:var(--accent-purple);" id="monShortsText">939 / 3,000,000</span>
+              <span>2️⃣ צפיות Shorts ב-90 יום (או 4,000 שעות ב-16:9)</span>
+              <span style="color:var(--accent-cyan);" id="monShortsText">943 / 3,000,000</span>
             </div>
             <div class="progress-track">
               <div class="progress-bar" style="width: 2%;"></div>
             </div>
             <div style="font-size:12px; color:var(--text-muted);">
-              רובוט הענן מייצר גם Shorts יומיים לצפיות מהירות וגם סרטוני קומפילציה 16:9 שבועיים לצבירת 4,000 שעות צפייה.
+              4 סרטוני Shorts 3D ביום + קומפילציית 16:9 בכל יום ראשון בונות את שני מסלולי המונטיזציה במקביל.
             </div>
           </div>
+        </div>
+
+        <div class="step-box">
+          <h4>🔗 קישורי ה-AI &amp; Math Vault שלך (תואם 100% לנושא MindTrap):</h4>
+          <p>
+            • דף הנחיתה החי בביו: <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" style="color:var(--accent-gold);">https://studytoolsreviews-a11y.github.io/vault.html</a><br>
+            • מחשבון הריבית דריבית וכלל ה-72 (לפרקי <code>money_math_traps</code>): <a href="https://studytoolsreviews-a11y.github.io/vault.html#finance-tools" target="_blank" style="color:var(--accent-gold);">vault.html#finance-tools</a><br>
+            • כדי שהעמלות מהכלים ייכנסו ישירות לחשבונך, הדבק את לינקי השותפים האישיים שלך מ-PartnerStack/Impact בתוך <code>docs/vault.html</code>.
+          </p>
         </div>
       </div>
 
       <div class="section-card">
         <div class="section-header">
-          <div class="section-title">🔗 קישורי השותפים הפעילים בדף ה-Vault שלך (מוכנים להעתקה לתגובה נעוצה)</div>
-          <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer" class="btn btn-cyan" style="font-size:12px; padding:6px 14px;">צפה בדף ה-Vault החי ↗</a>
+          <div class="section-title">🔗 הצעות פעילות ב-Vault</div>
+          <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="font-size:12px; padding:6px 14px;">צפה בדף ה-Vault החי ↗</a>
         </div>
         <div class="table-responsive">
           <table>
             <thead>
               <tr>
                 <th>כלי / הצעה</th>
-                <th>רשת שותפים</th>
-                <th>עמלה ממוצעת</th>
-                <th>קישור מעקב חי בענן (עובד ב-100%)</th>
-                <th>העתקת תגובה נעוצה חוקית (#ad)</th>
+                <th>רשת</th>
+                <th>עמלה</th>
+                <th>קישור מעקב חי</th>
+                <th>העתק תגובה (#ad)</th>
               </tr>
             </thead>
             <tbody id="offersTableBody"></tbody>
           </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 3: CLOUD AUTOMATION & STUDIO -->
-    <div id="tab-automation" class="tab-pane">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-title">🤖 מנוע המיני-דוקו הוויראלי בענן (הודו + גלובלי • 100% חוקי ומאומת זכויות יוצרים)</div>
-          <span class="tag-pill green">מאמת רישיונות אוטומטי (Public Domain / CC-BY)</span>
-        </div>
-        <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px;">
-          הרובוט בענן רץ <strong>5 פעמים ביום</strong> בשעות השיא של הודו (IST) וארה"ב, כש-<strong>65% מהסרטונים הם סרטוני מיני-דוקו סיפוריים (Non-Interactive Mini-Documentaries)</strong> ב-4 פרקים קצביים עם תמונות מאומתות משפטית מ-Wikimedia Commons (כולל קרדיט חוקי אוטומטי על המסך ובתיאור הסרטון):
-        </p>
-
-        <div class="table-responsive" style="margin-bottom:18px;">
-          <table>
-            <thead>
-              <tr>
-                <th>קוד פורמט ב-GitHub</th>
-                <th>סוג הסרטון הוויראלי (Non-Interactive &amp; Viral)</th>
-                <th>מקור המידע והתמונות (100% חוקי וללא חשש מתביעות)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>india_marvels_doc</code></td>
-                <td><strong>🇮🇳 מיני-דוקו: פלאי הנדסה, מדע וחלל בהודו (30% מהרוטציה)</strong></td>
-                <td>עובדות היסטוריות/ISRO + תמונות Public Domain / CC-BY מאומתות מ-Wikimedia Commons עם קרדיט יוצר אוטומטי.</td>
-              </tr>
-              <tr>
-                <td><code>science_space_doc</code></td>
-                <td><strong>🌌 מיני-דוקו: תעלומות חלל, אוקיינוסים ומדע קיצוני (20% מהרוטציה)</strong></td>
-                <td>עובדות מדעיות מוכחות (שקע מריאנה, כוכבי נייטרונים) + תמונות חופשיות של NASA / Wikimedia או סינתזה מקורית.</td>
-              </tr>
-              <tr>
-                <td><code>unbelievable_truth_doc</code></td>
-                <td><strong>🌊 מיני-דוקו: סיפורי הישרדות ומקרים אמיתיים שלא ייאמנו (15% מהרוטציה)</strong></td>
-                <td>סיפורים היסטוריים וגאוגרפיים מתועדים ב-4 פרקים מרתקים עם קריינות דוקומנטרית סמכותית (<code>deep_authority</code>).</td>
-              </tr>
-              <tr>
-                <td><code>mind_blown_facts</code></td>
-                <td><strong>🤯 עובדות ופרדוקסים שומטי לסתות (10% מהרוטציה)</strong></td>
-                <td>פרדוקסים היסטוריים ומדעיים מפתיעים שגורמים לצופים לשתף בוואטסאפ ולהירשם לערוץ.</td>
-              </tr>
-              <tr>
-                <td><code>quiz_ladder</code> / <code>mystery_riddles</code> / <code>press_the_button</code></td>
-                <td><strong>🏆 טריוויה 3 שלבים, חידות בלשיות וכפתור אדום (19% מהרוטציה)</strong></td>
-                <td>תוכן מקורי ב-100% שנכתב על ידי Gemini AI ומרונדר על רקעים מתמטיים בבעלותך המלאה.</td>
-              </tr>
-              <tr>
-                <td><code>ai_tools</code> / <code>money_rules</code></td>
-                <td><strong>💰 כלי AI וחינוך פיננסי עם דיסקליימר FTC חוקי (6% מהרוטציה)</strong></td>
-                <td>כולל גילוי נאות <code>#ad</code> ודיסקליימר <code>Educational only - not financial advice</code>.</td>
-              </tr>
-              <tr>
-                <td><code>longform_compilation</code></td>
-                <td><strong>🎞️ סרטון דוקו רחב (16:9 Long-Form Compilation) בכל יום ראשון</strong></td>
-                <td>מחבר 6 פרקי מיני-דוקו לסרטון יוטיוב רחב (1920x1080) שצובר 4,000 שעות מונטיזציה ועם קישורים לחיצים!</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer" class="btn btn-purple">
-            🚀 הפעל יצירת מיני-דוקו בענן עכשיו (בחר india_marvels_doc ב-Run Workflow) ↗
-          </a>
-          <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red">
-            ▶️ פתח את ערוץ ה-YouTube החי שלך ↗
-          </a>
-          <a href="https://docs.google.com/spreadsheets/d/13-ITmQGdetgKz-NPPceDri8Fwze5EtZG-x-3UzjWNjI/edit" target="_blank" rel="noopener noreferrer" class="btn btn-green">
-            📊 פתח את גיליון Google Sheets ↗
-          </a>
         </div>
       </div>
     </div>
@@ -684,52 +756,44 @@
       channel_url: "https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts",
       channel_subscribers: 1,
       total_videos: 9,
-      total_views: 940,
+      total_views: 943,
       total_clicks: 0,
       total_revenue_usd: 0.0,
       daily_summaries: [
-        { date: "2026-11-18", videos_count: 4, views: 2, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts #india #engineering #facts" },
-        { date: "2026-11-17", videos_count: 5, views: 938, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts" }
+        { date: "2026-11-18", videos_count: 4, views: 4, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts" },
+        { date: "2026-11-17", videos_count: 5, views: 939, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts" }
       ],
       videos: [
-        { date: "2026-11-18", title: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts #india #engineering #facts", niche: "india_marvels_doc", persona: "deep_authority", views: 0, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/zIOnMNxZSig", drive_url: "https://drive.google.com/file/d/1bCQc2dI_RPGUQD01ricxwoTLxVUA23j3/view?usp=drivesdk" },
-        { date: "2026-11-18", title: "What If You Touched A Teaspoon of a Neutron Star? #shorts #space #science #astronomy #facts", niche: "science_space_doc", persona: "deep_authority", views: 0, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/wHO7DKSQ8po", drive_url: "https://drive.google.com/file/d/1HGPBWA5GhVGGgs0J9sZ8A2zcSyr79GxL/view?usp=drivesdk" },
-        { date: "2026-11-18", title: "Master Every Instrument OR Speak Every Language Fluently? #shorts #quiz #skills", niche: "brainrot_dilemmas", persona: "cartoon_gremlin", views: 1, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/JbDUZwHUkFw", drive_url: "https://drive.google.com/file/d/1hNdfl5RlQXSD6MbHxByFVQMygiCBewLI/view?usp=drivesdk" },
-        { date: "2026-11-18", title: "Would You Rather: Never Need Sleep Again OR $1,000 Every Morning? #shorts #quiz #wouldyourather", niche: "would_you_rather", persona: "posh_villain", views: 1, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/7zVHzm_bnjI", drive_url: "https://drive.google.com/file/d/1RVo0UGez9xYDLEe6Blt-c3iwnf5cbKso/view?usp=drivesdk" },
-        { date: "2026-11-17", title: "Would You Rather: $10 Million Cash OR Pause Time for 1 Hour Daily? #shorts #quiz #wouldyourather", niche: "would_you_rather", persona: "posh_villain", views: 2, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/RdcFPQsscM8", drive_url: "https://drive.google.com/file/d/1MmHmcioLy-VkTfjlOdQbEyWctQJTUCxD/view?usp=drivesdk" },
-        { date: "2026-11-17", title: "Would You Rather: $100k Per Stubbed Toe OR Never Feel Physical Pain? #shorts #quiz #wouldyourather", niche: "brainrot_dilemmas", persona: "posh_villain", views: 7, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/kLl-83Wrjs8", drive_url: "https://drive.google.com/file/d/1Ux1owQeGxCFG0MmOClqoH3R4nqOgUYSH/view?usp=drivesdk" },
-        { date: "2026-11-17", title: "Best Free AI Tool for Excel Formulas (Save Hours Each Week) #shorts #aitools #productivity", niche: "ai_tools", persona: "deep_authority", views: 39, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/idAnI2EpSg8", drive_url: "https://drive.google.com/file/d/1VMtMRgKe3VuEBKeXKydoXXLTHfFzJ01t/view?usp=drivesdk" },
-        { date: "2026-11-17", title: "The Ben Franklin Effect Explained (Social Psychology) #shorts #psychology #mindset #communication", niche: "dark_psychology", persona: "deep_authority", views: 351, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/rPDNCdQeUl8", drive_url: "https://drive.google.com/file/d/1AgYPhG8jJ2N3tENm2aXM2KtDY-QN1me-/view?usp=drivesdk" },
-        { date: "2026-11-17", title: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts #wouldyourather #quiz", niche: "brainrot_dilemmas", persona: "posh_villain", views: 539, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/tB2YDoHWDJc", drive_url: "https://drive.google.com/file/d/1vyV0UPOcgISICBQiu4PatCXq8SVZPdsO/view?usp=drivesdk" }
+        { date: "2026-11-18", title: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts", niche: "legacy", persona: "deep_authority", views: 2, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/zIOnMNxZSig", drive_url: "https://drive.google.com/file/d/1bCQc2dI_RPGUQD01ricxwoTLxVUA23j3/view?usp=drivesdk" },
+        { date: "2026-11-18", title: "What If You Touched A Teaspoon of a Neutron Star? #shorts", niche: "legacy", persona: "deep_authority", views: 1, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/wHO7DKSQ8po", drive_url: "https://drive.google.com/file/d/1HGPBWA5GhVGGgs0J9sZ8A2zcSyr79GxL/view?usp=drivesdk" },
+        { date: "2026-11-17", title: "The Ben Franklin Effect Explained (Social Psychology) #shorts", niche: "mind_traps", persona: "deep_authority", views: 351, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/rPDNCdQeUl8", drive_url: "https://drive.google.com/file/d/1AgYPhG8jJ2N3tENm2aXM2KtDY-QN1me-/view?usp=drivesdk" },
+        { date: "2026-11-17", title: "Best Free AI Tool for Excel Formulas #shorts", niche: "ai_system_secrets", persona: "deep_authority", views: 39, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/idAnI2EpSg8", drive_url: "https://drive.google.com/file/d/1VMtMRgKe3VuEBKeXKydoXXLTHfFzJ01t/view?usp=drivesdk" }
       ]
     };
 
     const AFFILIATE_OFFERS = [
-      { slug: "vault", name: "StudyTools AI Vault (דף הנחיתה הראשי שלך)", network: "Direct Hub", payout: "$15–$25 CPA", url: LIVE_VAULT_URL, comment: `Which option did you pick? Drop 1 or 2 below!\n\nFree AI Study & Productivity Vault (#ad): ${LIVE_VAULT_URL}` },
-      { slug: "ai-tool", name: "Notion AI Workspace", network: "PartnerStack", payout: "$25 CPA", url: `${LIVE_VAULT_URL}?offer=ai-tool`, comment: `Try the AI workspace we use to organize study notes & scripts (#ad): ${LIVE_VAULT_URL}?offer=ai-tool` },
-      { slug: "ai-excel", name: "Rows AI Spreadsheet Assistant", network: "Impact", payout: "$15 CPA", url: `${LIVE_VAULT_URL}?offer=ai-excel`, comment: `The AI Spreadsheet Assistant featured in this video (#ad): ${LIVE_VAULT_URL}?offer=ai-excel` },
-      { slug: "ai-slides", name: "Gamma AI Slide Deck Builder", network: "PartnerStack", payout: "$20 CPA", url: `${LIVE_VAULT_URL}?offer=ai-slides`, comment: `Build clean presentations from a prompt with Gamma AI (#ad): ${LIVE_VAULT_URL}?offer=ai-slides` },
-      { slug: "ai-resume", name: "Teal AI Resume & Career Tracker", network: "Impact", payout: "$16 CPA", url: `${LIVE_VAULT_URL}?offer=ai-resume`, comment: `Free AI Resume & Job Application Tracker (#ad): ${LIVE_VAULT_URL}?offer=ai-resume` },
-      { slug: "ai-clips", name: "OpusClip AI Video Repurposing", network: "PartnerStack", payout: "$22 RevShare", url: `${LIVE_VAULT_URL}?offer=ai-clips`, comment: `Repurpose long videos into captioned Shorts with AI (#ad): ${LIVE_VAULT_URL}?offer=ai-clips` },
-      { slug: "wealth-guide", name: "Compounding & Rule of 72 Calculator", network: "Interactive Vault", payout: "$15 CPA", url: `${LIVE_VAULT_URL}#finance-tools`, comment: `Free Compounding & Rule of 72 Calculator (Educational only - not financial advice) (#ad): ${LIVE_VAULT_URL}#finance-tools` }
+      { slug: "vault", name: "MindTrap & StudyTools AI Vault (דף הבית)", network: "Direct Hub", payout: "$15–$25 CPA", url: LIVE_VAULT_URL, comment: `Free AI, Study & Decision Tools Vault (#ad): ${LIVE_VAULT_URL}` },
+      { slug: "ai-tool", name: "Notion AI Workspace", network: "PartnerStack", payout: "$25 CPA", url: `${LIVE_VAULT_URL}?offer=ai-tool`, comment: `Close open mental loops & organize notes with Notion AI (#ad): ${LIVE_VAULT_URL}?offer=ai-tool` },
+      { slug: "ai-excel", name: "Rows AI Spreadsheet Assistant", network: "Impact", payout: "$15 CPA", url: `${LIVE_VAULT_URL}?offer=ai-excel`, comment: `AI Spreadsheet Assistant featured in our Vault (#ad): ${LIVE_VAULT_URL}?offer=ai-excel` },
+      { slug: "ai-slides", name: "Gamma AI Presentations", network: "PartnerStack", payout: "$20 CPA", url: `${LIVE_VAULT_URL}?offer=ai-slides`, comment: `Build clean presentations fast with Gamma AI (#ad): ${LIVE_VAULT_URL}?offer=ai-slides` },
+      { slug: "wealth-guide", name: "Compounding & Rule of 72 Calculator", network: "Interactive Vault", payout: "$15 CPA", url: `${LIVE_VAULT_URL}#finance-tools`, comment: `Try our free Compounding & Rule of 72 Calculator (Educational only, not financial advice) (#ad): ${LIVE_VAULT_URL}#finance-tools` }
     ];
 
     let cloudData = FALLBACK_DATA;
     let currentFilterDay = "all";
 
     function escapeHtml(str) {
-      return String(str || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
+      return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
     function extractYtId(url) {
       if (!url) return '';
       const m = String(url).match(/(?:shorts\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
       return m ? m[1] : '';
+    }
+
+    function isNew3DNiche(niche) {
+      return ['mind_traps', 'decision_paradoxes', 'money_math_traps', 'ai_system_secrets', 'longform_compilation'].includes(String(niche || ''));
     }
 
     function switchTab(tabId, btnEl) {
@@ -750,7 +814,7 @@
         google.script.run.withSuccessHandler(function(json) {
           if (json && json.videos) {
             cloudData = json;
-            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול YouTube & Google Cloud (24/7)";
+            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול YouTube & MindTrap 3D Cloud (24/7)";
             renderEverything();
           }
         }).getFullAnalyticsData();
@@ -762,7 +826,7 @@
           const json = await res.json();
           if (json && json.videos) {
             cloudData = json;
-            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול YouTube & Google Cloud (24/7)";
+            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול YouTube & MindTrap 3D Cloud (24/7)";
             renderEverything();
           }
         }
@@ -791,7 +855,6 @@
 
     function renderEverything() {
       if (!cloudData) return;
-
       if (cloudData.sheet_url) {
         document.getElementById('sheetHeaderBtn').href = cloudData.sheet_url;
         document.getElementById('sheetLinkSub').href = cloudData.sheet_url;
@@ -801,7 +864,7 @@
       }
 
       const subs = Number(cloudData.channel_subscribers || 1);
-      const totalViews = Number(cloudData.total_views || 939);
+      const totalViews = Number(cloudData.total_views || 943);
       document.getElementById('monSubsText').innerText = subs.toLocaleString() + " / 1,000 מנויים";
       document.getElementById('monSubsBar').style.width = Math.max(2, Math.min(100, (subs / 1000) * 100)) + "%";
       document.getElementById('monShortsText').innerText = totalViews.toLocaleString() + " / 3,000,000";
@@ -820,10 +883,10 @@
       }
       tbody.innerHTML = summaries.map(s => {
         const views = Number(s.views) || 0;
-        const watchHours = ((views * 13.9) / 3600).toFixed(2);
+        const watchHours = ((views * 22.0) / 3600).toFixed(2);
         return `
           <tr>
-            <td><strong style="color:var(--accent-cyan); font-family:'JetBrains Mono',monospace;">${escapeHtml(s.date)}</strong></td>
+            <td><strong style="color:var(--accent-gold); font-family:'JetBrains Mono',monospace;">${escapeHtml(s.date)}</strong></td>
             <td>${Number(s.videos_count) || 0} סרטונים</td>
             <td><strong>${views.toLocaleString()}</strong></td>
             <td>${watchHours} שעות</td>
@@ -852,16 +915,16 @@
         }
       }
 
-      const watchHours = ((views * 13.9) / 3600).toFixed(2);
+      const watchHours = ((views * 22.0) / 3600).toFixed(2);
       document.getElementById('kpiVideos').innerText = vCount;
       document.getElementById('kpiViews').innerText = views.toLocaleString();
-      document.getElementById('kpiWatchHours').innerText = 'שעות צפייה שנצברו: ' + watchHours + 'h';
+      document.getElementById('kpiWatchHours').innerText = 'שעות צפייה משוערות: ' + watchHours + 'h';
       document.getElementById('kpiClicks').innerText = clicks;
     }
 
     function renderVideos() {
       const grid = document.getElementById('videoGrid');
-      const allVideos = (cloudData.videos || []).slice().reverse().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      const allVideos = (cloudData.videos || []).slice().reverse().sort((a, b) => String(b.timestamp || b.date || '').localeCompare(String(a.timestamp || a.date || '')));
       let filtered = allVideos;
 
       if (currentFilterDay !== 'all') {
@@ -872,26 +935,27 @@
       }
 
       if (filtered.length === 0) {
-        grid.innerHTML = '<div style="color:var(--text-muted); padding:20px;">לא נמצאו סרטונים לתאריך שנבחר. לחץ על "כל הימים" כדי לראות את כל הסרטונים.</div>';
+        grid.innerHTML = '<div style="color:var(--text-muted); padding:20px;">לא נמצאו סרטונים לתאריך שנבחר.</div>';
         return;
       }
 
       grid.innerHTML = filtered.map(v => {
         const views = Number(v.views) || 0;
-        const watchHours = ((views * 13.9) / 3600).toFixed(2);
         const ytId = extractYtId(v.youtube_url);
         const thumbUrl = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : '';
+        const badge3d = isNew3DNiche(v.niche) ? '<span class="v-badge-3d">✨ 3D Studio</span>' : '';
         return `
           <div class="v-card">
             <a href="${escapeHtml(v.youtube_url || 'https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts')}" target="_blank" rel="noopener noreferrer" class="v-thumb">
               ${thumbUrl ? `<img src="${thumbUrl}" alt="YouTube Short" loading="lazy">` : `<div style="font-size:36px;">▶️</div>`}
+              ${badge3d}
               <span class="v-badge-live">🟢 חי ב-YouTube</span>
             </a>
             <div class="v-body">
-              <div class="v-title">${escapeHtml(v.title || 'Untitled Short')}</div>
+              <div class="v-title">${escapeHtml(v.title || 'MindTrap 3D Short')}</div>
               <div class="v-stats-row">
-                <span>📅 ${escapeHtml(v.date || '')}</span>
-                <span>👁️ <strong style="color:var(--accent-cyan);">${views.toLocaleString()}</strong> צפיות (${watchHours}h)</span>
+                <span>📅 ${escapeHtml(v.date || '')} • ${escapeHtml(v.niche || '')}</span>
+                <span>👁️ <strong style="color:var(--accent-gold);">${views.toLocaleString()}</strong> צפיות</span>
               </div>
               <div style="display:flex; gap:8px; margin-top:auto;">
                 ${v.youtube_url ? `<a href="${escapeHtml(v.youtube_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-red" style="flex:1; font-size:12px; padding:8px;">▶️ צפה ב-YouTube ↗</a>` : ''}
@@ -910,12 +974,8 @@
           <td style="font-weight:800;">${escapeHtml(o.name)}</td>
           <td><span class="tag-pill">${escapeHtml(o.network)}</span></td>
           <td style="color:var(--accent-green); font-weight:800;">${escapeHtml(o.payout)}</td>
-          <td><a href="${escapeHtml(o.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-cyan); font-family:'JetBrains Mono',monospace; font-size:12px;">${escapeHtml(o.url)}</a></td>
-          <td>
-            <button class="btn btn-outline" style="padding:6px 12px; font-size:12px;" onclick="copyPinnedComment(${idx})">
-              📋 העתק תגובה נעוצה (#ad)
-            </button>
-          </td>
+          <td><a href="${escapeHtml(o.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold); font-family:'JetBrains Mono',monospace; font-size:12px;">${escapeHtml(o.url)}</a></td>
+          <td><button class="btn btn-outline" style="padding:6px 12px; font-size:12px;" onclick="copyPinnedComment(${idx})">📋 העתק תגובה (#ad)</button></td>
         </tr>
       `).join('');
     }
@@ -924,30 +984,24 @@
       const offer = AFFILIATE_OFFERS[idx];
       if (!offer) return;
       navigator.clipboard.writeText(offer.comment);
-      showToast("✅ התגובה הנעוצה (עם הקישור החי בענן) הועתקה ללוח!");
+      showToast("✅ התגובה הועתקה ללוח!");
     }
 
     function setFilter(type, btnEl) {
       document.querySelectorAll('.f-pill').forEach(p => p.classList.remove('active'));
       if (btnEl) btnEl.classList.add('active');
-
       const today = new Date().toISOString().substring(0, 10);
       const yesterday = new Date(Date.now() - 86400000).toISOString().substring(0, 10);
-
       if (type === 'all') currentFilterDay = 'all';
       else if (type === 'today') currentFilterDay = today;
       else if (type === 'yesterday') currentFilterDay = yesterday;
-
       document.getElementById('datePicker').value = currentFilterDay === 'all' ? '' : currentFilterDay;
       renderKPIs();
       renderVideos();
     }
 
     function applyCustomDate(val) {
-      if (!val) {
-        setFilter('all');
-        return;
-      }
+      if (!val) { setFilter('all'); return; }
       document.querySelectorAll('.f-pill').forEach(p => p.classList.remove('active'));
       currentFilterDay = val;
       document.getElementById('datePicker').value = val;
