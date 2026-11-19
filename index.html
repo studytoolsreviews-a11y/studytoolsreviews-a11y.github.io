@@ -355,6 +355,9 @@
     <button class="nav-item" onclick="openView('videos', this)">
       <span class="ico">🎬</span> סרטונים ו-Outliers <span class="nav-badge" id="navVidCount">11</span>
     </button>
+    <button class="nav-item" onclick="openView('formula', this)">
+      <span class="ico">🧪</span> The YouTube Formula <span class="nav-badge" id="navFormulaGrade">A+</span>
+    </button>
     <button class="nav-item" onclick="openView('revenue', this)">
       <span class="ico">💰</span> סימולטור RPM ושיווק שותפים
     </button>
@@ -501,7 +504,7 @@
             </div>
 
             <div class="alert-strip" id="bottleneckNote">
-              🎯 <strong>הפעולה הכי משתלמת כרגע:</strong> צבור 30–50 סרטוני 3D רצופים בלוח הזמנים (4 ביום) + חבר לינקי PartnerStack/Impact אישיים ב-<code>vault.html</code> כדי להמיר תנועה ל-$15–$25 להרשמה עוד לפני 1,000 מנויים.
+              🎯 <strong>הפעולה הכי משתלמת כרגע (The YouTube Formula):</strong> אמת טלפון + תכונות מתקדמות ב-YouTube Studio, שמור על <strong>Short 1 איכותי ביום (18:00)</strong> ללא קישורים/תגובות בוט, ונתח אחרי 48 שעות את מדד <code>Viewed vs. Swiped Away</code> (יעד 70%+).
             </div>
           </div>
         </div>
@@ -570,6 +573,99 @@
         </div>
       </section>
 
+      <!-- ==================== VIEW 2B: THE YOUTUBE FORMULA OS ==================== -->
+      <section id="view-formula" class="view">
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">ציון קטלוג The YouTube Formula</span>
+              <span class="pill pill-green" id="fCatalogGrade">A+</span>
+            </div>
+            <div class="kpi-val" id="fCatalogScore">98.8</div>
+            <div class="kpi-foot">18 פרקים • כותרות ≤ 58 תווים • 0 האשטאגים בכותרת</div>
+          </div>
+
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">יעד Hook (3 שניות ראשונות)</span>
+              <span class="pill pill-gold">Viewed vs Swiped</span>
+            </div>
+            <div class="kpi-val">70%+</div>
+            <div class="kpi-foot">Frame-1 Visual Hook Badge + פתיחת Open Loop מיידית</div>
+          </div>
+
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">יעד Retention + Pattern Interrupts</span>
+              <span class="pill pill-blue">כל 4.8 שנ'</span>
+            </div>
+            <div class="kpi-val">85–110%</div>
+            <div class="kpi-foot">תנועת מצלמה כל 4.8s • צליל עדין כל 9.6s • לופ אפס שתיקה</div>
+          </div>
+
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">משפך Hybrid Funnel (16:9)</span>
+              <span class="pill pill-green">8–10 דק'</span>
+            </div>
+            <div class="kpi-val">$5–$15</div>
+            <div class="kpi-foot">RPM למודעות Mid-Roll + 4,000 שעות דרך "סרטון קשור"</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">לולאת Try → Fail → Analyze → Adjust (Content Buckets)</div>
+                <div class="card-sub">האלגוריתם בענן מעדכן אוטומטית את משקל כל "דלי תוכן" לפי ביצועי Outlier אמיתיים (רצפת 15% לחקירה)</div>
+              </div>
+              <span class="pill pill-gold" id="fFocusBucket">Focus: mind_traps</span>
+            </div>
+            <div id="formulaBucketsBody"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">פרוטוקול מיושם מהספר The YouTube Formula (דראל איבס)</div>
+                <div class="card-sub">6 שכבות פעילות אוטומטית בכל פרק שמתרנדר בענן</div>
+              </div>
+              <span class="pill pill-green">6/6 פעיל בענן</span>
+            </div>
+            <div class="funnel-step"><span>1. <strong>Packaging First (CTR):</strong> כותרות ≤ 58 תווים ללא האשטאגים + סקרנות ומספרים</span><span class="pill pill-green">פעיל</span></div>
+            <div class="funnel-step"><span>2. <strong>3-Second Hook &amp; Open Loop:</strong> אפס הקדמות היסטוריות — ניגוד מיידי ב-12 מילים ראשונות</span><span class="pill pill-green">פעיל</span></div>
+            <div class="funnel-step"><span>3. <strong>Frame-1 Visual Hook Stamp:</strong> תג פליז/אובסידיאן 2–4 מילים (0.0–2.65s) לעצירת גלילה בהשתק</span><span class="pill pill-green">פעיל</span></div>
+            <div class="funnel-step"><span>4. <strong>Pattern Interrupts:</strong> איפוס קשב קולנועי במצלמה כל 4.8s + צליל Workbench כל 9.6s</span><span class="pill pill-green">פעיל</span></div>
+            <div class="funnel-step"><span>5. <strong>4 Content Buckets (Session Time):</strong> שיוך אוטומטי ל-4 פלייליסטים נפרדים ביוטיוב</span><span class="pill pill-green">פעיל</span></div>
+            <div class="funnel-step"><span>6. <strong>Hybrid Funnel 16:9 (ימי ראשון):</strong> איחוד 6–8 סרטונים מה-Drive לקומפילציית 8+ דק' עם פרקים</span><span class="pill pill-green">פעיל</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">🔍 תור ביקורת Retention ל-48 שעות (48-Hour Post-Launch Audit)</div>
+              <div class="card-sub">בדוק אחרי 48 שעות ב-YouTube Studio את <code>Viewed vs. Swiped Away</code> (יעד 70%+) ואת גרף הנטישה — וודא שיש "סרטון קשור" (Related Video)</div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>סרטון 3D</th>
+                  <th>דלי תוכן (Bucket)</th>
+                  <th>צפיות נוכחיות</th>
+                  <th>משימת Formula</th>
+                  <th>בדיקה ישירה ב-Studio</th>
+                </tr>
+              </thead>
+              <tbody id="formulaAuditBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <!-- ==================== VIEW 3: REVENUE SIMULATOR & AFFILIATE ==================== -->
       <section id="view-revenue" class="view">
         <div class="grid-2">
@@ -583,7 +679,7 @@
             </div>
 
             <div class="sim-row">
-              <div class="sim-head"><span>צפיות חודשיות ב-3D Shorts (יעד 4 ביום)</span><strong id="simShortsLbl">500,000</strong></div>
+              <div class="sim-head"><span>צפיות חודשיות ב-3D Shorts (קצב יציב 1–2 ביום)</span><strong id="simShortsLbl">500,000</strong></div>
               <input type="range" id="simShorts" min="10000" max="10000000" step="10000" value="500000" oninput="runRevenueSim()" />
             </div>
 
@@ -674,17 +770,18 @@
       <!-- ==================== VIEW 4: 3D PIPELINE & TITLE SCORER ==================== -->
       <section id="view-pipeline" class="view">
         <div class="grid-2">
-          <!-- VIDIQ-STYLE LIVE TITLE SCORER -->
+          <!-- THE YOUTUBE FORMULA PACKAGING + 3-SEC HOOK SCORER -->
           <div class="card">
             <div class="card-head">
               <div>
-                <div class="card-title">בודק כותרות והוקים (vidIQ-Style Pre-Publish Scorer)</div>
-                <div class="card-sub">בדוק כותרת באנגלית לפני פרסום — אופטימיזציה ל-CTR ו-Tier-1</div>
+                <div class="card-title">בודק אריזה והוק (The YouTube Formula Pre-Publish Scorer)</div>
+                <div class="card-sub">בודק כותרת למובייל (≤ 60 תווים, 0 האשטאגים) + משפט פתיחה ל-3 שניות ראשונות</div>
               </div>
             </div>
-            <input class="scorer-in" id="titleInput" value="Why the Medium Popcorn Exists (And It Is Not For You) #shorts #psychology" oninput="scoreTitle()" />
+            <input class="scorer-in" id="titleInput" value="Why 6 Jars of Jam Outsold 24 by 10 to 1" oninput="scoreTitle()" placeholder="Title (<= 58 chars, no hashtags)" />
+            <input class="scorer-in" id="hookInput" style="margin-top:8px; font-size:12.5px;" value="Offering twenty-four flavors of jam made sales crash by ninety percent—and the exact same trap freezes your brain." oninput="scoreTitle()" placeholder="First 3-second spoken hook sentence..." />
             <div class="score-ring">
-              <div class="score-num" id="scoreNum" style="color:var(--green);">94</div>
+              <div class="score-num" id="scoreNum" style="color:var(--green);">100</div>
               <div id="scoreFeedback" style="font-size:12px; color:var(--muted);"></div>
             </div>
           </div>
@@ -694,15 +791,15 @@
             <div class="card-head">
               <div>
                 <div class="card-title">לוח שידורים אוטומטי בענן (GitHub Actions 24/7)</div>
-                <div class="card-sub">מנוע 4 ליבות מקבילי • MP4 מוגבל ל-18.5MB • אפס תלות במחשב</div>
+                <div class="card-sub">מנוע 4 ליבות מקבילי • MP4 ≤ 28MB • אפס תלות במחשב</div>
               </div>
             </div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>סלוט</th><th>שעון UTC</th><th>שעון ישראל</th><th>מטרה (מצב חימום אנטי-ספאם)</th></tr></thead>
+                <thead><tr><th>סלוט</th><th>שעון UTC</th><th>שעון ישראל</th><th>מטרה (The YouTube Formula + אנטי-ספאם)</th></tr></thead>
                 <tbody>
-                  <tr><td><strong>יומי 3D</strong></td><td><code>16:00</code></td><td>18:00</td><td>שיא ארה"ב + בריטניה + ישראל (ללא קישורים/תגובות בוט למניעת 0 צפיות)</td></tr>
-                  <tr><td><strong>16:9 שבועי</strong></td><td><code>ראשון 18:00</code></td><td>ראשון 20:00</td><td>קומפילציית דוקו 4 פרקים (4,000 שעות מונטיזציה + קישורים לחיצים)</td></tr>
+                  <tr><td><strong>יומי 3D</strong></td><td><code>16:00</code></td><td>18:00</td><td>Short 1 ביום בשעה קבועה (ללא קישורים/תגובות בוט, עם Hook Badge + Pattern Interrupts)</td></tr>
+                  <tr><td><strong>16:9 שבועי</strong></td><td><code>ראשון 18:00</code></td><td>ראשון 20:00</td><td>Hybrid Funnel: איחוד 6–8 פרקי 3D מה-Drive לדוקו 8–10 דק' עם Chapters (≤ 34MB, Mid-Roll RPM)</td></tr>
                 </tbody>
               </table>
             </div>
@@ -737,18 +834,18 @@
           </div>
         </div>
 
-        <!-- 14-EPISODE 3D STUDIO QUEUE -->
+        <!-- 18-EPISODE 3D STUDIO QUEUE -->
         <div class="card">
           <div class="card-head">
             <div>
-              <div class="card-title">תור הפרקים והדיורמות התלת-ממדיות בקטלוג (14 פרקים • 12 דיורמות)</div>
-              <div class="card-sub">הרובוט בענן בוחר אוטומטית את הפרק הבא שטרם שודר (אפס כפילויות)</div>
+              <div class="card-title">תור הפרקים והדיורמות התלת-ממדיות בקטלוג (18 פרקים • ציון Formula A+)</div>
+              <div class="card-sub">הרובוט בענן בוחר אוטומטית מהדלי המוביל (Adaptive Weights) ללא כפילויות</div>
             </div>
             <a class="btn btn-primary" href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer">⚡ הרץ פרק עכשיו ↗</a>
           </div>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>סטטוס</th><th>כותרת הפרק</th><th>עמוד תווך</th><th>דיורמת 3D</th></tr></thead>
+              <thead><tr><th>סטטוס</th><th>כותרת (≤ 58 תווים)</th><th>תג Frame-1 Hook</th><th>עמוד תווך</th><th>דיורמת 3D</th></tr></thead>
               <tbody id="queueBody"></tbody>
             </table>
           </div>
@@ -806,24 +903,24 @@
     const LIVE_VAULT_URL = "https://studytoolsreviews-a11y.github.io/vault.html";
 
     const STUDIO_QUEUE = [
-      { title: "Why the Medium Popcorn Exists (And It Is Not For You)", niche: "mind_traps", diorama: "decoy_counter" },
-      { title: "Why Switching Doors Doubles Your Odds (The Monty Hall Trap)", niche: "decision_paradoxes", diorama: "monty_doors" },
-      { title: "Why Losing $100 Hurts Twice As Much As Winning $100", niche: "mind_traps", diorama: "balance_scale" },
-      { title: "Why the Milk Is Always Hidden at the Very Back of the Store", niche: "mind_traps", diorama: "supermarket_maze" },
-      { title: "Why 6 Jars of Jam Outsold 24 Jars by 10 to 1", niche: "mind_traps", diorama: "jam_table" },
-      { title: "Why Asking a Small Favor Wins People Over Faster Than Giving One", niche: "mind_traps", diorama: "balance_scale" },
-      { title: "Why Unfinished Tasks Drain Your Brain All Day (The Zeigarnik Effect)", niche: "mind_traps", diorama: "drip_tank" },
-      { title: "Why Just 23 People Guarantee a 50% Birthday Match", niche: "decision_paradoxes", diorama: "birthday_ring" },
-      { title: "Why Building a New Road Can Actually Make Traffic Worse", niche: "decision_paradoxes", diorama: "traffic_bridge" },
-      { title: "Why Paying for the Wrong Metric Always Backfires (Goodhart's Law)", niche: "decision_paradoxes", diorama: "balance_scale" },
-      { title: "Why Starting 10 Years Earlier Beats Investing Twice As Much Later", niche: "money_math_traps", diorama: "coin_compound" },
-      { title: "How $9.99 Subscriptions Silently Drain Thousands (The Drip Illusion)", niche: "money_math_traps", diorama: "drip_tank" },
-      { title: "The Geometry Trick Behind Shrinkflation (Why Boxes Look Identical)", niche: "money_math_traps", diorama: "shrink_box" },
-      { title: "The 500-Year-Old Mental Math Shortcut (The Rule of 72)", niche: "money_math_traps", diorama: "coin_compound" },
-      { title: "How Pull-to-Refresh Works Like a Mechanical Slot Machine", niche: "ai_system_secrets", diorama: "slot_scroll" },
-      { title: "How AI Actually Reads Words (Inside the Vector Cube)", niche: "ai_system_secrets", diorama: "neural_cube" },
-      { title: "The One Discovery That Made Modern AI Possible (Self-Attention)", niche: "ai_system_secrets", diorama: "neural_cube" },
-      { title: "How Algorithms Map Your Brain Even When You Never Hit Like", niche: "ai_system_secrets", diorama: "slot_scroll" }
+      { title: "Why the Medium Popcorn Exists (It Is Not For You)", badge: "THE $6.50 DECOY TRAP", niche: "mind_traps", diorama: "decoy_counter" },
+      { title: "Why Switching Doors Doubles Your Odds (Monty Hall)", badge: "SWITCHING DOUBLES ODDS", niche: "decision_paradoxes", diorama: "monty_doors" },
+      { title: "Why Losing $100 Hurts Twice As Much As Winning $100", badge: "-$100 HURTS 2X MORE", niche: "mind_traps", diorama: "balance_scale" },
+      { title: "Why Milk Is Always Hidden at the Back of the Store", badge: "THE BACK-WALL MILK TRAP", niche: "mind_traps", diorama: "supermarket_maze" },
+      { title: "Why 6 Jars of Jam Outsold 24 by 10 to 1", badge: "6 JARS BEAT 24 (10X)", niche: "mind_traps", diorama: "jam_table" },
+      { title: "Why Asking a Small Favor Wins Over Any Rival", badge: "FAVOR WINS ANY RIVAL", niche: "mind_traps", diorama: "balance_scale" },
+      { title: "Why Unfinished Tasks Drain Your Brain All Day", badge: "THE OPEN-LOOP BRAIN DRAIN", niche: "mind_traps", diorama: "drip_tank" },
+      { title: "Why Just 23 People Guarantee a 50% Birthday Match", badge: "23 PEOPLE = 50% MATCH", niche: "decision_paradoxes", diorama: "birthday_ring" },
+      { title: "Why Building a New Road Makes Traffic Worse", badge: "NEW ROADS = MORE TRAFFIC", niche: "decision_paradoxes", diorama: "traffic_bridge" },
+      { title: "Why Paying for the Wrong Metric Always Backfires", badge: "WRONG METRIC BACKFIRES", niche: "decision_paradoxes", diorama: "balance_scale" },
+      { title: "Why Starting 10 Years Early Beats Investing 2x More", badge: "EARLY BEATS 2X CASH", niche: "money_math_traps", diorama: "coin_compound" },
+      { title: "How $9.99 Subscriptions Silently Drain Thousands", badge: "THE $9.99 SILENT DRAIN", niche: "money_math_traps", diorama: "drip_tank" },
+      { title: "The Geometry Trick Hidden Inside Shrinkflation", badge: "3MM DEPTH = 20% GONE", niche: "money_math_traps", diorama: "shrink_box" },
+      { title: "The 3-Second Math Rule That Exposes Debt Traps", badge: "DIVIDE 72 = DOUBLE TIME", niche: "money_math_traps", diorama: "coin_compound" },
+      { title: "How Pull-to-Refresh Works Like a Slot Machine", badge: "YOUR PHONE = SLOT MACHINE", niche: "ai_system_secrets", diorama: "slot_scroll" },
+      { title: "How AI Reads Words Inside a 3D Vector Cube", badge: "AI NEVER READS LETTERS", niche: "ai_system_secrets", diorama: "neural_cube" },
+      { title: "The 1 Discovery That Sparked Modern AI", badge: "1 WORD BROKE OLD AI", niche: "ai_system_secrets", diorama: "neural_cube" },
+      { title: "How Algorithms Read Your Brain Without One Like", badge: "0 LIKES = STILL TRACKED", niche: "ai_system_secrets", diorama: "slot_scroll" }
     ];
 
     const OFFERS = [
@@ -864,6 +961,7 @@
     const VIEW_TITLES = {
       overview: 'סקירה ופאנל הכנסות',
       videos: 'ניתוח סרטונים ו-Outliers',
+      formula: 'The YouTube Formula // Try → Fail → Analyze → Adjust',
       revenue: 'סימולטור RPM ושיווק שותפים',
       pipeline: 'תור 3D, בודק כותרות והפצה ל-TikTok/Reels',
       ideas: 'מקורות רעיונות והגנה משפטית'
@@ -1008,6 +1106,7 @@
       renderPillarBars(vids);
       renderLatest3D(vids);
       renderVideosTable();
+      renderFormulaView(vids);
       renderQueue(vids);
       drawTrendChart();
     }
@@ -1273,11 +1372,12 @@
     function renderQueue(liveVids) {
       const liveTitles = liveVids.map(v => String(v.title || '').toLowerCase());
       document.getElementById('queueBody').innerHTML = STUDIO_QUEUE.map(ep => {
-        const aired = liveTitles.some(t => t.includes(ep.title.slice(0, 26).toLowerCase()));
+        const aired = liveTitles.some(t => t.includes(ep.title.slice(0, 22).toLowerCase()));
         return `
           <tr>
             <td>${aired ? '<span class="pill pill-green">🟢 שודר חי</span>' : '<span class="pill pill-gold">⏳ בתור הענן</span>'}</td>
-            <td><strong>${esc(ep.title)}</strong></td>
+            <td><strong>${esc(ep.title)}</strong> <span style="color:var(--dim); font-family:var(--mono); font-size:11px;">(${ep.title.length}c)</span></td>
+            <td><span class="pill pill-gold" style="font-size:10px;">${esc(ep.badge || 'HOOK READY')}</span></td>
             <td><span class="pill pill-dim">${esc(ep.niche)}</span></td>
             <td style="font-family:var(--mono); color:var(--muted);">${esc(ep.diorama)}</td>
           </tr>
@@ -1285,24 +1385,117 @@
       }).join('');
     }
 
+    let formulaIntel = null;
+
+    async function fetchFormulaIntel() {
+      try {
+        const res = await fetch('./formula_intelligence.json', { cache: 'no-store' });
+        if (res.ok) {
+          formulaIntel = await res.json();
+          renderFormulaView(data.videos || []);
+        }
+      } catch (e) {}
+    }
+
+    function renderFormulaView(vids) {
+      const bucketsEl = document.getElementById('formulaBucketsBody');
+      const auditEl = document.getElementById('formulaAuditBody');
+      if (!bucketsEl || !auditEl) return;
+
+      if (formulaIntel && formulaIntel.avg_catalog_formula_score) {
+        document.getElementById('fCatalogScore').innerText = formulaIntel.avg_catalog_formula_score;
+        const focus = formulaIntel.adaptive_buckets?.recommended_focus_bucket || 'mind_traps';
+        document.getElementById('fFocusBucket').innerText = `Focus: ${focus}`;
+      }
+
+      const defaultBuckets = {
+        mind_traps: { label: 'Psychology & Mind Traps', adaptive_weight: 0.40, outlier_x: 1.8, total_views: 352, videos_count: 3 },
+        decision_paradoxes: { label: 'Decision Paradoxes & Game Theory', adaptive_weight: 0.22, outlier_x: 1.0, total_views: 0, videos_count: 1 },
+        money_math_traps: { label: 'Money Math & Pricing Illusions', adaptive_weight: 0.19, outlier_x: 1.0, total_views: 0, videos_count: 0 },
+        ai_system_secrets: { label: 'How AI & Algorithms Work', adaptive_weight: 0.19, outlier_x: 1.0, total_views: 39, videos_count: 1 }
+      };
+      const bMap = (formulaIntel && formulaIntel.adaptive_buckets && formulaIntel.adaptive_buckets.buckets) || defaultBuckets;
+      const colors = { mind_traps: '#e0ad48', decision_paradoxes: '#10b981', money_math_traps: '#3b82f6', ai_system_secrets: '#8b5cf6' };
+
+      bucketsEl.innerHTML = Object.entries(bMap).map(([key, b]) => {
+        const pct = Math.round((Number(b.adaptive_weight) || 0.25) * 100);
+        return `
+          <div class="pillar-row" style="margin-bottom:13px;">
+            <div class="pillar-top">
+              <span><strong>${esc(b.label)}</strong> <span style="color:var(--muted);">(${b.videos_count} סרטונים • ${Number(b.total_views || 0).toLocaleString()} צפיות)</span></span>
+              <span style="font-family:var(--mono);"><span class="pill pill-dim">${b.outlier_x || 1}x</span> &nbsp;<strong style="color:var(--gold);">${pct}% משקל בענן</strong></span>
+            </div>
+            <div class="pillar-track"><div class="pillar-fill" style="width:${Math.max(12, pct * 1.8)}%; background:${colors[key] || '#e0ad48'};"></div></div>
+          </div>
+        `;
+      }).join('');
+
+      const list3d = (vids || []).filter(is3DVideo).slice(0, 8);
+      if (!list3d.length) {
+        auditEl.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--muted);">ממתין לסרטוני 3D חיים לבדיקת 48 שעות...</td></tr>';
+        return;
+      }
+      auditEl.innerHTML = list3d.map(v => {
+        const vid = ytId(v.youtube_url);
+        const views = Number(v.views) || 0;
+        const cleanT = String(v.title || '').split('#')[0].trim();
+        const studioUrl = vid ? `https://studio.youtube.com/video/${vid}/analytics/tab-reach_viewers/period-default` : 'https://studio.youtube.com';
+        const task = views < 50
+          ? '<span class="pill pill-gold">בדוק חשיפות בפיד + אימות טלפון</span>'
+          : '<span class="pill pill-green">בדוק Swipe Rate (&lt;30%) + קשר ל-16:9</span>';
+        return `
+          <tr>
+            <td><strong>${esc(cleanT)}</strong><div style="font-size:11px; color:var(--muted);">${esc(v.date || '')}</div></td>
+            <td><span class="pill pill-dim">${esc(v.niche || 'mind_traps')}</span></td>
+            <td style="font-family:var(--mono); font-weight:700;">${views.toLocaleString()}</td>
+            <td>${task}</td>
+            <td><a class="btn btn-primary" style="padding:4px 9px; font-size:11px;" href="${esc(studioUrl)}" target="_blank" rel="noopener noreferrer">📊 בדוק Retention ב-Studio ↗</a></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
     function scoreTitle() {
       const raw = document.getElementById('titleInput').value.trim();
+      const hookRaw = (document.getElementById('hookInput') ? document.getElementById('hookInput').value.trim() : '');
       const core = raw.split('#')[0].trim();
-      let score = 50;
+      let score = 30;
       const notes = [];
-      if (core.length >= 28 && core.length <= 68) { score += 18; notes.push('✅ אורך אידיאלי למובייל'); }
-      else { notes.push('⚠️ כדאי לשמור כותרת בין 30–68 תווים'); }
-      if (/^(why|how|the|what)\b/i.test(core)) { score += 12; notes.push('✅ פתיחת סקרנות חזקה'); }
-      if (/\d|%|\$/.test(core)) { score += 10; notes.push('✅ מספר קונקרטי מושך עין'); }
-      const tags = (raw.match(/#\w+/g) || []).length;
-      if (tags >= 1 && tags <= 4) { score += 8; notes.push('✅ כמות האשטאגים נקייה'); }
-      else if (tags > 5) { score -= 12; notes.push('❌ יותר מדי האשטאגים (שמור 2–4)'); }
-      if (/brainrot|wait till the end|99% fail|illegal/i.test(raw)) { score -= 25; notes.push('❌ ביטויי ספאם/קליקבייט פוגעים באמון'); }
+
+      if (core.length >= 24 && core.length <= 60) { score += 20; notes.push(`✅ כותרת מובייל חדה (${core.length} תווים ≤ 60)`); }
+      else { notes.push(`⚠️ קצר מתחת ל-60 תווים למובייל (כרגע ${core.length})`); }
+
+      if (!raw.includes('#')) { score += 10; notes.push('✅ 0 האשטאגים בכותרת (נקי!)'); }
+      else { score -= 5; notes.push('⚠️ העבר האשטאגים לתיאור בלבד'); }
+
+      if (/^(why|how|the|what)\b/i.test(core) && /\d|%|\$|twice|double|never|worse|beats|without/i.test(core)) {
+        score += 15; notes.push('✅ סקרנות + ניגוד/מספר חזק');
+      } else if (/^(why|how|the|what)\b/i.test(core) || /\d|%|\$/.test(core)) {
+        score += 8; notes.push('⚠️ הוסף מספר או ניגוד חד יותר');
+      }
+
+      if (hookRaw) {
+        const slowStart = /^\s*(in\s+(the\s+year\s+)?1\d{3}|back\s+in|hey\s+guys|today\s+we)/i.test(hookRaw);
+        if (!slowStart && hookRaw.split(/\s+/).length >= 6) {
+          score += 15; notes.push('✅ פתיחת 3 שנ\' ללא הקדמה היסטורית');
+        } else {
+          score -= 10; notes.push('❌ פתיחה איטית (תאריך/הקדמה גורמים להחלקה!)');
+        }
+        if (/\d|%|\$|twice|double|half|crash|drain|trap|secret|slot|never|worse|hurt/i.test(hookRaw)) {
+          score += 10; notes.push('✅ Open Loop מיידי ב-12 מילים ראשונות');
+        }
+      } else {
+        score += 15;
+      }
+
+      if (/brainrot|wait till the end|99% fail|subscribe now/i.test(raw + ' ' + hookRaw)) {
+        score -= 25; notes.push('❌ ביטוי ספאם פוגע ב-Retention');
+      }
       score = Math.max(10, Math.min(100, score));
 
       const el = document.getElementById('scoreNum');
       el.innerText = score;
-      el.style.color = score >= 80 ? 'var(--green)' : (score >= 60 ? 'var(--gold)' : 'var(--red)');
+      el.style.color = score >= 85 ? 'var(--green)' : (score >= 65 ? 'var(--gold)' : 'var(--red)');
       document.getElementById('scoreFeedback').innerHTML = notes.join(' &nbsp;•&nbsp; ');
     }
 
@@ -1390,6 +1583,7 @@
       setInterval(updateCountdown, 1000);
       fetchLive();
       fetchCrossPlatformFeed();
+      fetchFormulaIntel();
     });
   </script>
 </body>

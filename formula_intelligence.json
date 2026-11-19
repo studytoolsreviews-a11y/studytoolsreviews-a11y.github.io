@@ -1,0 +1,265 @@
+{
+  "framework": "The YouTube Formula (Derral Eves) + 2026 Shorts Retention OS",
+  "avg_catalog_formula_score": 98.8,
+  "adaptive_buckets": {
+    "updated_at": "2026-11-19T10:55:31Z",
+    "channel_median_views": 195.0,
+    "recommended_focus_bucket": "mind_traps",
+    "weights": {
+      "mind_traps": 0.3618,
+      "decision_paradoxes": 0.234,
+      "money_math_traps": 0.2172,
+      "ai_system_secrets": 0.187
+    },
+    "buckets": {
+      "mind_traps": {
+        "label": "Psychology & Mind Traps",
+        "playlist": "MindTrap 3D: Psychology & Mind Traps",
+        "videos_count": 3,
+        "total_views": 351,
+        "avg_views": 351.0,
+        "outlier_x": 1.8,
+        "base_weight": 0.35,
+        "adaptive_weight": 0.3618
+      },
+      "decision_paradoxes": {
+        "label": "Decision Paradoxes & Game Theory",
+        "playlist": "MindTrap 3D: Decision Paradoxes & Game Theory",
+        "videos_count": 1,
+        "total_views": 0,
+        "avg_views": 0.0,
+        "outlier_x": 1.0,
+        "base_weight": 0.25,
+        "adaptive_weight": 0.234
+      },
+      "money_math_traps": {
+        "label": "Money Math & Pricing Illusions",
+        "playlist": "MindTrap 3D: Money Math & Pricing Illusions",
+        "videos_count": 0,
+        "total_views": 0,
+        "avg_views": 0.0,
+        "outlier_x": 1.0,
+        "base_weight": 0.2,
+        "adaptive_weight": 0.2172
+      },
+      "ai_system_secrets": {
+        "label": "How AI & Algorithms Work",
+        "playlist": "MindTrap 3D: How AI & Algorithms Work",
+        "videos_count": 1,
+        "total_views": 39,
+        "avg_views": 39.0,
+        "outlier_x": 0.2,
+        "base_weight": 0.2,
+        "adaptive_weight": 0.187
+      }
+    }
+  },
+  "episode_audits": [
+    {
+      "id": "decoy_popcorn",
+      "title": "Why the Medium Popcorn Exists (It Is Not For You)",
+      "niche": "mind_traps",
+      "diorama": "decoy_counter",
+      "hook_badge": "THE $6.50 DECOY TRAP",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 49,
+      "est_duration_sec": 68.2
+    },
+    {
+      "id": "loss_aversion_scale",
+      "title": "Why Losing $100 Hurts Twice As Much As Winning $100",
+      "niche": "mind_traps",
+      "diorama": "balance_scale",
+      "hook_badge": "-$100 HURTS 2X MORE",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 51,
+      "est_duration_sec": 60.0
+    },
+    {
+      "id": "supermarket_maze_trap",
+      "title": "Why Milk Is Always Hidden at the Back of the Store",
+      "niche": "mind_traps",
+      "diorama": "supermarket_maze",
+      "hook_badge": "THE BACK-WALL MILK TRAP",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 50,
+      "est_duration_sec": 63.5
+    },
+    {
+      "id": "jam_choice_overload",
+      "title": "Why 6 Jars of Jam Outsold 24 by 10 to 1",
+      "niche": "mind_traps",
+      "diorama": "jam_table",
+      "hook_badge": "6 JARS BEAT 24 (10X)",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 39,
+      "est_duration_sec": 60.4
+    },
+    {
+      "id": "ben_franklin_favor",
+      "title": "Why Asking a Small Favor Wins Over Any Rival",
+      "niche": "mind_traps",
+      "diorama": "balance_scale",
+      "hook_badge": "FAVOR WINS ANY RIVAL",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 44,
+      "est_duration_sec": 67.8
+    },
+    {
+      "id": "zeigarnik_open_loop",
+      "title": "Why Unfinished Tasks Drain Your Brain All Day",
+      "niche": "mind_traps",
+      "diorama": "drip_tank",
+      "hook_badge": "THE OPEN-LOOP BRAIN DRAIN",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 45,
+      "est_duration_sec": 60.8
+    },
+    {
+      "id": "monty_hall_trap",
+      "title": "Why Switching Doors Doubles Your Odds (Monty Hall)",
+      "niche": "decision_paradoxes",
+      "diorama": "monty_doors",
+      "hook_badge": "SWITCHING DOUBLES ODDS",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 50,
+      "est_duration_sec": 61.6
+    },
+    {
+      "id": "birthday_paradox_ring",
+      "title": "Why Just 23 People Guarantee a 50% Birthday Match",
+      "niche": "decision_paradoxes",
+      "diorama": "birthday_ring",
+      "hook_badge": "23 PEOPLE = 50% MATCH",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 49,
+      "est_duration_sec": 56.1
+    },
+    {
+      "id": "braess_traffic_paradox",
+      "title": "Why Building a New Road Makes Traffic Worse",
+      "niche": "decision_paradoxes",
+      "diorama": "traffic_bridge",
+      "hook_badge": "NEW ROADS = MORE TRAFFIC",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 43,
+      "est_duration_sec": 58.8
+    },
+    {
+      "id": "cobra_effect_incentives",
+      "title": "Why Paying for the Wrong Metric Always Backfires",
+      "niche": "decision_paradoxes",
+      "diorama": "balance_scale",
+      "hook_badge": "WRONG METRIC BACKFIRES",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 48,
+      "est_duration_sec": 56.5
+    },
+    {
+      "id": "compounding_hockey_stick",
+      "title": "Why Starting 10 Years Early Beats Investing 2x More",
+      "niche": "money_math_traps",
+      "diorama": "coin_compound",
+      "hook_badge": "EARLY BEATS 2X CASH",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 51,
+      "est_duration_sec": 60.4
+    },
+    {
+      "id": "subscription_drip_illusion",
+      "title": "How $9.99 Subscriptions Silently Drain Thousands",
+      "niche": "money_math_traps",
+      "diorama": "drip_tank",
+      "hook_badge": "THE $9.99 SILENT DRAIN",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 48,
+      "est_duration_sec": 60.0
+    },
+    {
+      "id": "shrinkflation_geometry",
+      "title": "The Geometry Trick Hidden Inside Shrinkflation",
+      "niche": "money_math_traps",
+      "diorama": "shrink_box",
+      "hook_badge": "3MM DEPTH = 20% GONE",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 46,
+      "est_duration_sec": 62.4
+    },
+    {
+      "id": "rule_of_72_clock",
+      "title": "The 3-Second Math Rule That Exposes Debt Traps",
+      "niche": "money_math_traps",
+      "diorama": "coin_compound",
+      "hook_badge": "DIVIDE 72 = DOUBLE TIME",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 46,
+      "est_duration_sec": 56.9
+    },
+    {
+      "id": "infinite_scroll_slot",
+      "title": "How Pull-to-Refresh Works Like a Slot Machine",
+      "niche": "ai_system_secrets",
+      "diorama": "slot_scroll",
+      "hook_badge": "YOUR PHONE = SLOT MACHINE",
+      "score": 92,
+      "grade": "A+",
+      "title_chars": 45,
+      "est_duration_sec": 60.0
+    },
+    {
+      "id": "how_ai_reads_vectors",
+      "title": "How AI Reads Words Inside a 3D Vector Cube",
+      "niche": "ai_system_secrets",
+      "diorama": "neural_cube",
+      "hook_badge": "AI NEVER READS LETTERS",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 42,
+      "est_duration_sec": 56.1
+    },
+    {
+      "id": "ai_attention_spotlight",
+      "title": "The 1 Discovery That Sparked Modern AI",
+      "niche": "ai_system_secrets",
+      "diorama": "neural_cube",
+      "hook_badge": "1 WORD BROKE OLD AI",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 38,
+      "est_duration_sec": 58.4
+    },
+    {
+      "id": "algorithm_twelve_seconds",
+      "title": "How Algorithms Read Your Brain Without One Like",
+      "niche": "ai_system_secrets",
+      "diorama": "slot_scroll",
+      "hook_badge": "0 LIKES = STILL TRACKED",
+      "score": 100,
+      "grade": "A+",
+      "title_chars": 47,
+      "est_duration_sec": 60.0
+    }
+  ],
+  "retention_targets": {
+    "viewed_vs_swiped_away_pct": 70,
+    "avg_percentage_viewed_pct": 85,
+    "pattern_interrupt_sec": 4.8,
+    "max_title_chars": 60,
+    "daily_warmup_uploads": 1,
+    "hybrid_longform_min_minutes": 8
+  }
+}
