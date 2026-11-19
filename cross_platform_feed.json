@@ -1,0 +1,35 @@
+{
+  "updated_at": "2026-11-19T08:21:11Z",
+  "channel_name": "MindTrap Workbench",
+  "tiktok_rewards_rule": "Videos >= 60s qualify for TikTok Creator Rewards Program (higher Tier-1 RPM).",
+  "items": [
+    {
+      "episode_id": "monty_hall_trap",
+      "title": "Why Switching Doors Doubles Your Odds (The Monty Hall Trap)",
+      "niche": "decision_paradoxes",
+      "diorama": "monty_doors",
+      "duration_sec": 73.0,
+      "tiktok_rewards_eligible": true,
+      "renderedAt": "2026-11-19T07:48:08.821743",
+      "youtube_url": "https://www.youtube.com/shorts/HM8EnphUE7M",
+      "drive_url": "https://drive.google.com/file/d/1Wh-8UqeM9iTRNht9sLAPN5mtFYW0YBA6/view?usp=drivesdk",
+      "direct_mp4_download": "https://drive.google.com/uc?export=download&id=1Wh-8UqeM9iTRNht9sLAPN5mtFYW0YBA6",
+      "tiktok_caption": "Why Switching Doors Doubles Your Odds (The Monty Hall Trap)\n\nBe honest — before seeing the probability tubes shift, did your gut say switching was 50/50?\n\nFree AI & Math Tools Vault (#ad) in bio -> https://studytoolsreviews-a11y.github.io/vault.html\n#mindtrap #paradox #gametheory #math #3danimation #learnontiktok",
+      "reels_caption": "Why Switching Doors Doubles Your Odds (The Monty Hall Trap) — built in 3D miniature on our workbench.\n\nBe honest — before seeing the probability tubes shift, did your gut say switching was 50/50?\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #paradox #probability #gametheory #3danimation #reels"
+    },
+    {
+      "episode_id": "decoy_popcorn",
+      "title": "Why the Medium Popcorn Exists (And It Is Not For You)",
+      "niche": "mind_traps",
+      "diorama": "decoy_counter",
+      "duration_sec": 77.4,
+      "tiktok_rewards_eligible": true,
+      "renderedAt": "2026-11-19T09:18:45+02:00",
+      "youtube_url": "https://www.youtube.com/shorts/BMyafgyHPd0",
+      "drive_url": "",
+      "direct_mp4_download": "",
+      "tiktok_caption": "Why the Medium Popcorn Exists (And It Is Not For You)\n\nHave you spotted this trap in real life?\n\nFree AI & Math Tools Vault (#ad) in bio -> https://studytoolsreviews-a11y.github.io/vault.html\n#mindtrap #psychology #cognitivebias #3danimation #learnontiktok #howitworks",
+      "reels_caption": "Why the Medium Popcorn Exists (And It Is Not For You) — built in 3D miniature on our workbench.\n\nHave you spotted this trap in real life?\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #behavioraleconomics #3danimation #visualexplainer #reels"
+    }
+  ]
+}
