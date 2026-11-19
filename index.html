@@ -699,13 +699,10 @@
             </div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>סלוט</th><th>שעון UTC</th><th>שעון ישראל</th><th>שיא קהל</th></tr></thead>
+                <thead><tr><th>סלוט</th><th>שעון UTC</th><th>שעון ישראל</th><th>מטרה (מצב חימום אנטי-ספאם)</th></tr></thead>
                 <tbody>
-                  <tr><td><strong>#1</strong></td><td><code>12:00</code></td><td>14:00</td><td>בוקר ארה"ב מזרח / צהריים UK</td></tr>
-                  <tr><td><strong>#2</strong></td><td><code>15:30</code></td><td>17:30</td><td>צהריים ארה"ב / אחה"צ אירופה</td></tr>
-                  <tr><td><strong>#3</strong></td><td><code>19:00</code></td><td>21:00</td><td>אחה"צ ארה"ב / פריים בריטניה</td></tr>
-                  <tr><td><strong>#4</strong></td><td><code>22:30</code></td><td>00:30</td><td>פריים ארה"ב מזרח + מערב</td></tr>
-                  <tr><td><strong>16:9</strong></td><td><code>ראשון 17:00</code></td><td>ראשון 19:00</td><td>קומפילציית דוקו 4 פרקים (4,000 שעות)</td></tr>
+                  <tr><td><strong>יומי 3D</strong></td><td><code>16:00</code></td><td>18:00</td><td>שיא ארה"ב + בריטניה + ישראל (ללא קישורים/תגובות בוט למניעת 0 צפיות)</td></tr>
+                  <tr><td><strong>16:9 שבועי</strong></td><td><code>ראשון 18:00</code></td><td>ראשון 20:00</td><td>קומפילציית דוקו 4 פרקים (4,000 שעות מונטיזציה + קישורים לחיצים)</td></tr>
                 </tbody>
               </table>
             </div>
@@ -899,7 +896,7 @@
 
     function updateCountdown() {
       const now = new Date();
-      const slotsUtc = [12 * 60, 15 * 60 + 30, 19 * 60, 22 * 60 + 30];
+      const slotsUtc = [16 * 60];
       const nowMin = now.getUTCHours() * 60 + now.getUTCMinutes();
       let nextMin = slotsUtc.find(m => m > nowMin);
       let diffSec = 0;
