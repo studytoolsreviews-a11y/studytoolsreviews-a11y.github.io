@@ -2,25 +2,25 @@
   "framework": "The YouTube Formula (Derral Eves) + 2026 Shorts Retention OS",
   "avg_catalog_formula_score": 98.8,
   "adaptive_buckets": {
-    "updated_at": "2026-11-19T10:55:31Z",
-    "channel_median_views": 195.0,
+    "updated_at": "2026-11-19T12:26:21Z",
+    "channel_median_views": 40.0,
     "recommended_focus_bucket": "mind_traps",
     "weights": {
-      "mind_traps": 0.3618,
-      "decision_paradoxes": 0.234,
-      "money_math_traps": 0.2172,
-      "ai_system_secrets": 0.187
+      "mind_traps": 0.3646,
+      "decision_paradoxes": 0.2213,
+      "money_math_traps": 0.207,
+      "ai_system_secrets": 0.207
     },
     "buckets": {
       "mind_traps": {
         "label": "Psychology & Mind Traps",
         "playlist": "MindTrap 3D: Psychology & Mind Traps",
         "videos_count": 3,
-        "total_views": 351,
-        "avg_views": 351.0,
-        "outlier_x": 1.8,
+        "total_views": 355,
+        "avg_views": 177.5,
+        "outlier_x": 4.44,
         "base_weight": 0.35,
-        "adaptive_weight": 0.3618
+        "adaptive_weight": 0.3646
       },
       "decision_paradoxes": {
         "label": "Decision Paradoxes & Game Theory",
@@ -30,7 +30,7 @@
         "avg_views": 0.0,
         "outlier_x": 1.0,
         "base_weight": 0.25,
-        "adaptive_weight": 0.234
+        "adaptive_weight": 0.2213
       },
       "money_math_traps": {
         "label": "Money Math & Pricing Illusions",
@@ -40,17 +40,17 @@
         "avg_views": 0.0,
         "outlier_x": 1.0,
         "base_weight": 0.2,
-        "adaptive_weight": 0.2172
+        "adaptive_weight": 0.207
       },
       "ai_system_secrets": {
         "label": "How AI & Algorithms Work",
         "playlist": "MindTrap 3D: How AI & Algorithms Work",
         "videos_count": 1,
-        "total_views": 39,
-        "avg_views": 39.0,
-        "outlier_x": 0.2,
+        "total_views": 40,
+        "avg_views": 40.0,
+        "outlier_x": 1.0,
         "base_weight": 0.2,
-        "adaptive_weight": 0.187
+        "adaptive_weight": 0.207
       }
     }
   },

@@ -353,7 +353,7 @@
       <span class="ico">📊</span> סקירה ופאנל הכנסות
     </button>
     <button class="nav-item" onclick="openView('videos', this)">
-      <span class="ico">🎬</span> סרטונים ו-Outliers <span class="nav-badge" id="navVidCount">11</span>
+      <span class="ico">🎬</span> סרטונים ו-Outliers <span class="nav-badge" id="navVidCount">--</span>
     </button>
     <button class="nav-item" onclick="openView('formula', this)">
       <span class="ico">🧪</span> The YouTube Formula <span class="nav-badge" id="navFormulaGrade">A+</span>
@@ -402,19 +402,19 @@
           <div class="card">
             <div class="kpi-top">
               <span class="kpi-label">סה"כ צפיות בערוץ</span>
-              <span class="pill pill-green" id="kpiAvgPill">ממוצע --</span>
+              <span class="pill pill-green" id="kpiAvgPill">טוען...</span>
             </div>
-            <div class="kpi-val" id="kpiViews">950</div>
-            <div class="kpi-foot"><span id="kpiVidSub">11 סרטונים חיים (2 ב-3D Studio)</span></div>
+            <div class="kpi-val" id="kpiViews">--</div>
+            <div class="kpi-foot"><span id="kpiVidSub">מסנכרן מול YouTube API...</span></div>
           </div>
 
           <div class="card">
             <div class="kpi-top">
               <span class="kpi-label">מנויים ומסלול YPP</span>
-              <span class="pill pill-gold" id="kpiSubPct">0.1%</span>
+              <span class="pill pill-gold" id="kpiSubPct">--%</span>
             </div>
-            <div class="kpi-val" id="kpiSubs">1</div>
-            <div class="kpi-foot">יעד מונטיזציה: 1,000 מנויים • <span id="kpiWatchH">4.1h צפייה</span></div>
+            <div class="kpi-val" id="kpiSubs">--</div>
+            <div class="kpi-foot">יעד מונטיזציה: 1,000 מנויים • <span id="kpiWatchH">--h צפייה</span></div>
           </div>
 
           <div class="card">
@@ -931,32 +931,39 @@
       { name: "Compounding & Rule of 72 Tool", net: "Interactive", pay: "$15 CPA", url: `${LIVE_VAULT_URL}#finance-tools`, comment: `Free Compounding & Rule of 72 Calculator (Educational only) (#ad): ${LIVE_VAULT_URL}#finance-tools` }
     ];
 
-    const FALLBACK = {
-      status: "success",
-      channel_subscribers: 1,
-      total_videos: 11,
-      total_views: 950,
-      total_clicks: 0,
-      total_revenue_usd: 0,
-      daily_summaries: [
-        { date: "2026-11-19", videos_count: 2, views: 7, clicks: 0 },
-        { date: "2026-11-18", videos_count: 4, views: 5, clicks: 0 },
-        { date: "2026-11-17", videos_count: 5, views: 938, clicks: 0 }
-      ],
-      videos: [
-        { date: "2026-11-19", title: "Why Switching Doors Doubles Your Odds (The Monty Hall Trap) #shorts #math #probability #mindtrap", niche: "decision_paradoxes", views: 0, youtube_url: "https://www.youtube.com/shorts/HM8EnphUE7M", drive_url: "https://drive.google.com/file/d/1Wh-8UqeM9iTRNht9sLAPN5mtFYW0YBA6/view?usp=drivesdk" },
-        { date: "2026-11-19", title: "Why the Medium Popcorn Exists (And It Is Not For You) #shorts #psychology #mindtrap", niche: "mind_traps", views: 0, youtube_url: "https://www.youtube.com/shorts/BMyafgyHPd0", drive_url: "" },
-        { date: "2026-11-18", title: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts", niche: "legacy", views: 2, youtube_url: "https://www.youtube.com/shorts/zIOnMNxZSig", drive_url: "" },
-        { date: "2026-11-18", title: "What If You Touched A Teaspoon of a Neutron Star? #shorts", niche: "legacy", views: 2, youtube_url: "https://www.youtube.com/shorts/wHO7DKSQ8po", drive_url: "" },
-        { date: "2026-11-17", title: "The Ben Franklin Trick to Make ANYONE Like You #shorts #psychology", niche: "mind_traps", views: 351, youtube_url: "https://www.youtube.com/shorts/rPDNCdQeUl8", drive_url: "" },
-        { date: "2026-11-17", title: "Best Free AI Tool for Excel Formulas #shorts #aitools", niche: "ai_system_secrets", views: 39, youtube_url: "https://www.youtube.com/shorts/idAnI2EpSg8", drive_url: "" },
-        { date: "2026-11-17", title: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts", niche: "legacy", views: 540, youtube_url: "https://www.youtube.com/shorts/tB2YDoHWDJc", drive_url: "" }
-      ]
+    const CACHE_KEY = 'mindtrap_live_cache_v3';
+    const SYNC_TS_KEY = 'mindtrap_last_sync_ms_v3';
+    const AUTO_SYNC_TTL_MS = 120000; // Auto-refresh YouTube Data API every 2 minutes on open/return
+
+    const KNOWN_3D_IDS = {
+      'BMyafgyHPd0': { bucket: 'mind_traps', drive_url: '' },
+      'HM8EnphUE7M': { bucket: 'decision_paradoxes', drive_url: 'https://drive.google.com/file/d/1Wh-8UqeM9iTRNht9sLAPN5mtFYW0YBA6/view?usp=drivesdk' },
+      '9Y6mdItITW4': { bucket: 'mind_traps', drive_url: 'https://drive.google.com/file/d/1JSNtf_ebruI_l0v_vfiUcuIIzIupbIL0/view?usp=drivesdk' }
     };
 
-    let data = FALLBACK;
+    const LEGACY_IDS = new Set(['tB2YDoHWDJc', 'rPDNCdQeUl8', 'idAnI2EpSg8', 'kLl-83Wrjs8', 'RdcFPQsscM8', '7zVHzm_bnjI', 'JbDUZwHUkFw', 'wHO7DKSQ8po', 'zIOnMNxZSig']);
+
+    function loadCachedLive() {
+      try {
+        const raw = localStorage.getItem(CACHE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.videos) && parsed.videos.length > 0) return parsed;
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    function saveCachedLive(payload) {
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify(payload));
+      } catch (e) {}
+    }
+
+    let data = loadCachedLive() || { status: 'loading', channel_subscribers: 0, total_videos: 0, total_views: 0, total_clicks: 0, total_revenue_usd: 0, daily_summaries: [], videos: [] };
     let chartMetric = 'views';
     let videoFilter = 'all';
+    let syncInFlight = false;
 
     const VIEW_TITLES = {
       overview: 'סקירה ופאנל הכנסות',
@@ -976,11 +983,85 @@
       return m ? m[1] : '';
     }
 
-    function is3DVideo(v) {
-      const n = String(v.niche || '');
+    function classifyVideo(v) {
+      const id = ytId(v.youtube_url);
+      const n = String(v.niche || '').toLowerCase();
       const t = String(v.title || '').toLowerCase();
-      return ['mind_traps','decision_paradoxes','money_math_traps','ai_system_secrets','longform_compilation'].includes(n)
-        || t.includes('#mindtrap') || t.includes('popcorn') || t.includes('monty hall');
+
+      // 1. Explicit known legacy IDs (Day 1-2 pre-3D experiments)
+      if (id && LEGACY_IDS.has(id)) {
+        if (n === 'dark_psychology' || t.includes('ben franklin')) return { bucket: 'mind_traps', is3d: false };
+        if (n === 'ai_tools' || t.includes('excel')) return { bucket: 'ai_system_secrets', is3d: false };
+        return { bucket: 'legacy', is3d: false };
+      }
+
+      // 2. Known live 3D Studio IDs
+      if (id && KNOWN_3D_IDS[id]) {
+        return { bucket: KNOWN_3D_IDS[id].bucket, is3d: true };
+      }
+
+      // 3. Explicit 3D Studio niches
+      if (['mind_traps','decision_paradoxes','money_math_traps','ai_system_secrets','longform_compilation'].includes(n)) {
+        return { bucket: n, is3d: true };
+      }
+
+      // 4. Smart title matching (survives GAS niche resets & hashtag-free YouTube Formula titles!)
+      if (t.includes('would you rather') || t.includes('chenab') || t.includes('neutron star') || t.includes('every instrument')) {
+        return { bucket: 'legacy', is3d: false };
+      }
+      if (t.includes('documentary') || t.includes('hidden mind traps')) return { bucket: 'longform_compilation', is3d: true };
+      if (t.includes('monty') || t.includes('birthday') || t.includes('new road') || t.includes('traffic') || t.includes('wrong metric') || t.includes('goodhart') || t.includes('paradox') || t.includes('doubles your odds')) {
+        return { bucket: 'decision_paradoxes', is3d: true };
+      }
+      if (t.includes('10 years') || t.includes('9.99') || t.includes('shrinkflation') || t.includes('rule of 72') || t.includes('debt trap') || t.includes('compound')) {
+        return { bucket: 'money_math_traps', is3d: true };
+      }
+      if (t.includes('slot machine') || t.includes('vector cube') || t.includes('modern ai') || t.includes('self-attention') || t.includes('algorithms')) {
+        return { bucket: 'ai_system_secrets', is3d: true };
+      }
+      if (t.includes('popcorn') || t.includes('losing $100') || t.includes('milk') || t.includes('jars of jam') || t.includes('small favor') || t.includes('unfinished tasks') || t.includes('#mindtrap')) {
+        return { bucket: 'mind_traps', is3d: true };
+      }
+      // Match against STUDIO_QUEUE catalog titles
+      const qHit = STUDIO_QUEUE.find(ep => t.includes(ep.title.slice(0, 18).toLowerCase()));
+      if (qHit) return { bucket: qHit.niche, is3d: true };
+
+      return { bucket: 'legacy', is3d: false };
+    }
+
+    function is3DVideo(v) {
+      return classifyVideo(v).is3d;
+    }
+
+    function enrichLiveData(rawPayload) {
+      if (!rawPayload || !Array.isArray(rawPayload.videos)) return rawPayload;
+      const feedById = {};
+      (crossFeedItems || []).forEach(it => {
+        const fid = ytId(it.youtube_url);
+        if (fid) feedById[fid] = it;
+      });
+      const enrichedVideos = rawPayload.videos.map(v => {
+        const id = ytId(v.youtube_url);
+        const cls = classifyVideo(v);
+        const feedMatch = id ? feedById[id] : null;
+        const knownMatch = id ? KNOWN_3D_IDS[id] : null;
+        const driveUrl = v.drive_url || (feedMatch && feedMatch.drive_url) || (knownMatch && knownMatch.drive_url) || '';
+        return {
+          ...v,
+          niche: cls.bucket,
+          _is3d: cls.is3d,
+          drive_url: driveUrl,
+          duration_sec: (feedMatch && feedMatch.duration_sec) || v.duration_sec || (cls.is3d ? 65 : 15)
+        };
+      });
+      return { ...rawPayload, videos: enrichedVideos };
+    }
+
+    function formatSyncClock(isoOrMs) {
+      try {
+        const d = isoOrMs ? new Date(isoOrMs) : new Date();
+        return d.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+      } catch (e) { return ''; }
     }
 
     function openView(id, btn) {
@@ -1009,36 +1090,65 @@
       document.getElementById('nextDropTimer').innerText = `${h}:${m}:${s}`;
     }
 
-    async function fetchLive() {
+    async function fetchLive(opts = {}) {
+      if (syncInFlight && !opts.force) return;
+      syncInFlight = true;
+      const syncEl = document.getElementById('syncState');
       if (typeof google !== 'undefined' && google.script && google.script.run) {
         google.script.run.withSuccessHandler(j => {
-          if (j && j.videos) { data = j; document.getElementById('syncState').innerText = 'חי מול YouTube API'; renderAll(); }
-        }).getFullAnalyticsData();
+          syncInFlight = false;
+          if (j && j.videos) {
+            data = enrichLiveData(j);
+            saveCachedLive(data);
+            syncEl.innerText = `חי מול YouTube • ${formatSyncClock(j.synced_at)}`;
+            renderAll();
+          }
+        }).getFullAnalyticsData(Boolean(opts.force));
         return;
       }
       try {
-        const res = await fetch(CLOUD_GAS_URL + '?action=stats', { credentials: 'omit' });
+        const lastMs = Number(localStorage.getItem(SYNC_TS_KEY) || '0');
+        const needsYtSync = Boolean(opts.force) || (opts.autoSyncIfStale !== false && (Date.now() - lastMs) > AUTO_SYNC_TTL_MS);
+
+        if (needsYtSync) {
+          syncEl.innerText = 'מסנכרן נתוני אמת מ-YouTube...';
+          try {
+            await fetch(`${CLOUD_GAS_URL}?action=sync_channel&_t=${Date.now()}`, { credentials: 'omit', cache: 'no-store' });
+            localStorage.setItem(SYNC_TS_KEY, String(Date.now()));
+          } catch (syncErr) {}
+        }
+
+        const res = await fetch(`${CLOUD_GAS_URL}?action=stats&_t=${Date.now()}`, { credentials: 'omit', cache: 'no-store' });
         if (res.ok) {
           const j = await res.json();
-          if (j && j.videos) {
-            data = j;
-            document.getElementById('syncState').innerText = 'חי מול YouTube API';
+          if (j && Array.isArray(j.videos)) {
+            data = enrichLiveData(j);
+            saveCachedLive(data);
+            syncEl.innerText = `חי מול YouTube • ${formatSyncClock(j.synced_at || Date.now())}`;
             renderAll();
           }
         }
-      } catch (e) {}
+      } catch (e) {
+        if (data && data.videos && data.videos.length) {
+          syncEl.innerText = 'מצב מטמון (אופליין זמני)';
+        } else {
+          syncEl.innerText = 'שגיאת חיבור לענן — לחץ סנכרון';
+        }
+      } finally {
+        syncInFlight = false;
+      }
     }
 
     async function syncNow() {
       const btn = document.getElementById('syncBtn');
       btn.disabled = true;
-      btn.innerText = '⏳ מסנכרן...';
+      btn.innerText = '⏳ מסנכרן מ-YouTube...';
       try {
-        await fetch(CLOUD_GAS_URL + '?action=sync_channel', { credentials: 'omit' });
-        await fetchLive();
-        toast('✅ הנתונים סונכרנו בהצלחה מול YouTube');
+        await fetchLive({ force: true });
+        await Promise.all([fetchCrossPlatformFeed(), fetchFormulaIntel()]);
+        toast('✅ כל הנתונים והפיצ\'רים סונכרנו חי מול YouTube API');
       } catch (e) {
-        toast('הנתונים מעודכנים מול הענן');
+        toast('⚠️ בדוק חיבור רשת ונסה שוב');
       } finally {
         btn.disabled = false;
         btn.innerText = '🔄 סנכרון חי';
@@ -1108,6 +1218,7 @@
       renderVideosTable();
       renderFormulaView(vids);
       renderQueue(vids);
+      renderCrossPlatform();
       drawTrendChart();
     }
 
@@ -1120,13 +1231,12 @@
         'Legacy (ישן — הופסק)': { views: 0, count: 0, color: '#52525b' }
       };
       vids.forEach(v => {
-        const n = String(v.niche || '');
-        const t = String(v.title || '').toLowerCase();
+        const cls = classifyVideo(v);
         let key = 'Legacy (ישן — הופסק)';
-        if (n === 'mind_traps' || t.includes('popcorn') || t.includes('ben franklin')) key = 'Mind Traps (פסיכולוגיה)';
-        else if (n === 'decision_paradoxes' || t.includes('monty')) key = 'Decision Paradoxes (פרדוקסים)';
-        else if (n === 'money_math_traps') key = 'Money & Math Traps';
-        else if (n === 'ai_system_secrets' || n === 'ai_tools') key = 'AI & Systems';
+        if (cls.bucket === 'mind_traps') key = 'Mind Traps (פסיכולוגיה)';
+        else if (cls.bucket === 'decision_paradoxes') key = 'Decision Paradoxes (פרדוקסים)';
+        else if (cls.bucket === 'money_math_traps') key = 'Money & Math Traps';
+        else if (cls.bucket === 'ai_system_secrets') key = 'AI & Systems';
         groups[key].views += Number(v.views) || 0;
         groups[key].count += 1;
       });
@@ -1370,9 +1480,11 @@
     }
 
     function renderQueue(liveVids) {
-      const liveTitles = liveVids.map(v => String(v.title || '').toLowerCase());
+      const norm = s => String(s || '').split('#')[0].toLowerCase().replace(/[^a-z0-9$ ]/g, ' ').replace(/\s+/g, ' ').trim();
+      const liveNorm = (liveVids || []).filter(is3DVideo).map(v => norm(v.title));
       document.getElementById('queueBody').innerHTML = STUDIO_QUEUE.map(ep => {
-        const aired = liveTitles.some(t => t.includes(ep.title.slice(0, 22).toLowerCase()));
+        const epKey = norm(ep.title).split(' ').filter(w => w.length >= 4 || w.includes('$')).slice(0, 3);
+        const aired = liveNorm.some(t => epKey.length >= 2 && epKey.every(k => t.includes(k)));
         return `
           <tr>
             <td>${aired ? '<span class="pill pill-green">🟢 שודר חי</span>' : '<span class="pill pill-gold">⏳ בתור הענן</span>'}</td>
@@ -1389,12 +1501,63 @@
 
     async function fetchFormulaIntel() {
       try {
-        const res = await fetch('./formula_intelligence.json', { cache: 'no-store' });
+        const res = await fetch(`./formula_intelligence.json?_t=${Date.now()}`, { cache: 'no-store' });
         if (res.ok) {
           formulaIntel = await res.json();
           renderFormulaView(data.videos || []);
         }
       } catch (e) {}
+    }
+
+    function computeLiveFormulaBuckets(vids) {
+      const meta = {
+        mind_traps: { label: 'Psychology & Mind Traps', base: 0.35 },
+        decision_paradoxes: { label: 'Decision Paradoxes & Game Theory', base: 0.25 },
+        money_math_traps: { label: 'Money Math & Pricing Illusions', base: 0.20 },
+        ai_system_secrets: { label: 'How AI & Algorithms Work', base: 0.20 }
+      };
+      const bucketViews = { mind_traps: [], decision_paradoxes: [], money_math_traps: [], ai_system_secrets: [] };
+      const nonZeroAll = [];
+      (vids || []).forEach(v => {
+        const cls = classifyVideo(v);
+        if (!bucketViews[cls.bucket]) return;
+        const vw = Number(v.views) || 0;
+        bucketViews[cls.bucket].push(vw);
+        if (vw > 0) nonZeroAll.push(vw);
+      });
+      nonZeroAll.sort((a,b) => a - b);
+      const mid = Math.floor(nonZeroAll.length / 2);
+      const baseline = nonZeroAll.length
+        ? Math.max(10, nonZeroAll.length % 2 ? nonZeroAll[mid] : (nonZeroAll[mid - 1] + nonZeroAll[mid]) / 2)
+        : 10;
+
+      const rawScores = {};
+      const out = {};
+      Object.entries(meta).forEach(([k, m]) => {
+        const arr = bucketViews[k];
+        const nz = arr.filter(x => x > 0);
+        const avg = nz.length ? (nz.reduce((a,b) => a + b, 0) / nz.length) : 0;
+        const outlierX = nz.length ? Number((avg / baseline).toFixed(2)) : 1.0;
+        const boost = Math.max(0.55, Math.min(2.15, nz.length ? outlierX : 1.0));
+        rawScores[k] = m.base * boost;
+        out[k] = {
+          label: m.label,
+          videos_count: arr.length,
+          total_views: arr.reduce((a,b) => a + b, 0),
+          outlier_x: outlierX,
+          adaptive_weight: m.base
+        };
+      });
+      const floor = 0.15;
+      const rem = 1.0 - floor * 4;
+      const sumRaw = Object.values(rawScores).reduce((a,b) => a + b, 0) || 1;
+      let topKey = 'mind_traps', topW = -1;
+      Object.keys(out).forEach(k => {
+        const w = floor + rem * (rawScores[k] / sumRaw);
+        out[k].adaptive_weight = Number(w.toFixed(4));
+        if (w > topW) { topW = w; topKey = k; }
+      });
+      return { buckets: out, focus: topKey };
     }
 
     function renderFormulaView(vids) {
@@ -1404,17 +1567,12 @@
 
       if (formulaIntel && formulaIntel.avg_catalog_formula_score) {
         document.getElementById('fCatalogScore').innerText = formulaIntel.avg_catalog_formula_score;
-        const focus = formulaIntel.adaptive_buckets?.recommended_focus_bucket || 'mind_traps';
-        document.getElementById('fFocusBucket').innerText = `Focus: ${focus}`;
       }
 
-      const defaultBuckets = {
-        mind_traps: { label: 'Psychology & Mind Traps', adaptive_weight: 0.40, outlier_x: 1.8, total_views: 352, videos_count: 3 },
-        decision_paradoxes: { label: 'Decision Paradoxes & Game Theory', adaptive_weight: 0.22, outlier_x: 1.0, total_views: 0, videos_count: 1 },
-        money_math_traps: { label: 'Money Math & Pricing Illusions', adaptive_weight: 0.19, outlier_x: 1.0, total_views: 0, videos_count: 0 },
-        ai_system_secrets: { label: 'How AI & Algorithms Work', adaptive_weight: 0.19, outlier_x: 1.0, total_views: 39, videos_count: 1 }
-      };
-      const bMap = (formulaIntel && formulaIntel.adaptive_buckets && formulaIntel.adaptive_buckets.buckets) || defaultBuckets;
+      // Compute LIVE from real synced YouTube data so Formula tab matches Overview 100%!
+      const liveCalc = computeLiveFormulaBuckets(vids);
+      document.getElementById('fFocusBucket').innerText = `Focus: ${liveCalc.focus}`;
+      const bMap = liveCalc.buckets;
       const colors = { mind_traps: '#e0ad48', decision_paradoxes: '#10b981', money_math_traps: '#3b82f6', ai_system_secrets: '#8b5cf6' };
 
       bucketsEl.innerHTML = Object.entries(bMap).map(([key, b]) => {
@@ -1437,6 +1595,7 @@
       }
       auditEl.innerHTML = list3d.map(v => {
         const vid = ytId(v.youtube_url);
+        const cls = classifyVideo(v);
         const views = Number(v.views) || 0;
         const cleanT = String(v.title || '').split('#')[0].trim();
         const studioUrl = vid ? `https://studio.youtube.com/video/${vid}/analytics/tab-reach_viewers/period-default` : 'https://studio.youtube.com';
@@ -1446,7 +1605,7 @@
         return `
           <tr>
             <td><strong>${esc(cleanT)}</strong><div style="font-size:11px; color:var(--muted);">${esc(v.date || '')}</div></td>
-            <td><span class="pill pill-dim">${esc(v.niche || 'mind_traps')}</span></td>
+            <td><span class="pill pill-dim">${esc(cls.bucket)}</span></td>
             <td style="font-family:var(--mono); font-weight:700;">${views.toLocaleString()}</td>
             <td>${task}</td>
             <td><a class="btn btn-primary" style="padding:4px 9px; font-size:11px;" href="${esc(studioUrl)}" target="_blank" rel="noopener noreferrer">📊 בדוק Retention ב-Studio ↗</a></td>
@@ -1503,11 +1662,15 @@
 
     async function fetchCrossPlatformFeed() {
       try {
-        const res = await fetch('./cross_platform_feed.json', { cache: 'no-store' });
+        const res = await fetch(`./cross_platform_feed.json?_t=${Date.now()}`, { cache: 'no-store' });
         if (res.ok) {
           const j = await res.json();
           if (j && Array.isArray(j.items)) {
             crossFeedItems = j.items;
+            if (data && Array.isArray(data.videos) && data.videos.length) {
+              data = enrichLiveData(data);
+              renderVideosTable();
+            }
             renderCrossPlatform();
             return;
           }
@@ -1519,7 +1682,25 @@
     function renderCrossPlatform() {
       const tbody = document.getElementById('crossPlatformBody');
       if (!tbody) return;
-      const items = crossFeedItems.length ? crossFeedItems : (data.videos || []).filter(is3DVideo).map(v => {
+
+      // Merge LIVE 3D YouTube videos + static cross_platform_feed.json (deduped by YouTube ID)
+      // so newly published cloud videos appear immediately without waiting for a GitHub Pages rebuild!
+      const feedById = {};
+      (crossFeedItems || []).forEach(it => {
+        const fid = ytId(it.youtube_url);
+        if (fid) feedById[fid] = it;
+      });
+      const seen = new Set();
+      const merged = [];
+      (data.videos || []).filter(is3DVideo).forEach(v => {
+        const id = ytId(v.youtube_url);
+        if (id && seen.has(id)) return;
+        if (id) seen.add(id);
+        const existing = id ? feedById[id] : null;
+        if (existing) {
+          merged.push(existing);
+          return;
+        }
         const cleanT = String(v.title || '').split('#')[0].trim();
         const dUrl = String(v.drive_url || '');
         let dl = dUrl;
@@ -1527,17 +1708,24 @@
           const fid = dUrl.split('/file/d/')[1].split('/')[0];
           dl = `https://drive.google.com/uc?export=download&id=${fid}`;
         }
-        return {
+        merged.push({
           title: cleanT,
-          duration_sec: 75,
+          duration_sec: v.duration_sec || 65,
           tiktok_rewards_eligible: true,
           direct_mp4_download: dl,
           drive_url: dUrl,
           tiktok_caption: `${cleanT}\n\nFree AI & Math Tools Vault (#ad) in bio -> ${LIVE_VAULT_URL}\n#mindtrap #psychology #3danimation #learnontiktok #howitworks`,
           reels_caption: `${cleanT} — built in 3D miniature on our workbench.\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #3danimation #visualexplainer #reels`
-        };
+        });
+      });
+      (crossFeedItems || []).forEach(it => {
+        const id = ytId(it.youtube_url);
+        if (id && seen.has(id)) return;
+        if (id) seen.add(id);
+        merged.push(it);
       });
 
+      const items = merged;
       if (!items.length) {
         tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--muted);">ממתין לסרטוני 3D מוכנים להפצה...</td></tr>';
         return;
@@ -1547,7 +1735,7 @@
       tbody.innerHTML = items.map((it, idx) => `
         <tr>
           <td><strong>${esc(it.title)}</strong></td>
-          <td><span class="pill pill-green">${it.duration_sec || 75}s • זכאי Rewards ✓</span></td>
+          <td><span class="pill pill-green">${it.duration_sec || 65}s • זכאי Rewards ✓</span></td>
           <td>${it.direct_mp4_download ? `<a class="btn btn-primary" style="padding:4px 9px; font-size:11px;" href="${esc(it.direct_mp4_download)}" target="_blank" rel="noopener noreferrer">⬇️ הורד MP4</a>` : `<a class="btn" style="padding:4px 9px; font-size:11px;" href="https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i" target="_blank" rel="noopener noreferrer">פתח Drive ↗</a>`}</td>
           <td><button class="btn" style="padding:4px 9px; font-size:11px;" onclick="copyCp(${idx}, 'tiktok')">📋 העתק TikTok</button></td>
           <td><button class="btn" style="padding:4px 9px; font-size:11px;" onclick="copyCp(${idx}, 'reels')">📋 העתק Reels</button></td>
@@ -1574,15 +1762,22 @@
       if (document.getElementById('view-overview').classList.contains('active')) drawTrendChart();
     });
 
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) fetchLive({ autoSyncIfStale: true });
+    });
+
     window.addEventListener('DOMContentLoaded', () => {
-      renderAll();
+      if (data && Array.isArray(data.videos) && data.videos.length > 0) {
+        data = enrichLiveData(data);
+        renderAll();
+      }
       renderOffers();
       runRevenueSim();
       scoreTitle();
       updateCountdown();
       setInterval(updateCountdown, 1000);
-      fetchLive();
-      fetchCrossPlatformFeed();
+      setInterval(() => fetchLive({ autoSyncIfStale: true }), 180000);
+      fetchCrossPlatformFeed().finally(() => fetchLive({ autoSyncIfStale: true }));
       fetchFormulaIntel();
     });
   </script>

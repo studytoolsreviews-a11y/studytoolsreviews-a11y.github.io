@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <title>StudyTools Reviews // The Official Free AI &amp; Productivity Vault</title>
+  <title>MindTrap Workbench // The Official Free AI &amp; Math Tools Vault</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -230,7 +230,10 @@
 
     function trackOfferClick(slug) {
       try {
-        fetch(CLOUD_GAS_URL + '?action=track_click&slug=' + encodeURIComponent(slug) + '&vid=' + encodeURIComponent(vid), { mode: 'no-cors' });
+        fetch(
+          CLOUD_GAS_URL + '?action=track_click&slug=' + encodeURIComponent(slug) + '&vid=' + encodeURIComponent(vid) + '&_t=' + Date.now(),
+          { mode: 'no-cors', keepalive: true, cache: 'no-store' }
+        );
       } catch (e) {}
     }
 
