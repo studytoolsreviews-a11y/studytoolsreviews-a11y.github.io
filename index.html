@@ -1,747 +1,778 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MindTrap 3D Studio // מרכז שליטה בענן 24/7</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindTrap // Creator Revenue OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-dark: #0b0a09;
-      --bg-card: #151210;
-      --bg-surface: #1e1916;
-      --bg-hover: #29221d;
-      --accent-red: #d93829;
-      --accent-gold: #e0ad48;
-      --accent-cyan: #2ab7ca;
-      --accent-green: #22c55e;
-      --accent-purple: #a855f7;
-      --text-main: #f6f1e9;
-      --text-muted: #a99f91;
-      --border: #2e2620;
-      --border-bright: #473a30;
+      --bg: #09090b;
+      --sidebar: #0e0e11;
+      --card: #121216;
+      --surface: #18181d;
+      --hover: #1f1f26;
+      --border: #24242d;
+      --border-hi: #343442;
+      --text: #f4f4f5;
+      --muted: #8e8e9c;
+      --dim: #5c5c6b;
+      --gold: #e0ad48;
+      --gold-soft: rgba(224, 173, 72, 0.14);
+      --green: #10b981;
+      --green-soft: rgba(16, 185, 129, 0.14);
+      --red: #ef4444;
+      --red-soft: rgba(239, 68, 68, 0.14);
+      --blue: #3b82f6;
+      --blue-soft: rgba(59, 130, 246, 0.14);
+      --purple: #8b5cf6;
+      --mono: 'JetBrains Mono', monospace;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: radial-gradient(circle at 15% 0%, rgba(224, 173, 72, 0.10), transparent 42%),
-                  radial-gradient(circle at 85% 12%, rgba(217, 56, 41, 0.08), transparent 40%),
-                  var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Heebo', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      line-height: 1.55;
+      line-height: 1.48;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
-      background: rgba(21, 18, 16, 0.96);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+
+    /* Sidebar Navigation (Linear / Viewstats Executive Style) */
+    aside {
+      width: 248px;
+      flex-shrink: 0;
+      background: var(--sidebar);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 14px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
+      height: 100vh;
+      overflow-y: auto;
     }
-    .logo-badge {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
+      padding: 4px 8px 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
       text-decoration: none;
-      color: #fff;
+      color: inherit;
     }
-    .logo-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 4px 16px rgba(217, 56, 41, 0.35);
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #272017, #161310);
+      border: 1px solid rgba(224, 173, 72, 0.45);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 16px;
+      font-family: var(--mono);
+      box-shadow: 0 0 20px rgba(224, 173, 72, 0.12);
     }
-    .brand-title { font-size: 19px; font-weight: 900; color: #fff; }
-    .brand-sub {
-      font-size: 12px;
-      color: var(--accent-gold);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .dot-live {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent-green);
-      box-shadow: 0 0 8px var(--accent-green);
+    .brand-name { font-size: 15px; font-weight: 900; letter-spacing: -0.2px; }
+    .brand-sub { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); box-shadow: 0 0 8px var(--green);
       display: inline-block;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
+
+    .nav-label {
+      font-size: 10px; font-weight: 800; color: var(--dim);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 10px 10px 6px;
+    }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%; background: transparent; border: 1px solid transparent;
+      color: var(--muted); font-family: inherit; font-size: 13px; font-weight: 700;
+      padding: 9px 11px; border-radius: 9px; cursor: pointer;
+      transition: all 0.15s; text-align: right; margin-bottom: 3px;
       text-decoration: none;
-      border: 1px solid transparent;
-      transition: all 0.18s;
-      font-family: inherit;
     }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-red { background: linear-gradient(135deg, #d93829, #a82317); color: #fff; box-shadow: 0 4px 14px rgba(217, 56, 41, 0.28); }
-    .btn-gold { background: linear-gradient(135deg, #e0ad48, #c28624); color: #120e0a; }
-    .btn-green { background: linear-gradient(135deg, #22c55e, #15803d); color: #05120a; }
-    .btn-purple { background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; }
-    .btn-outline { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border-bright); }
-    .btn-outline:hover { background: var(--bg-hover); border-color: var(--accent-gold); }
+    .nav-item:hover { background: var(--surface); color: var(--text); }
+    .nav-item.active {
+      background: var(--surface); color: var(--text);
+      border-color: var(--border-hi);
+    }
+    .nav-item .ico { width: 18px; text-align: center; font-size: 14px; opacity: 0.9; }
+    .nav-badge {
+      margin-right: auto; font-size: 10px; font-family: var(--mono);
+      background: var(--gold-soft); color: var(--gold);
+      padding: 1px 6px; border-radius: 6px; font-weight: 700;
+    }
 
-    .main-container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 22px;
-      width: 100%;
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .ext-link {
+      font-size: 12px; color: var(--muted); text-decoration: none;
+      padding: 6px 10px; border-radius: 7px; display: flex;
+      justify-content: space-between; align-items: center; transition: 0.15s;
+    }
+    .ext-link:hover { background: var(--surface); color: var(--text); }
+
+    /* Main Workspace */
+    main {
       flex: 1;
-    }
-
-    .upgrade-banner {
-      background: linear-gradient(135deg, rgba(224, 173, 72, 0.15), rgba(217, 56, 41, 0.12));
-      border: 1px solid rgba(224, 173, 72, 0.42);
-      border-radius: 16px;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .upgrade-banner strong { color: var(--accent-gold); }
-
-    .launchpad {
-      background: linear-gradient(135deg, rgba(30, 25, 22, 0.95), rgba(21, 18, 16, 0.95));
-      border: 1px solid var(--border-bright);
-      border-radius: 18px;
-      padding: 20px 22px;
-      margin-bottom: 22px;
-    }
-    .launchpad-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .launchpad-title { font-size: 17px; font-weight: 900; display: flex; align-items: center; gap: 8px; }
-    .account-note {
-      font-size: 12px;
-      color: var(--accent-gold);
-      background: rgba(224, 173, 72, 0.12);
-      border: 1px solid rgba(224, 173, 72, 0.32);
-      padding: 5px 12px;
-      border-radius: 8px;
-    }
-    .launch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-      gap: 10px;
-    }
-
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 14px;
-      margin-bottom: 22px;
-    }
-    .kpi-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-    }
-    .kpi-label { font-size: 12px; color: var(--text-muted); font-weight: 700; margin-bottom: 6px; }
-    .kpi-value { font-size: 28px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: #fff; }
-    .kpi-sub { font-size: 11px; color: var(--accent-gold); margin-top: 4px; }
-
-    .nav-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 10px 14px;
-      border-radius: 14px;
-      margin-bottom: 20px;
-    }
-    .nav-tab {
-      background: var(--bg-surface);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-    .nav-tab:hover { color: #fff; background: var(--bg-hover); }
-    .nav-tab.active {
-      background: linear-gradient(135deg, rgba(224, 173, 72, 0.26), rgba(217, 56, 41, 0.22));
-      color: #fff;
-      border-color: var(--accent-gold);
-    }
-
-    .section-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      margin-bottom: 22px;
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .section-title { font-size: 18px; font-weight: 900; display: flex; align-items: center; gap: 8px; }
-
-    .filter-bar {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 16px;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .f-pill {
-      background: var(--bg-card);
-      border: 1px solid var(--border-bright);
-      color: var(--text-muted);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .f-pill.active, .f-pill:hover {
-      background: var(--accent-gold);
-      color: #14100c;
-      border-color: var(--accent-gold);
-    }
-    .date-input {
-      background: var(--bg-card);
-      border: 1px solid var(--border-bright);
-      color: #fff;
-      padding: 7px 12px;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 13px;
-    }
-
-    .table-responsive { overflow-x: auto; width: 100%; }
-    table { width: 100%; border-collapse: collapse; text-align: right; }
-    th, td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 13px; }
-    th {
-      color: var(--text-muted);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.02);
-    }
-    tr:hover td { background: var(--bg-surface); }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 16px;
-    }
-    .v-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-bright);
-      border-radius: 14px;
-      overflow: hidden;
+      min-width: 0;
       display: flex;
       flex-direction: column;
     }
-    .v-thumb {
-      width: 100%;
-      height: 175px;
-      background: #0d0b0a;
-      position: relative;
-      overflow: hidden;
+    .topbar {
+      height: 60px;
+      border-bottom: 1px solid var(--border);
+      padding: 0 26px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
     }
-    .v-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: transform 0.3s; }
-    .v-card:hover .v-thumb img { transform: scale(1.04); opacity: 1; }
-    .v-badge-live {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.80);
-      border: 1px solid var(--accent-green);
-      color: var(--accent-green);
-      font-size: 11px;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: 999px;
+    .top-title { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+    .countdown-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 999px; padding: 5px 12px; font-size: 12px; color: var(--muted);
     }
-    .v-badge-3d {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(217, 56, 41, 0.92);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-    .v-body { padding: 16px; display: flex; flex-direction: column; flex: 1; gap: 10px; }
-    .v-title { font-size: 14px; font-weight: 800; line-height: 1.4; }
-    .v-stats-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+    .countdown-pill strong { color: var(--gold); font-family: var(--mono); font-size: 12px; }
+    .top-actions { display: flex; align-items: center; gap: 8px; }
 
-    .milestone-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 16px;
-      margin-bottom: 18px;
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      padding: 7px 13px; border-radius: 8px; font-size: 12px; font-weight: 700;
+      cursor: pointer; text-decoration: none; border: 1px solid var(--border-hi);
+      background: var(--surface); color: var(--text); font-family: inherit;
+      transition: all 0.15s;
     }
-    .milestone-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-bright);
-      border-radius: 14px;
+    .btn:hover { background: var(--hover); border-color: #49495c; }
+    .btn-primary { background: var(--gold); color: #110e09; border-color: var(--gold); font-weight: 800; }
+    .btn-primary:hover { background: #eab958; }
+    .btn-green { background: var(--green); color: #051811; border-color: var(--green); font-weight: 800; }
+
+    .content {
+      padding: 24px 26px 48px;
+      max-width: 1360px;
+      width: 100%;
+    }
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
       padding: 18px;
     }
-    .progress-track {
-      width: 100%;
-      height: 14px;
-      background: #0c0a09;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 10px 0;
+    .kpi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .kpi-label { font-size: 12px; color: var(--muted); font-weight: 600; }
+    .kpi-val { font-size: 26px; font-weight: 900; font-family: var(--mono); letter-spacing: -0.5px; }
+    .kpi-foot { font-size: 11px; color: var(--muted); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700;
+      font-family: var(--mono);
     }
-    .progress-bar {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
-      transition: width 0.4s ease;
-    }
-    .step-box {
-      background: var(--bg-surface);
-      border-right: 4px solid var(--accent-gold);
-      border-radius: 12px;
-      padding: 16px 18px;
-      margin-bottom: 12px;
-    }
-    .step-box h4 { font-size: 15px; font-weight: 900; margin-bottom: 4px; color: #fff; }
-    .step-box p { font-size: 13px; color: var(--text-muted); }
+    .pill-green { background: var(--green-soft); color: var(--green); }
+    .pill-gold { background: var(--gold-soft); color: var(--gold); }
+    .pill-red { background: var(--red-soft); color: var(--red); }
+    .pill-blue { background: var(--blue-soft); color: var(--blue); }
+    .pill-dim { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
 
-    .tag-pill {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      background: rgba(224, 173, 72, 0.16);
-      color: var(--accent-gold);
+    /* Layout Grids */
+    .grid-2-1 { display: grid; grid-template-columns: 1.65fr 1fr; gap: 16px; margin-bottom: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+    .card-head {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 10px; margin-bottom: 14px; flex-wrap: wrap;
     }
-    .tag-pill.green { background: rgba(34, 197, 94, 0.16); color: var(--accent-green); }
-    .tag-pill.red { background: rgba(217, 56, 41, 0.18); color: #ff7b6b; }
+    .card-title { font-size: 14px; font-weight: 800; }
+    .card-sub { font-size: 12px; color: var(--muted); }
 
-    .tab-pane { display: none; }
-    .tab-pane.active { display: block; }
+    /* Native Canvas Charts */
+    .chart-wrap { position: relative; width: 100%; height: 230px; }
+    .chart-wrap canvas { width: 100%; height: 100%; display: block; }
+
+    /* Creator Funnel */
+    .funnel-step {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 13px; margin-bottom: 8px;
+    }
+    .funnel-bar-bg { width: 100%; height: 5px; background: #0c0c0f; border-radius: 999px; overflow: hidden; margin-top: 6px; }
+    .funnel-bar { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--gold), var(--green)); }
+    .alert-strip {
+      background: rgba(224, 173, 72, 0.08);
+      border: 1px solid rgba(224, 173, 72, 0.28);
+      border-radius: 10px; padding: 11px 13px; font-size: 12px; color: #ead7ad;
+      margin-top: 10px;
+    }
+
+    /* Tables */
+    .toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; flex-wrap: wrap; margin-bottom: 14px;
+    }
+    .seg {
+      display: inline-flex; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 9px; padding: 3px;
+    }
+    .seg button {
+      background: transparent; border: none; color: var(--muted);
+      font-family: inherit; font-size: 12px; font-weight: 700;
+      padding: 5px 11px; border-radius: 6px; cursor: pointer;
+    }
+    .seg button.active { background: var(--card); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+    .search-in {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px; padding: 7px 12px;
+      font-family: inherit; font-size: 12px; width: 240px; outline: none;
+    }
+    .search-in:focus { border-color: var(--gold); }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: right; }
+    th, td { padding: 11px 12px; border-bottom: 1px solid var(--border); font-size: 12.5px; vertical-align: middle; }
+    th { font-size: 11px; color: var(--muted); font-weight: 700; background: rgba(255,255,255,0.015); white-space: nowrap; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .vid-cell { display: flex; align-items: center; gap: 11px; min-width: 270px; }
+    .vid-thumb {
+      width: 58px; height: 38px; border-radius: 6px; object-fit: cover;
+      background: #000; border: 1px solid var(--border); flex-shrink: 0;
+    }
+    .vid-title { font-weight: 700; color: var(--text); text-decoration: none; display: block; line-height: 1.3; }
+    .vid-title:hover { color: var(--gold); }
+    .vid-meta { font-size: 11px; color: var(--muted); }
+
+    /* Pillar Bar Rows */
+    .pillar-row { margin-bottom: 12px; }
+    .pillar-top { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+    .pillar-track { height: 8px; background: var(--surface); border-radius: 999px; overflow: hidden; }
+    .pillar-fill { height: 100%; border-radius: 999px; }
+
+    /* Sliders (Revenue Simulator) */
+    .sim-row { margin-bottom: 16px; }
+    .sim-head { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px; }
+    .sim-head strong { font-family: var(--mono); color: var(--gold); }
+    input[type="range"] {
+      width: 100%; accent-color: var(--gold); cursor: pointer;
+    }
+    .rev-big {
+      background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(224,173,72,0.10));
+      border: 1px solid rgba(16,185,129,0.32);
+      border-radius: 12px; padding: 18px; text-align: center; margin-bottom: 14px;
+    }
+    .rev-big .amt { font-size: 36px; font-weight: 900; font-family: var(--mono); color: var(--green); }
+    .rev-split { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .rev-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 11px; text-align: center;
+    }
+    .rev-box .v { font-family: var(--mono); font-size: 16px; font-weight: 800; margin-top: 3px; }
+
+    /* Progress Bars */
+    .prog-track { width: 100%; height: 9px; background: var(--surface); border-radius: 999px; overflow: hidden; margin: 8px 0; }
+    .prog-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--gold), var(--green)); }
+
+    /* Title Scorer */
+    .scorer-in {
+      width: 100%; background: var(--surface); border: 1px solid var(--border-hi);
+      color: var(--text); padding: 11px 14px; border-radius: 9px;
+      font-family: inherit; font-size: 14px; font-weight: 600; direction: ltr; text-align: left;
+      outline: none;
+    }
+    .scorer-in:focus { border-color: var(--gold); }
+    .score-ring {
+      display: flex; align-items: center; gap: 14px; margin-top: 14px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px;
+    }
+    .score-num { font-size: 28px; font-weight: 900; font-family: var(--mono); min-width: 56px; text-align: center; }
+
     .toast {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #171310;
-      border: 1px solid var(--accent-gold);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 800;
-      z-index: 10000;
-      display: none;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.65);
+      position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+      background: #18181f; border: 1px solid var(--gold); color: #fff;
+      padding: 10px 20px; border-radius: 10px; font-size: 12.5px; font-weight: 700;
+      z-index: 999; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.65);
+    }
+
+    @media (max-width: 1024px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-2-1, .grid-2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px) {
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; position: static; border-left: none; border-bottom: 1px solid var(--border); padding: 12px; }
+      .sidebar-footer { display: none; }
+      .topbar { padding: 10px 14px; height: auto; flex-wrap: wrap; }
+      .content { padding: 16px 14px; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="logo-badge">
-      <div class="logo-icon">🧠</div>
+  <!-- CLEAN EXECUTIVE SIDEBAR -->
+  <aside>
+    <a class="brand" href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer">
+      <div class="brand-mark">MT</div>
       <div>
-        <div class="brand-title">MindTrap 3D Studio // Cloud Control</div>
-        <div class="brand-sub">
-          <span class="dot-live"></span>
-          <span id="cloudStatusText">מנוע 3D Miniature Workbench פעיל 24/7 בענן — 0% Brainrot • 0% תוכן הודי • 100% חוקי</span>
-        </div>
+        <div class="brand-name">MindTrap OS</div>
+        <div class="brand-sub"><span class="live-dot"></span><span id="syncState">מחובר לענן 24/7</span></div>
       </div>
     </a>
-    <div style="display:flex; gap:8px; flex-wrap:wrap;">
-      <button class="btn btn-gold" onclick="triggerLiveCloudSync()" id="syncBtn">🔄 סנכרן נתונים חיים מ-YouTube</button>
-      <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red">▶️ צפה בערוץ ה-YouTube החי ↗</a>
+
+    <div class="nav-label">מרכז צמיחה והכנסות</div>
+    <button class="nav-item active" onclick="openView('overview', this)">
+      <span class="ico">📊</span> סקירה ופאנל הכנסות
+    </button>
+    <button class="nav-item" onclick="openView('videos', this)">
+      <span class="ico">🎬</span> סרטונים ו-Outliers <span class="nav-badge" id="navVidCount">11</span>
+    </button>
+    <button class="nav-item" onclick="openView('revenue', this)">
+      <span class="ico">💰</span> סימולטור RPM ושיווק שותפים
+    </button>
+    <button class="nav-item" onclick="openView('pipeline', this)">
+      <span class="ico">⚡</span> תור 3D ובודק כותרות
+    </button>
+    <button class="nav-item" onclick="openView('ideas', this)">
+      <span class="ico">🛡️</span> מקורות רעיונות וחוקיות
+    </button>
+
+    <div class="sidebar-footer">
+      <div class="nav-label" style="padding-top:2px;">גישה מהירה</div>
+      <a class="ext-link" href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer"><span>ערוץ YouTube החי</span><span>↗</span></a>
+      <a class="ext-link" href="https://studio.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw" target="_blank" rel="noopener noreferrer"><span>YouTube Studio</span><span>↗</span></a>
+      <a class="ext-link" href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer"><span>GitHub Actions 3D</span><span>↗</span></a>
+      <a class="ext-link" id="sideSheetLink" href="https://docs.google.com/spreadsheets/d/13-ITmQGdetgKz-NPPceDri8Fwze5EtZG-x-3UzjWNjI/edit" target="_blank" rel="noopener noreferrer"><span>Google Sheets</span><span>↗</span></a>
+      <a class="ext-link" id="sideDriveLink" href="https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i" target="_blank" rel="noopener noreferrer"><span>Google Drive</span><span>↗</span></a>
+      <a class="ext-link" href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer"><span>AI &amp; Math Vault</span><span>↗</span></a>
+      <a class="ext-link" href="https://studytoolsreviews-a11y.github.io/stories.html" target="_blank" rel="noopener noreferrer"><span>SEO Video Archive</span><span>↗</span></a>
     </div>
-  </header>
+  </aside>
 
-  <div class="main-container">
-
-    <div class="upgrade-banner">
-      <div style="font-size:14px;">
-        <strong>✨ מנוע חדש באוויר (MindTrap 3D Workbench v3):</strong>
-        אנימציית תלת-ממד פרוצדורלית על שולחן מעבדה (Three.js + WebGL2), קריינות נעימה וברורה (<code>AndrewMultilingualNeural</code>), מוזיקת רקע אקוסטית מקורית 100%, כתוביות מינימליות נקיות (2–4 מילים עם הבלטת גלולה), ואורך טבעי של <strong>60–105 שניות</strong>!
+  <!-- MAIN WORKSPACE -->
+  <main>
+    <div class="topbar">
+      <div class="top-title" id="topHeading">סקירה ופאנל הכנסות</div>
+      <div class="countdown-pill">
+        <span>הסרטון האוטומטי הבא בעוד:</span>
+        <strong id="nextDropTimer">--:--:--</strong>
       </div>
-      <span class="tag-pill green">✅ 100% ללא זכויות יוצרים וללא עלות</span>
-    </div>
-
-    <!-- DIRECT CLOUD LAUNCHPAD -->
-    <div class="launchpad">
-      <div class="launchpad-top">
-        <div class="launchpad-title">🚀 קישורים ישירים לכל מערכות הענן שלך (לחיצה אחת)</div>
-        <div class="account-note">💡 לניהול ב-Studio או ב-GitHub ודא שאתה מחובר לחשבון: <strong>studytools.reviews@gmail.com</strong></div>
-      </div>
-      <div class="launch-grid">
-        <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red">
-          ▶️ הערוץ הציבורי ב-YouTube ↗
-        </a>
-        <a href="https://studio.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/videos/short" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          🎛️ YouTube Studio ↗
-        </a>
-        <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer" class="btn btn-purple">
-          ⚡ רובוט ה-3D בענן (GitHub Actions) ↗
-        </a>
-        <a href="https://docs.google.com/spreadsheets/d/13-ITmQGdetgKz-NPPceDri8Fwze5EtZG-x-3UzjWNjI/edit" id="sheetHeaderBtn" target="_blank" rel="noopener noreferrer" class="btn btn-green">
-          📊 גיליון הדוח היומי (Sheets) ↗
-        </a>
-        <a href="https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i" id="driveHeaderBtn" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          📁 גיבוי הסרטונים (Drive) ↗
-        </a>
-        <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          💰 דף ה-AI Vault (שותפים) ↗
-        </a>
-        <a href="https://studytoolsreviews-a11y.github.io/stories.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          🌐 ארכיון ה-SEO והווידאו (Google) ↗
-        </a>
+      <div class="top-actions">
+        <button class="btn" id="syncBtn" onclick="syncNow()">🔄 סנכרון חי</button>
+        <a class="btn btn-primary" href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer">⚡ הרץ 3D עכשיו</a>
       </div>
     </div>
 
-    <!-- REAL LIVE METRICS -->
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-label">סרטונים חיים בערוץ YouTube</div>
-        <div class="kpi-value" id="kpiVideos">10</div>
-        <div class="kpi-sub">100% MindTrap 3D Workbench • אפס Brainrot</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">סה"כ צפיות אמיתיות (YouTube)</div>
-        <div class="kpi-value" id="kpiViews" style="color:var(--accent-gold);">943</div>
-        <div class="kpi-sub" id="kpiWatchHours">שעות צפייה משוערות: 3.65h</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">לוח שידורים גלובלי (Tier-1)</div>
-        <div class="kpi-value" style="font-size:20px; color:var(--accent-green);">4 סרטוני 3D ביום 🟢</div>
-        <div class="kpi-sub">12:00 • 15:30 • 19:00 • 22:30 UTC + 16:9 בראשון</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">קליקים לדף השותפים (AI Vault)</div>
-        <div class="kpi-value" id="kpiClicks" style="color:var(--accent-cyan);">0</div>
-        <div class="kpi-sub">מעקב קליקים חי מהביו ומהתיאורים (#ad)</div>
-      </div>
-    </div>
+    <div class="content">
 
-    <!-- 4-TAB NAVIGATION -->
-    <div class="nav-tabs">
-      <button class="nav-tab active" onclick="switchTab('overview', this)">🎬 הסרטונים החיים והדוח היומי</button>
-      <button class="nav-tab" onclick="switchTab('studio3d', this)">🎨 סטודיו 3D, פורמטים ולוחות זמנים</button>
-      <button class="nav-tab" onclick="switchTab('ideas', this)">💡 מאגר רעיונות והגנה משפטית 100%</button>
-      <button class="nav-tab" onclick="switchTab('money', this)">💰 תוכנית מונטיזציה ושותפים</button>
-    </div>
-
-    <!-- TAB 1: LIVE VIDEOS & DAILY REPORT -->
-    <div id="tab-overview" class="tab-pane active">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-title">📊 דוח ביצועים יומי אוטומטי (מתעדכן בענן Google Sheets)</div>
-          <a href="https://docs.google.com/spreadsheets/d/13-ITmQGdetgKz-NPPceDri8Fwze5EtZG-x-3UzjWNjI/edit" id="sheetLinkSub" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:12px; padding:6px 12px;">פתח ב-Google Sheets ↗</a>
-        </div>
-        <div class="filter-bar">
-          <div class="filter-pills">
-            <button class="f-pill active" onclick="setFilter('all', this)">🌟 כל הימים</button>
-            <button class="f-pill" onclick="setFilter('today', this)">📅 היום</button>
-            <button class="f-pill" onclick="setFilter('yesterday', this)">📅 אתמול</button>
+      <!-- ==================== VIEW 1: EXECUTIVE OVERVIEW ==================== -->
+      <section id="view-overview" class="view active">
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">סה"כ צפיות בערוץ</span>
+              <span class="pill pill-green" id="kpiAvgPill">ממוצע --</span>
+            </div>
+            <div class="kpi-val" id="kpiViews">950</div>
+            <div class="kpi-foot"><span id="kpiVidSub">11 סרטונים חיים (2 ב-3D Studio)</span></div>
           </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:12px; color:var(--text-muted);">בחר תאריך:</span>
-            <input type="date" id="datePicker" class="date-input" onchange="applyCustomDate(this.value)">
+
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">מנויים ומסלול YPP</span>
+              <span class="pill pill-gold" id="kpiSubPct">0.1%</span>
+            </div>
+            <div class="kpi-val" id="kpiSubs">1</div>
+            <div class="kpi-foot">יעד מונטיזציה: 1,000 מנויים • <span id="kpiWatchH">4.1h צפייה</span></div>
+          </div>
+
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">הסרטון הפורץ (Outlier #1)</span>
+              <span class="pill pill-green" id="kpiOutlierX">--x 🔥</span>
+            </div>
+            <div class="kpi-val" id="kpiOutlierViews" style="font-size:22px;">--</div>
+            <div class="kpi-foot" id="kpiOutlierTitle" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">מחשב נתונים...</div>
+          </div>
+
+          <div class="card">
+            <div class="kpi-top">
+              <span class="kpi-label">משפך רווח (Vault + AdSense)</span>
+              <span class="pill pill-blue" id="kpiClickRate">0 קליקים</span>
+            </div>
+            <div class="kpi-val" id="kpiRev" style="color:var(--green);">$0.00</div>
+            <div class="kpi-foot">פוטנציאל נוכחי ב-Tier-1: <strong id="kpiRpmEst" style="color:var(--gold);">$0.12 RPM</strong></div>
           </div>
         </div>
-        <div class="table-responsive">
-          <table>
-            <thead>
-              <tr>
-                <th>תאריך</th>
-                <th>סרטונים שעלו</th>
-                <th>צפיות ביוטיוב</th>
-                <th>שעות צפייה</th>
-                <th>קליקים ל-Vault</th>
-                <th>הסרטון המוביל של היום</th>
-                <th>סינון</th>
-              </tr>
-            </thead>
-            <tbody id="dailyTableBody"></tbody>
-          </table>
-        </div>
-      </div>
 
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-title" id="videosSectionTitle">🎬 כל הסרטונים החיים בערוץ ה-YouTube שלך</div>
-          <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red" style="font-size:12px; padding:6px 14px;">פתח את הערוץ ביוטיוב ↗</a>
-        </div>
-        <div class="video-grid" id="videoGrid"></div>
-      </div>
-    </div>
-
-    <!-- TAB 2: NEW 3D STUDIO & SCHEDULE -->
-    <div id="tab-studio3d" class="tab-pane">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-title">🎨 המודל החדש: MindTrap 3D Miniature Workbench (ללא Brainrot וללא תוכן הודי)</div>
-          <span class="tag-pill green">Three.js WebGL2 + Andrew Neural TTS + FFmpeg</span>
-        </div>
-        <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px;">
-          מבוסס על ניתוח העומק של <strong>@SkygearStories</strong> (55.8M צפיות ב-17 יום) — אך מותאם <strong>100% לנושא של הערוץ שלך (MindTrap)</strong> ללא שום העתקה של מכוניות ישנות או נשק. כל סרטון בנוי כדיורמת 3D מונפשת על שולחן מעבדה מעץ ופליז, עם תאורת אולפן, חתכי זכוכית שקופים, קריינות נעימה ורגועה, כתוביות נקיות של 2–4 מילים בלבד, ואורך טבעי של <strong>60–105 שניות</strong>.
-        </p>
-
-        <div class="table-responsive" style="margin-bottom:20px;">
-          <table>
-            <thead>
-              <tr>
-                <th>קוד נישה ב-GitHub</th>
-                <th>עמוד התווך של הערוץ (MindTrap)</th>
-                <th>משקל</th>
-                <th>דיורמות 3D מונפשות שנבנו במנוע</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>mind_traps</code></td>
-                <td><strong>🧠 מלכודות תודעה והטיות פסיכולוגיות</strong></td>
-                <td>35%</td>
-                <td>דלפק פופקורן (Decoy Effect), מאזני פליז (Loss Aversion / Ben Franklin), מבוך סופרמרקט (Milk Trap), שולחן 24 צנצנות ריבה (Choice Overload), מיכל זכוכית דולף (Zeigarnik Effect).</td>
-              </tr>
-              <tr>
-                <td><code>decision_paradoxes</code></td>
-                <td><strong>♟️ פרדוקסים של החלטות, תורת המשחקים והסתברות</strong></td>
-                <td>25%</td>
-                <td>במת 3 דלתות (Monty Hall), טבעת 23 דמויות ו-253 חוטי זהב (Birthday Paradox), עיר מיניאטורית עם גשר קיצור (Braess's Paradox), מאזני תמריצים (Goodhart's Law).</td>
-              </tr>
-              <tr>
-                <td><code>money_math_traps</code></td>
-                <td><strong>💰 מלכודות כסף, תמחור ומתמטיקה יומיומית</strong></td>
-                <td>20%</td>
-                <td>מגדלי מטבעות ריבית דריבית (Compounding &amp; Rule of 72), מיכל מנויים דולף ב-9 ברזים ($9.99 Drip Illusion), קליבר פליז וקופסה מתכווצת בשקיפות (Shrinkflation Geometry).</td>
-              </tr>
-              <tr>
-                <td><code>ai_system_secrets</code></td>
-                <td><strong>🤖 איך AI, אלגוריתמים ולולאות קשב עובדים באמת</strong></td>
-                <td>20%</td>
-                <td>סמארטפון צמוד למכונת מזל שקופה (Infinite Scroll &amp; Algorithms), קוביית זכוכית מוזיאלית עם כדורי וקטור וקרני לייזר (AI Tokens &amp; Self-Attention).</td>
-              </tr>
-              <tr>
-                <td><code>longform_compilation</code></td>
-                <td><strong>🎞️ קומפילציית דוקו רחבה (16:9 Long-Form) בכל יום ראשון</strong></td>
-                <td>שבועי</td>
-                <td>מאחדת 4 פרקי 3D Workbench לסרטון רחב (1920x1080) באורך ~5–6 דקות לצבירת 4,000 שעות צפייה וקישורים לחיצים!</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="step-box">
-          <h4>🕒 לוח הזמנים הגלובלי החדש (שעות שיא ארה"ב, אירופה וישראל — ללא מכסת יתר ב-API):</h4>
-          <p>
-            • <strong>סלוט 1:</strong> <code>12:00 UTC</code> (14:00 ישראל / 08:00 ארה"ב מזרח / 12:00 בריטניה)<br>
-            • <strong>סלוט 2:</strong> <code>15:30 UTC</code> (17:30 ישראל / 11:30 ארה"ב מזרח / 15:30 בריטניה)<br>
-            • <strong>סלוט 3:</strong> <code>19:00 UTC</code> (21:00 ישראל / 15:00 ארה"ב מזרח / 19:00 פריים אירופה)<br>
-            • <strong>סלוט 4:</strong> <code>22:30 UTC</code> (00:30 ישראל / 18:30 פריים ארה"ב מזרח / 15:30 ארה"ב מערב)<br>
-            • <strong>סרטון 16:9 שבועי:</strong> כל יום ראשון ב-<code>17:00 UTC</code> (19:00 ישראל).<br>
-            <em>למה 4 ביום + 1 בראשון?</em> מכסת ה-YouTube Data API החינמית היא 10,000 יחידות ליום (העלאה = 1,600 יחידות), כך ש-4–5 העלאות משאירות מרווח ביטחון מושלם ומונעות שגיאות חסימה, וכל MP4 מוגבל אוטומטית מתחת ל-18.5MB כדי שהעלאה ל-Google Apps Script תצליח ב-100%!
-          </p>
-        </div>
-
-        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
-          <a href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer" class="btn btn-purple">
-            🚀 הפעל יצירת סרטון 3D בענן עכשיו (Run Workflow) ↗
-          </a>
-          <a href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer" class="btn btn-red">
-            ▶️ צפה בערוץ החי ↗
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 3: IDEA SOURCES & 100% LEGAL SHIELD -->
-    <div id="tab-ideas" class="tab-pane">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-title">💡 מאיפה לוקחים אינסוף רעיונות ויראליים לנושא של הערוץ (MindTrap) — 100% בחינם וכחוק</div>
-          <span class="tag-pill">מנוע idea_researcher.py מובנה בענן</span>
-        </div>
-
-        <div class="table-responsive" style="margin-bottom:20px;">
-          <table>
-            <thead>
-              <tr>
-                <th>מקור רעיונות חינמי וחוקי</th>
-                <th>מה שואבים ממנו לערוץ MindTrap</th>
-                <th>דוגמאות לנושאים שמביאים מיליוני צפיות</th>
-                <th>קישור ישיר</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Wikipedia: List of Cognitive Biases</strong></td>
-                <td>מעל 185 הטיות פסיכולוגיות מאומתות מחקרית (עובדות אינן מוגנות בזכויות יוצרים!).</td>
-                <td>Sunk Cost, Spotlight Effect, IKEA Effect, Anchoring, Halo Effect, Framing, Bystander Effect.</td>
-                <td><a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>Wikipedia: List of Paradoxes</strong></td>
-                <td>מעל 200 פרדוקסים בתורת המשחקים, הסתברות, מתמטיקה ולוגיקה.</td>
-                <td>Monty Hall, Braess's Paradox, Simpson's Paradox, Birthday Paradox, Prisoner's Dilemma, Secretary Problem.</td>
-                <td><a href="https://en.wikipedia.org/wiki/List_of_paradoxes" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>כלכלה התנהגותית וניסויים קלאסיים</strong></td>
-                <td>ניסויי אוניברסיטה מפורסמים (Kahneman &amp; Tversky, Iyengar, Skinner, Zeigarnik).</td>
-                <td>Mental Accounting, Endowment Effect, Hyperbolic Discounting, Pain of Paying, Choice Overload.</td>
-                <td><a href="https://en.wikipedia.org/wiki/Behavioral_economics" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>עקרונות AI, מערכות ואלגוריתמים</strong></td>
-                <td>הסברים ויזואליים פשוטים על טכנולוגיה שכולם משתמשים בה ולא מבינים מבפנים.</td>
-                <td>Vector Embeddings, Self-Attention, Overfitting, Shannon Entropy, Variable-Ratio Feeds, Filter Bubbles.</td>
-                <td><a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>עיצוב יומיומי חכם (Choice Architecture)</strong></td>
-                <td>התבוננות בסביבה: סופרמרקטים, תפריטי מסעדות, אריזות, מחירי .99, ממשקי אפליקציות.</td>
-                <td>Why Milk Is at the Back, Shrinkflation Cutaway, Charm Pricing, No-Clock Casino Design, Infinite Scroll.</td>
-                <td><a href="https://en.wikipedia.org/wiki/Choice_architecture" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">פתח מאגר ↗</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="step-box" style="border-right-color: var(--accent-green);">
-          <h4>🛡️ הגנה משפטית 100% — אפס זכויות יוצרים ואפס חשיפה לתביעות:</h4>
-          <p>
-            1. <strong>ויזואל 3D מקורי ב-100%:</strong> כל קובייה, זכוכית, פליז, צל וטקסטורת עץ נוצרים בזמן אמת מקוד Three.js שלנו — <strong>אפס</strong> צילומי מסך, <strong>אפס</strong> תמונות צד ג', <strong>אפס</strong> קטעי סרטים/משחקים, ו<strong>אפס</strong> לוגואים מסחריים על אובייקטים.<br>
-            2. <strong>אודיו ומוזיקה מקוריים ב-100%:</strong> מוזיקת הרקע הנעימה מסונתזת מתמטית בקוד Python (<code>ambient_audio.py</code>) — אפס Content ID ואפס תביעות מוזיקה. הקריינות מופקת מ-Microsoft Neural TTS.<br>
-            3. <strong>תסריטים נקיים מלשון הרע:</strong> כל הפרקים מדברים על תופעות מדעיות/כלכליות גנריות ("דלפק קולנוע", "אריזת מזון", "פיד חברתי") — אף פעם לא מאשימים חברה מסחרית מסוימת או אדם חי.<br>
-            4. <strong>שקיפות FTC ודיסקליימרים:</strong> פרקי מתמטיקה פיננסית כוללים גילוי נאות <code>Educational only — not financial advice</code>, וכל קישור ל-AI Vault מסומן <code>#ad</code> כחוק.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 4: MONETIZATION -->
-    <div id="tab-money" class="tab-pane">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-title">💰 מונטיזציה וצמיחה (YouTube Partner Program + AI Vault)</div>
-          <span class="tag-pill green">מנוע 60–105 שניות = RPM וזמן צפייה גבוהים בהרבה</span>
-        </div>
-
-        <div class="milestone-grid">
-          <div class="milestone-box">
-            <div style="display:flex; justify-content:space-between; font-weight:800;">
-              <span>1️⃣ מנויים לערוץ (יעד YPP מלא)</span>
-              <span style="color:var(--accent-gold);" id="monSubsText">1 / 1,000 מנויים</span>
+        <div class="grid-2-1">
+          <!-- VIEWS TREND CANVAS CHART -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">מגמת צפיות והעלאות יומית</div>
+                <div class="card-sub">נתוני אמת מסונכרנים מ-YouTube Data API (מבדיל בין Legacy למנוע 3D החדש)</div>
+              </div>
+              <div class="seg">
+                <button class="active" onclick="setChartMetric('views', this)">צפיות</button>
+                <button onclick="setChartMetric('videos', this)">סרטונים</button>
+              </div>
             </div>
-            <div class="progress-track">
-              <div class="progress-bar" id="monSubsBar" style="width: 2%;"></div>
-            </div>
-            <div style="font-size:12px; color:var(--text-muted);">
-              סרטוני 3D איכותיים מעל 60 שניות מייצרים שיעור הרשמה וזמן צפייה גבוה פי 4–8 מסרטוני 15 שניות.
+            <div class="chart-wrap">
+              <canvas id="trendCanvas"></canvas>
             </div>
           </div>
 
-          <div class="milestone-box">
-            <div style="display:flex; justify-content:space-between; font-weight:800;">
-              <span>2️⃣ צפיות Shorts ב-90 יום (או 4,000 שעות ב-16:9)</span>
-              <span style="color:var(--accent-cyan);" id="monShortsText">943 / 3,000,000</span>
+          <!-- CREATOR MONETIZATION FUNNEL -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">משפך ההכנסה שלך (Creator Funnel)</div>
+                <div class="card-sub">איפה כרגע צוואר הבקבוק להכנסה הראשונה</div>
+              </div>
             </div>
-            <div class="progress-track">
-              <div class="progress-bar" style="width: 2%;"></div>
+
+            <div class="funnel-step">
+              <div style="flex:1;">
+                <div style="display:flex; justify-content:space-between; font-size:12px;">
+                  <span>1. צפיות אורגניות (Shorts + 16:9)</span>
+                  <strong style="font-family:var(--mono);" id="fViews">950</strong>
+                </div>
+                <div class="funnel-bar-bg"><div class="funnel-bar" style="width:100%;"></div></div>
+              </div>
             </div>
-            <div style="font-size:12px; color:var(--text-muted);">
-              4 סרטוני Shorts 3D ביום + קומפילציית 16:9 בכל יום ראשון בונות את שני מסלולי המונטיזציה במקביל.
+
+            <div class="funnel-step">
+              <div style="flex:1;">
+                <div style="display:flex; justify-content:space-between; font-size:12px;">
+                  <span>2. מנויים שנרשמו לערוץ</span>
+                  <strong style="font-family:var(--mono);" id="fSubs">1</strong>
+                </div>
+                <div class="funnel-bar-bg"><div class="funnel-bar" id="fSubsBar" style="width:12%;"></div></div>
+              </div>
+            </div>
+
+            <div class="funnel-step">
+              <div style="flex:1;">
+                <div style="display:flex; justify-content:space-between; font-size:12px;">
+                  <span>3. קליקים לדף ה-Vault (#ad)</span>
+                  <strong style="font-family:var(--mono);" id="fClicks">0</strong>
+                </div>
+                <div class="funnel-bar-bg"><div class="funnel-bar" id="fClicksBar" style="width:4%;"></div></div>
+              </div>
+            </div>
+
+            <div class="funnel-step">
+              <div style="flex:1;">
+                <div style="display:flex; justify-content:space-between; font-size:12px;">
+                  <span>4. הכנסה מאומתת (YPP + CPA)</span>
+                  <strong style="font-family:var(--mono); color:var(--green);" id="fRev">$0.00</strong>
+                </div>
+                <div class="funnel-bar-bg"><div class="funnel-bar" style="width:2%;"></div></div>
+              </div>
+            </div>
+
+            <div class="alert-strip" id="bottleneckNote">
+              🎯 <strong>הפעולה הכי משתלמת כרגע:</strong> צבור 30–50 סרטוני 3D רצופים בלוח הזמנים (4 ביום) + חבר לינקי PartnerStack/Impact אישיים ב-<code>vault.html</code> כדי להמיר תנועה ל-$15–$25 להרשמה עוד לפני 1,000 מנויים.
             </div>
           </div>
         </div>
 
-        <div class="step-box">
-          <h4>🔗 קישורי ה-AI &amp; Math Vault שלך (תואם 100% לנושא MindTrap):</h4>
-          <p>
-            • דף הנחיתה החי בביו: <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" style="color:var(--accent-gold);">https://studytoolsreviews-a11y.github.io/vault.html</a><br>
-            • מחשבון הריבית דריבית וכלל ה-72 (לפרקי <code>money_math_traps</code>): <a href="https://studytoolsreviews-a11y.github.io/vault.html#finance-tools" target="_blank" style="color:var(--accent-gold);">vault.html#finance-tools</a><br>
-            • כדי שהעמלות מהכלים ייכנסו ישירות לחשבונך, הדבק את לינקי השותפים האישיים שלך מ-PartnerStack/Impact בתוך <code>docs/vault.html</code>.
-          </p>
-        </div>
-      </div>
+        <div class="grid-2">
+          <!-- PILLAR BREAKDOWN -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">ביצועים לפי עמוד תוכן (Pillar Intelligence)</div>
+                <div class="card-sub">זהה איזו קטגוריה מביאה צפיות גבוהות יותר כדי להגדיל בה תדירות</div>
+              </div>
+            </div>
+            <div id="pillarBars"></div>
+          </div>
 
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-title">🔗 הצעות פעילות ב-Vault</div>
-          <a href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="font-size:12px; padding:6px 14px;">צפה בדף ה-Vault החי ↗</a>
+          <!-- LATEST 3D RELEASES -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">שידורי 3D Studio אחרונים באוויר</div>
+                <div class="card-sub">60–105 שניות • תלת-ממד מקורי • אודיו נקי</div>
+              </div>
+              <button class="btn" onclick="openView('videos', document.querySelectorAll('.nav-item')[1])">כל הסרטונים ←</button>
+            </div>
+            <div id="latest3dList"></div>
+          </div>
         </div>
-        <div class="table-responsive">
-          <table>
-            <thead>
-              <tr>
-                <th>כלי / הצעה</th>
-                <th>רשת</th>
-                <th>עמלה</th>
-                <th>קישור מעקב חי</th>
-                <th>העתק תגובה (#ad)</th>
-              </tr>
-            </thead>
-            <tbody id="offersTableBody"></tbody>
-          </table>
+      </section>
+
+      <!-- ==================== VIEW 2: VIDEO OUTLIERS ==================== -->
+      <section id="view-videos" class="view">
+        <div class="card">
+          <div class="toolbar">
+            <div class="seg">
+              <button class="active" onclick="setVideoFilter('all', this)">הכל</button>
+              <button onclick="setVideoFilter('3d', this)">✨ 3D Studio בלבד</button>
+              <button onclick="setVideoFilter('outliers', this)">🔥 Outliers (1.5x+)</button>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <input class="search-in" id="vidSearch" placeholder="חפש כותרת או נישה..." oninput="renderVideosTable()" />
+              <select class="search-in" id="vidSort" style="width:165px;" onchange="renderVideosTable()">
+                <option value="date">מיון: הכי חדש</option>
+                <option value="views">מיון: הכי הרבה צפיות</option>
+                <option value="outlier">מיון: ציון Outlier</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>סרטון</th>
+                  <th>מנוע / נישה</th>
+                  <th>תאריך</th>
+                  <th>צפיות</th>
+                  <th>ציון Outlier</th>
+                  <th>ערך משוער (Tier-1)</th>
+                  <th>פעולות</th>
+                </tr>
+              </thead>
+              <tbody id="videosTableBody"></tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- ==================== VIEW 3: REVENUE SIMULATOR & AFFILIATE ==================== -->
+      <section id="view-revenue" class="view">
+        <div class="grid-2">
+          <!-- INTERACTIVE RPM & AFFILIATE SIMULATOR -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">סימולטור הכנסה חודשית (Shorts + 16:9 + שותפים)</div>
+                <div class="card-sub">הזז את הסליידרים לראות כמה הערוץ שווה בכל קנה מידה</div>
+              </div>
+            </div>
+
+            <div class="sim-row">
+              <div class="sim-head"><span>צפיות חודשיות ב-3D Shorts (יעד 4 ביום)</span><strong id="simShortsLbl">500,000</strong></div>
+              <input type="range" id="simShorts" min="10000" max="10000000" step="10000" value="500000" oninput="runRevenueSim()" />
+            </div>
+
+            <div class="sim-row">
+              <div class="sim-head"><span>RPM ממוצע ל-Shorts (Tier-1 ארה"ב/אירופה מעל 60 שנ')</span><strong id="simRpmLbl">$0.12</strong></div>
+              <input type="range" id="simRpm" min="0.04" max="0.25" step="0.01" value="0.12" oninput="runRevenueSim()" />
+            </div>
+
+            <div class="sim-row">
+              <div class="sim-head"><span>צפיות חודשיות בקומפילציות 16:9 (ימי ראשון)</span><strong id="simLongLbl">25,000</strong></div>
+              <input type="range" id="simLong" min="0" max="500000" step="5000" value="25000" oninput="runRevenueSim()" />
+            </div>
+
+            <div class="sim-row">
+              <div class="sim-head"><span>אחוז לחיצה ל-Vault בביו/תיאור (CTR %)</span><strong id="simCtrLbl">0.40%</strong></div>
+              <input type="range" id="simCtr" min="0.05" max="2.00" step="0.05" value="0.40" oninput="runRevenueSim()" />
+            </div>
+
+            <div class="sim-row">
+              <div class="sim-head"><span>המרה ממוצעת בשותפים ($18 CPA ממוצע)</span><strong id="simConvLbl">3.0%</strong></div>
+              <input type="range" id="simConv" min="0.5" max="10.0" step="0.5" value="3.0" oninput="runRevenueSim()" />
+            </div>
+          </div>
+
+          <!-- LIVE PROJECTION OUTPUT + YPP TRACKS -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">תחזית הכנסה חודשית נטו</div>
+                <div class="card-sub">הערכה לימודית מבוססת שוק (לא הבטחת תשואה)</div>
+              </div>
+            </div>
+
+            <div class="rev-big">
+              <div style="font-size:12px; color:var(--muted);">סה"כ פוטנציאל חודשי משולב</div>
+              <div class="amt" id="simTotalUsd">$1,290</div>
+              <div style="font-size:13px; color:var(--gold); font-family:var(--mono);" id="simTotalIls">≈ ₪4,773 / חודש</div>
+            </div>
+
+            <div class="rev-split" style="margin-bottom:18px;">
+              <div class="rev-box">
+                <div style="font-size:11px; color:var(--muted);">AdSense Shorts</div>
+                <div class="v" id="simAdsShorts">$60</div>
+              </div>
+              <div class="rev-box">
+                <div style="font-size:11px; color:var(--muted);">AdSense 16:9</div>
+                <div class="v" id="simAdsLong">$150</div>
+              </div>
+              <div class="rev-box">
+                <div style="font-size:11px; color:var(--muted);">שותפים (Vault)</div>
+                <div class="v" style="color:var(--green);" id="simAffRev">$1,080</div>
+              </div>
+            </div>
+
+            <div style="font-size:12px; font-weight:800; margin-bottom:6px;">מסלולי קבלה ל-YouTube Partner Program (YPP)</div>
+            <div style="font-size:11.5px; color:var(--muted); display:flex; justify-content:space-between;">
+              <span>מנויים (שלב ב' מלא: 1,000)</span><span id="yppSubsTxt" style="font-family:var(--mono);">1 / 1,000</span>
+            </div>
+            <div class="prog-track"><div class="prog-fill" id="yppSubsBar" style="width:2%;"></div></div>
+
+            <div style="font-size:11.5px; color:var(--muted); display:flex; justify-content:space-between; margin-top:10px;">
+              <span>צפיות Shorts ב-90 יום (יעד מוקדם: 3M)</span><span id="yppViewsTxt" style="font-family:var(--mono);">950 / 3,000,000</span>
+            </div>
+            <div class="prog-track"><div class="prog-fill" id="yppViewsBar" style="width:2%;"></div></div>
+          </div>
+        </div>
+
+        <!-- COMPACT AFFILIATE OFFERS TABLE -->
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">הצעות שותפים פעילות ב-Vault (להעתקה מהירה עם #ad)</div>
+              <div class="card-sub">החלף את הלינקים ב-<code>docs/vault.html</code> בלינקים האישיים שלך מ-PartnerStack / Impact</div>
+            </div>
+            <a class="btn" href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer">פתח Vault ↗</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>כלי</th><th>רשת</th><th>עמלה</th><th>קישור מעקב</th><th>תגובה נעוצה</th></tr>
+              </thead>
+              <tbody id="offersBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 4: 3D PIPELINE & TITLE SCORER ==================== -->
+      <section id="view-pipeline" class="view">
+        <div class="grid-2">
+          <!-- VIDIQ-STYLE LIVE TITLE SCORER -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">בודק כותרות והוקים (vidIQ-Style Pre-Publish Scorer)</div>
+                <div class="card-sub">בדוק כותרת באנגלית לפני פרסום — אופטימיזציה ל-CTR ו-Tier-1</div>
+              </div>
+            </div>
+            <input class="scorer-in" id="titleInput" value="Why the Medium Popcorn Exists (And It Is Not For You) #shorts #psychology" oninput="scoreTitle()" />
+            <div class="score-ring">
+              <div class="score-num" id="scoreNum" style="color:var(--green);">94</div>
+              <div id="scoreFeedback" style="font-size:12px; color:var(--muted);"></div>
+            </div>
+          </div>
+
+          <!-- AUTOMATED CLOUD SCHEDULE -->
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">לוח שידורים אוטומטי בענן (GitHub Actions 24/7)</div>
+                <div class="card-sub">מנוע 4 ליבות מקבילי • MP4 מוגבל ל-18.5MB • אפס תלות במחשב</div>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>סלוט</th><th>שעון UTC</th><th>שעון ישראל</th><th>שיא קהל</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>#1</strong></td><td><code>12:00</code></td><td>14:00</td><td>בוקר ארה"ב מזרח / צהריים UK</td></tr>
+                  <tr><td><strong>#2</strong></td><td><code>15:30</code></td><td>17:30</td><td>צהריים ארה"ב / אחה"צ אירופה</td></tr>
+                  <tr><td><strong>#3</strong></td><td><code>19:00</code></td><td>21:00</td><td>אחה"צ ארה"ב / פריים בריטניה</td></tr>
+                  <tr><td><strong>#4</strong></td><td><code>22:30</code></td><td>00:30</td><td>פריים ארה"ב מזרח + מערב</td></tr>
+                  <tr><td><strong>16:9</strong></td><td><code>ראשון 17:00</code></td><td>ראשון 19:00</td><td>קומפילציית דוקו 4 פרקים (4,000 שעות)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14-EPISODE 3D STUDIO QUEUE -->
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">תור הפרקים והדיורמות התלת-ממדיות בקטלוג (14 פרקים • 12 דיורמות)</div>
+              <div class="card-sub">הרובוט בענן בוחר אוטומטית את הפרק הבא שטרם שודר (אפס כפילויות)</div>
+            </div>
+            <a class="btn btn-primary" href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer">⚡ הרץ פרק עכשיו ↗</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>סטטוס</th><th>כותרת הפרק</th><th>עמוד תווך</th><th>דיורמת 3D</th></tr></thead>
+              <tbody id="queueBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 5: IDEA SOURCES & LEGAL SHIELD ==================== -->
+      <section id="view-ideas" class="view">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">מאגרי רעיונות חינמיים לערוץ MindTrap</div>
+                <div class="card-sub">עובדות ותופעות מדעיות אינן מוגנות בזכויות יוצרים — מאות רעיונות מוכנים</div>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>מאגר</th><th>היקף</th><th>קישור</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Cognitive Biases (Wikipedia)</strong></td><td>185+ הטיות</td><td><a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases" target="_blank" style="color:var(--gold);">פתח ↗</a></td></tr>
+                  <tr><td><strong>Logic &amp; Math Paradoxes</strong></td><td>200+ פרדוקסים</td><td><a href="https://en.wikipedia.org/wiki/List_of_paradoxes" target="_blank" style="color:var(--gold);">פתח ↗</a></td></tr>
+                  <tr><td><strong>Behavioral Economics</strong></td><td>ניסויים קלאסיים</td><td><a href="https://en.wikipedia.org/wiki/Behavioral_economics" target="_blank" style="color:var(--gold);">פתח ↗</a></td></tr>
+                  <tr><td><strong>Choice Architecture</strong></td><td>עיצוב התנהגותי</td><td><a href="https://en.wikipedia.org/wiki/Choice_architecture" target="_blank" style="color:var(--gold);">פתח ↗</a></td></tr>
+                  <tr><td><strong>AI &amp; Transformers</strong></td><td>אלגוריתמים ו-AI</td><td><a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)" target="_blank" style="color:var(--gold);">פתח ↗</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">סטטוס הגנה משפטית וזכויות יוצרים</div>
+                <div class="card-sub">אפס תלות במדיה צד ג' — 100% בעלות מלאה שלך</div>
+              </div>
+              <span class="pill pill-green">100% מאומת</span>
+            </div>
+            <div class="funnel-step"><span>🎨 ויזואל 3D פרוצדורלי מקוד Three.js בלבד (אפס תמונות/לוגואים צד ג')</span><span class="pill pill-green">עבר</span></div>
+            <div class="funnel-step"><span>🎵 מוזיקת רקע אקוסטית מסונתזת מתמטית בקוד (אפס Content ID)</span><span class="pill pill-green">עבר</span></div>
+            <div class="funnel-step"><span>🎙️ קריינות Neural TTS נקייה ללא חיקוי קול של אנשים מפורסמים</span><span class="pill pill-green">עבר</span></div>
+            <div class="funnel-step"><span>⚖️ תסריטים גנריים מבוססי מדע ללא האשמת מותגים או לשון הרע</span><span class="pill pill-green">עבר</span></div>
+            <div class="funnel-step"><span>📜 גילוי נאות FTC (#ad) ודיסקליימר לימודי בפרקי כסף</span><span class="pill pill-green">עבר</span></div>
+          </div>
+        </div>
+      </section>
+
     </div>
-
-  </div>
+  </main>
 
   <div id="toast" class="toast"></div>
 
@@ -749,272 +780,527 @@
     const CLOUD_GAS_URL = "https://script.google.com/macros/s/AKfycbz16N_x28Ih9sHwVWgeQAg4e4f3WduqvjgTe1c8E-zSbP3QryOyaOpay0nu4Lmlaa1cCw/exec";
     const LIVE_VAULT_URL = "https://studytoolsreviews-a11y.github.io/vault.html";
 
-    const FALLBACK_DATA = {
+    const STUDIO_QUEUE = [
+      { title: "Why the Medium Popcorn Exists (And It Is Not For You)", niche: "mind_traps", diorama: "decoy_counter" },
+      { title: "Why Switching Doors Doubles Your Odds (The Monty Hall Trap)", niche: "decision_paradoxes", diorama: "monty_doors" },
+      { title: "Why Losing $100 Hurts Twice As Much As Winning $100", niche: "mind_traps", diorama: "balance_scale" },
+      { title: "Why the Milk Is Always Hidden at the Very Back of the Store", niche: "mind_traps", diorama: "supermarket_maze" },
+      { title: "Why 6 Jars of Jam Outsold 24 Jars by 10 to 1", niche: "mind_traps", diorama: "jam_table" },
+      { title: "Why Asking a Small Favor Wins People Over Faster Than Giving One", niche: "mind_traps", diorama: "balance_scale" },
+      { title: "Why Unfinished Tasks Drain Your Brain All Day (The Zeigarnik Effect)", niche: "mind_traps", diorama: "drip_tank" },
+      { title: "Why Just 23 People Guarantee a 50% Birthday Match", niche: "decision_paradoxes", diorama: "birthday_ring" },
+      { title: "Why Building a New Road Can Actually Make Traffic Worse", niche: "decision_paradoxes", diorama: "traffic_bridge" },
+      { title: "Why Paying for the Wrong Metric Always Backfires (Goodhart's Law)", niche: "decision_paradoxes", diorama: "balance_scale" },
+      { title: "Why Starting 10 Years Earlier Beats Investing Twice As Much Later", niche: "money_math_traps", diorama: "coin_compound" },
+      { title: "How $9.99 Subscriptions Silently Drain Thousands (The Drip Illusion)", niche: "money_math_traps", diorama: "drip_tank" },
+      { title: "The Geometry Trick Behind Shrinkflation (Why Boxes Look Identical)", niche: "money_math_traps", diorama: "shrink_box" },
+      { title: "The 500-Year-Old Mental Math Shortcut (The Rule of 72)", niche: "money_math_traps", diorama: "coin_compound" },
+      { title: "How Pull-to-Refresh Works Like a Mechanical Slot Machine", niche: "ai_system_secrets", diorama: "slot_scroll" },
+      { title: "How AI Actually Reads Words (Inside the Vector Cube)", niche: "ai_system_secrets", diorama: "neural_cube" },
+      { title: "The One Discovery That Made Modern AI Possible (Self-Attention)", niche: "ai_system_secrets", diorama: "neural_cube" },
+      { title: "How Algorithms Map Your Brain Even When You Never Hit Like", niche: "ai_system_secrets", diorama: "slot_scroll" }
+    ];
+
+    const OFFERS = [
+      { name: "MindTrap AI & Math Vault", net: "Direct Hub", pay: "$15–$25 CPA", url: LIVE_VAULT_URL, comment: `Free AI, Study & Decision Tools Vault (#ad): ${LIVE_VAULT_URL}` },
+      { name: "Notion AI Workspace", net: "PartnerStack", pay: "$25 CPA", url: `${LIVE_VAULT_URL}?offer=ai-tool`, comment: `Close open mental loops & organize notes with Notion AI (#ad): ${LIVE_VAULT_URL}?offer=ai-tool` },
+      { name: "Rows AI Spreadsheets", net: "Impact", pay: "$15 CPA", url: `${LIVE_VAULT_URL}?offer=ai-excel`, comment: `AI Spreadsheet Assistant (#ad): ${LIVE_VAULT_URL}?offer=ai-excel` },
+      { name: "Gamma AI Slides", net: "PartnerStack", pay: "$20 CPA", url: `${LIVE_VAULT_URL}?offer=ai-slides`, comment: `Build clean decks fast with Gamma AI (#ad): ${LIVE_VAULT_URL}?offer=ai-slides` },
+      { name: "Compounding & Rule of 72 Tool", net: "Interactive", pay: "$15 CPA", url: `${LIVE_VAULT_URL}#finance-tools`, comment: `Free Compounding & Rule of 72 Calculator (Educational only) (#ad): ${LIVE_VAULT_URL}#finance-tools` }
+    ];
+
+    const FALLBACK = {
       status: "success",
-      sheet_url: "https://docs.google.com/spreadsheets/d/13-ITmQGdetgKz-NPPceDri8Fwze5EtZG-x-3UzjWNjI/edit",
-      drive_folder_url: "https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i",
-      channel_url: "https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts",
       channel_subscribers: 1,
-      total_videos: 9,
-      total_views: 943,
+      total_videos: 11,
+      total_views: 950,
       total_clicks: 0,
-      total_revenue_usd: 0.0,
+      total_revenue_usd: 0,
       daily_summaries: [
-        { date: "2026-11-18", videos_count: 4, views: 4, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts" },
-        { date: "2026-11-17", videos_count: 5, views: 939, clicks: 0, ctr: "0.00%", revenue: 0, top_video: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts" }
+        { date: "2026-11-19", videos_count: 2, views: 7, clicks: 0 },
+        { date: "2026-11-18", videos_count: 4, views: 5, clicks: 0 },
+        { date: "2026-11-17", videos_count: 5, views: 938, clicks: 0 }
       ],
       videos: [
-        { date: "2026-11-18", title: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts", niche: "legacy", persona: "deep_authority", views: 2, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/zIOnMNxZSig", drive_url: "https://drive.google.com/file/d/1bCQc2dI_RPGUQD01ricxwoTLxVUA23j3/view?usp=drivesdk" },
-        { date: "2026-11-18", title: "What If You Touched A Teaspoon of a Neutron Star? #shorts", niche: "legacy", persona: "deep_authority", views: 1, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/wHO7DKSQ8po", drive_url: "https://drive.google.com/file/d/1HGPBWA5GhVGGgs0J9sZ8A2zcSyr79GxL/view?usp=drivesdk" },
-        { date: "2026-11-17", title: "The Ben Franklin Effect Explained (Social Psychology) #shorts", niche: "mind_traps", persona: "deep_authority", views: 351, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/rPDNCdQeUl8", drive_url: "https://drive.google.com/file/d/1AgYPhG8jJ2N3tENm2aXM2KtDY-QN1me-/view?usp=drivesdk" },
-        { date: "2026-11-17", title: "Best Free AI Tool for Excel Formulas #shorts", niche: "ai_system_secrets", persona: "deep_authority", views: 39, clicks: 0, revenue: 0, youtube_url: "https://www.youtube.com/shorts/idAnI2EpSg8", drive_url: "https://drive.google.com/file/d/1VMtMRgKe3VuEBKeXKydoXXLTHfFzJ01t/view?usp=drivesdk" }
+        { date: "2026-11-19", title: "Why Switching Doors Doubles Your Odds (The Monty Hall Trap) #shorts #math #probability #mindtrap", niche: "decision_paradoxes", views: 0, youtube_url: "https://www.youtube.com/shorts/HM8EnphUE7M", drive_url: "https://drive.google.com/file/d/1Wh-8UqeM9iTRNht9sLAPN5mtFYW0YBA6/view?usp=drivesdk" },
+        { date: "2026-11-19", title: "Why the Medium Popcorn Exists (And It Is Not For You) #shorts #psychology #mindtrap", niche: "mind_traps", views: 0, youtube_url: "https://www.youtube.com/shorts/BMyafgyHPd0", drive_url: "" },
+        { date: "2026-11-18", title: "India's Chenab Bridge Is Taller Than The Eiffel Tower! #shorts", niche: "legacy", views: 2, youtube_url: "https://www.youtube.com/shorts/zIOnMNxZSig", drive_url: "" },
+        { date: "2026-11-18", title: "What If You Touched A Teaspoon of a Neutron Star? #shorts", niche: "legacy", views: 2, youtube_url: "https://www.youtube.com/shorts/wHO7DKSQ8po", drive_url: "" },
+        { date: "2026-11-17", title: "The Ben Franklin Trick to Make ANYONE Like You #shorts #psychology", niche: "mind_traps", views: 351, youtube_url: "https://www.youtube.com/shorts/rPDNCdQeUl8", drive_url: "" },
+        { date: "2026-11-17", title: "Best Free AI Tool for Excel Formulas #shorts #aitools", niche: "ai_system_secrets", views: 39, youtube_url: "https://www.youtube.com/shorts/idAnI2EpSg8", drive_url: "" },
+        { date: "2026-11-17", title: "Would You Rather: 300 IQ (Mute) OR Know Everyone's Secrets? #shorts", niche: "legacy", views: 540, youtube_url: "https://www.youtube.com/shorts/tB2YDoHWDJc", drive_url: "" }
       ]
     };
 
-    const AFFILIATE_OFFERS = [
-      { slug: "vault", name: "MindTrap & StudyTools AI Vault (דף הבית)", network: "Direct Hub", payout: "$15–$25 CPA", url: LIVE_VAULT_URL, comment: `Free AI, Study & Decision Tools Vault (#ad): ${LIVE_VAULT_URL}` },
-      { slug: "ai-tool", name: "Notion AI Workspace", network: "PartnerStack", payout: "$25 CPA", url: `${LIVE_VAULT_URL}?offer=ai-tool`, comment: `Close open mental loops & organize notes with Notion AI (#ad): ${LIVE_VAULT_URL}?offer=ai-tool` },
-      { slug: "ai-excel", name: "Rows AI Spreadsheet Assistant", network: "Impact", payout: "$15 CPA", url: `${LIVE_VAULT_URL}?offer=ai-excel`, comment: `AI Spreadsheet Assistant featured in our Vault (#ad): ${LIVE_VAULT_URL}?offer=ai-excel` },
-      { slug: "ai-slides", name: "Gamma AI Presentations", network: "PartnerStack", payout: "$20 CPA", url: `${LIVE_VAULT_URL}?offer=ai-slides`, comment: `Build clean presentations fast with Gamma AI (#ad): ${LIVE_VAULT_URL}?offer=ai-slides` },
-      { slug: "wealth-guide", name: "Compounding & Rule of 72 Calculator", network: "Interactive Vault", payout: "$15 CPA", url: `${LIVE_VAULT_URL}#finance-tools`, comment: `Try our free Compounding & Rule of 72 Calculator (Educational only, not financial advice) (#ad): ${LIVE_VAULT_URL}#finance-tools` }
-    ];
+    let data = FALLBACK;
+    let chartMetric = 'views';
+    let videoFilter = 'all';
 
-    let cloudData = FALLBACK_DATA;
-    let currentFilterDay = "all";
+    const VIEW_TITLES = {
+      overview: 'סקירה ופאנל הכנסות',
+      videos: 'ניתוח סרטונים ו-Outliers',
+      revenue: 'סימולטור RPM ושיווק שותפים',
+      pipeline: 'תור 3D ובודק כותרות',
+      ideas: 'מקורות רעיונות והגנה משפטית'
+    };
 
-    function escapeHtml(str) {
-      return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    function esc(s) {
+      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
 
-    function extractYtId(url) {
-      if (!url) return '';
-      const m = String(url).match(/(?:shorts\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    function ytId(url) {
+      const m = String(url || '').match(/(?:shorts\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
       return m ? m[1] : '';
     }
 
-    function isNew3DNiche(niche) {
-      return ['mind_traps', 'decision_paradoxes', 'money_math_traps', 'ai_system_secrets', 'longform_compilation'].includes(String(niche || ''));
+    function is3DVideo(v) {
+      const n = String(v.niche || '');
+      const t = String(v.title || '').toLowerCase();
+      return ['mind_traps','decision_paradoxes','money_math_traps','ai_system_secrets','longform_compilation'].includes(n)
+        || t.includes('#mindtrap') || t.includes('popcorn') || t.includes('monty hall');
     }
 
-    function switchTab(tabId, btnEl) {
-      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-' + tabId).classList.add('active');
-      if (btnEl) btnEl.classList.add('active');
+    function openView(id, btn) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+      document.getElementById('view-' + id).classList.add('active');
+      if (btn) btn.classList.add('active');
+      document.getElementById('topHeading').innerText = VIEW_TITLES[id] || '';
+      if (id === 'overview') setTimeout(drawTrendChart, 20);
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      renderEverything();
-      renderOffersTable();
-      fetchLiveStats();
-    });
+    function updateCountdown() {
+      const now = new Date();
+      const slotsUtc = [12 * 60, 15 * 60 + 30, 19 * 60, 22 * 60 + 30];
+      const nowMin = now.getUTCHours() * 60 + now.getUTCMinutes();
+      let nextMin = slotsUtc.find(m => m > nowMin);
+      let diffSec = 0;
+      if (nextMin !== undefined) {
+        diffSec = (nextMin - nowMin) * 60 - now.getUTCSeconds();
+      } else {
+        diffSec = (24 * 60 - nowMin + slotsUtc[0]) * 60 - now.getUTCSeconds();
+      }
+      const h = String(Math.floor(diffSec / 3600)).padStart(2, '0');
+      const m = String(Math.floor((diffSec % 3600) / 60)).padStart(2, '0');
+      const s = String(diffSec % 60).padStart(2, '0');
+      document.getElementById('nextDropTimer').innerText = `${h}:${m}:${s}`;
+    }
 
-    async function fetchLiveStats() {
+    async function fetchLive() {
       if (typeof google !== 'undefined' && google.script && google.script.run) {
-        google.script.run.withSuccessHandler(function(json) {
-          if (json && json.videos) {
-            cloudData = json;
-            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול YouTube & MindTrap 3D Cloud (24/7)";
-            renderEverything();
-          }
+        google.script.run.withSuccessHandler(j => {
+          if (j && j.videos) { data = j; document.getElementById('syncState').innerText = 'חי מול YouTube API'; renderAll(); }
         }).getFullAnalyticsData();
         return;
       }
       try {
         const res = await fetch(CLOUD_GAS_URL + '?action=stats', { credentials: 'omit' });
         if (res.ok) {
-          const json = await res.json();
-          if (json && json.videos) {
-            cloudData = json;
-            document.getElementById('cloudStatusText').innerText = "מסונכרן בלייב מול YouTube & MindTrap 3D Cloud (24/7)";
-            renderEverything();
+          const j = await res.json();
+          if (j && j.videos) {
+            data = j;
+            document.getElementById('syncState').innerText = 'חי מול YouTube API';
+            renderAll();
           }
         }
-      } catch (e) {
-        console.log('Using embedded snapshot.');
-      }
+      } catch (e) {}
     }
 
-    async function triggerLiveCloudSync() {
+    async function syncNow() {
       const btn = document.getElementById('syncBtn');
-      btn.innerText = "⏳ מסנכרן מול YouTube...";
       btn.disabled = true;
+      btn.innerText = '⏳ מסנכרן...';
       try {
-        const res = await fetch(CLOUD_GAS_URL + '?action=sync_channel', { credentials: 'omit' });
-        if (res.ok) {
-          showToast("✅ הסנכרון מול ערוץ ה-YouTube הצליח!");
-          await fetchLiveStats();
-        }
-      } catch (err) {
-        showToast("הנתונים מעודכנים מול הענן.");
+        await fetch(CLOUD_GAS_URL + '?action=sync_channel', { credentials: 'omit' });
+        await fetchLive();
+        toast('✅ הנתונים סונכרנו בהצלחה מול YouTube');
+      } catch (e) {
+        toast('הנתונים מעודכנים מול הענן');
       } finally {
-        btn.innerText = "🔄 סנכרן נתונים חיים מ-YouTube";
         btn.disabled = false;
+        btn.innerText = '🔄 סנכרון חי';
       }
     }
 
-    function renderEverything() {
-      if (!cloudData) return;
-      if (cloudData.sheet_url) {
-        document.getElementById('sheetHeaderBtn').href = cloudData.sheet_url;
-        document.getElementById('sheetLinkSub').href = cloudData.sheet_url;
-      }
-      if (cloudData.drive_folder_url) {
-        document.getElementById('driveHeaderBtn').href = cloudData.drive_folder_url;
-      }
-
-      const subs = Number(cloudData.channel_subscribers || 1);
-      const totalViews = Number(cloudData.total_views || 943);
-      document.getElementById('monSubsText').innerText = subs.toLocaleString() + " / 1,000 מנויים";
-      document.getElementById('monSubsBar').style.width = Math.max(2, Math.min(100, (subs / 1000) * 100)) + "%";
-      document.getElementById('monShortsText').innerText = totalViews.toLocaleString() + " / 3,000,000";
-
-      renderDailyTable();
-      renderKPIs();
-      renderVideos();
+    function getChannelBaseline(videos) {
+      const nonZero = videos.map(v => Number(v.views) || 0).filter(x => x > 0).sort((a,b) => a - b);
+      if (nonZero.length === 0) return 10;
+      const mid = Math.floor(nonZero.length / 2);
+      const median = nonZero.length % 2 ? nonZero[mid] : (nonZero[mid - 1] + nonZero[mid]) / 2;
+      const mean = nonZero.reduce((a,b) => a + b, 0) / nonZero.length;
+      return Math.max(5, Math.round((median + mean) / 2));
     }
 
-    function renderDailyTable() {
-      const tbody = document.getElementById('dailyTableBody');
-      const summaries = cloudData.daily_summaries || [];
-      if (summaries.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">טרם הופקו סרטונים</td></tr>';
-        return;
+    function renderAll() {
+      const vids = data.videos || [];
+      const totalViews = Number(data.total_views) || vids.reduce((a,v) => a + (Number(v.views) || 0), 0);
+      const totalVids = Number(data.total_videos) || vids.length;
+      const subs = Number(data.channel_subscribers || 1);
+      const clicks = Number(data.total_clicks || 0);
+      const rev = Number(data.total_revenue_usd || 0);
+      const avg = totalVids ? Math.round(totalViews / totalVids) : 0;
+      const count3d = vids.filter(is3DVideo).length;
+      const baseline = getChannelBaseline(vids);
+
+      if (data.sheet_url) document.getElementById('sideSheetLink').href = data.sheet_url;
+      if (data.drive_folder_url) document.getElementById('sideDriveLink').href = data.drive_folder_url;
+
+      document.getElementById('navVidCount').innerText = totalVids;
+      document.getElementById('kpiViews').innerText = totalViews.toLocaleString();
+      document.getElementById('kpiAvgPill').innerText = `ממוצע ${avg}/וידאו`;
+      document.getElementById('kpiVidSub').innerText = `${totalVids} סרטונים חיים (${count3d} ב-3D Studio)`;
+
+      document.getElementById('kpiSubs').innerText = subs.toLocaleString();
+      document.getElementById('kpiSubPct').innerText = `${((subs / 1000) * 100).toFixed(1)}%`;
+      document.getElementById('kpiWatchH').innerText = `${((totalViews * 20) / 3600).toFixed(1)}h צפייה`;
+
+      // Best outlier video
+      const sortedByViews = vids.slice().sort((a,b) => (Number(b.views)||0) - (Number(a.views)||0));
+      const top = sortedByViews[0];
+      if (top) {
+        const mult = ((Number(top.views) || 0) / baseline).toFixed(1);
+        document.getElementById('kpiOutlierX').innerText = `${mult}x 🔥`;
+        document.getElementById('kpiOutlierViews').innerText = `${(Number(top.views)||0).toLocaleString()} צפיות`;
+        document.getElementById('kpiOutlierTitle').innerText = String(top.title || '').split('#')[0].trim();
       }
-      tbody.innerHTML = summaries.map(s => {
-        const views = Number(s.views) || 0;
-        const watchHours = ((views * 22.0) / 3600).toFixed(2);
+
+      document.getElementById('kpiRev').innerText = `$${rev.toFixed(2)}`;
+      document.getElementById('kpiClickRate').innerText = `${clicks} קליקים`;
+
+      // Funnel & YPP
+      document.getElementById('fViews').innerText = totalViews.toLocaleString();
+      document.getElementById('fSubs').innerText = subs.toLocaleString();
+      document.getElementById('fClicks').innerText = clicks.toLocaleString();
+      document.getElementById('fRev').innerText = `$${rev.toFixed(2)}`;
+      document.getElementById('fSubsBar').style.width = `${Math.max(4, Math.min(100, (subs / Math.max(1, totalViews)) * 800))}%`;
+      document.getElementById('fClicksBar').style.width = `${Math.max(3, Math.min(100, (clicks / Math.max(1, totalViews)) * 600))}%`;
+
+      document.getElementById('yppSubsTxt').innerText = `${subs.toLocaleString()} / 1,000`;
+      document.getElementById('yppSubsBar').style.width = `${Math.max(2, Math.min(100, (subs / 1000) * 100))}%`;
+      document.getElementById('yppViewsTxt').innerText = `${totalViews.toLocaleString()} / 3,000,000`;
+      document.getElementById('yppViewsBar').style.width = `${Math.max(2, Math.min(100, (totalViews / 3000000) * 100))}%`;
+
+      renderPillarBars(vids);
+      renderLatest3D(vids);
+      renderVideosTable();
+      renderQueue(vids);
+      drawTrendChart();
+    }
+
+    function renderPillarBars(vids) {
+      const groups = {
+        'Mind Traps (פסיכולוגיה)': { views: 0, count: 0, color: '#e0ad48' },
+        'Decision Paradoxes (פרדוקסים)': { views: 0, count: 0, color: '#10b981' },
+        'Money & Math Traps': { views: 0, count: 0, color: '#3b82f6' },
+        'AI & Systems': { views: 0, count: 0, color: '#8b5cf6' },
+        'Legacy (ישן — הופסק)': { views: 0, count: 0, color: '#52525b' }
+      };
+      vids.forEach(v => {
+        const n = String(v.niche || '');
+        const t = String(v.title || '').toLowerCase();
+        let key = 'Legacy (ישן — הופסק)';
+        if (n === 'mind_traps' || t.includes('popcorn') || t.includes('ben franklin')) key = 'Mind Traps (פסיכולוגיה)';
+        else if (n === 'decision_paradoxes' || t.includes('monty')) key = 'Decision Paradoxes (פרדוקסים)';
+        else if (n === 'money_math_traps') key = 'Money & Math Traps';
+        else if (n === 'ai_system_secrets' || n === 'ai_tools') key = 'AI & Systems';
+        groups[key].views += Number(v.views) || 0;
+        groups[key].count += 1;
+      });
+      const maxViews = Math.max(10, ...Object.values(groups).map(g => g.views));
+      document.getElementById('pillarBars').innerHTML = Object.entries(groups).map(([label, g]) => {
+        const pct = Math.max(g.count ? 6 : 0, Math.round((g.views / maxViews) * 100));
         return `
-          <tr>
-            <td><strong style="color:var(--accent-gold); font-family:'JetBrains Mono',monospace;">${escapeHtml(s.date)}</strong></td>
-            <td>${Number(s.videos_count) || 0} סרטונים</td>
-            <td><strong>${views.toLocaleString()}</strong></td>
-            <td>${watchHours} שעות</td>
-            <td>${Number(s.clicks) || 0}</td>
-            <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis;" title="${escapeHtml(s.top_video || '')}">${escapeHtml(s.top_video || '-')}</td>
-            <td><button class="btn btn-outline" style="padding:4px 10px; font-size:11px;" onclick="applyCustomDate('${escapeHtml(s.date)}')">הצג יום זה</button></td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    function renderKPIs() {
-      const summaries = cloudData.daily_summaries || [];
-      let vCount = 0, views = 0, clicks = 0;
-
-      if (currentFilterDay === 'all') {
-        vCount = cloudData.total_videos || 0;
-        views = cloudData.total_views || 0;
-        clicks = cloudData.total_clicks || 0;
-      } else {
-        const found = summaries.find(s => s.date === currentFilterDay);
-        if (found) {
-          vCount = found.videos_count;
-          views = found.views;
-          clicks = found.clicks;
-        }
-      }
-
-      const watchHours = ((views * 22.0) / 3600).toFixed(2);
-      document.getElementById('kpiVideos').innerText = vCount;
-      document.getElementById('kpiViews').innerText = views.toLocaleString();
-      document.getElementById('kpiWatchHours').innerText = 'שעות צפייה משוערות: ' + watchHours + 'h';
-      document.getElementById('kpiClicks').innerText = clicks;
-    }
-
-    function renderVideos() {
-      const grid = document.getElementById('videoGrid');
-      const allVideos = (cloudData.videos || []).slice().reverse().sort((a, b) => String(b.timestamp || b.date || '').localeCompare(String(a.timestamp || a.date || '')));
-      let filtered = allVideos;
-
-      if (currentFilterDay !== 'all') {
-        filtered = allVideos.filter(v => (v.date || '').substring(0, 10) === currentFilterDay);
-        document.getElementById('videosSectionTitle').innerText = `🎬 סרטונים מתאריך ${currentFilterDay} (${filtered.length} סרטונים)`;
-      } else {
-        document.getElementById('videosSectionTitle').innerText = `🎬 כל הסרטונים החיים בערוץ ה-YouTube שלך (${filtered.length} סרטונים)`;
-      }
-
-      if (filtered.length === 0) {
-        grid.innerHTML = '<div style="color:var(--text-muted); padding:20px;">לא נמצאו סרטונים לתאריך שנבחר.</div>';
-        return;
-      }
-
-      grid.innerHTML = filtered.map(v => {
-        const views = Number(v.views) || 0;
-        const ytId = extractYtId(v.youtube_url);
-        const thumbUrl = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : '';
-        const badge3d = isNew3DNiche(v.niche) ? '<span class="v-badge-3d">✨ 3D Studio</span>' : '';
-        return `
-          <div class="v-card">
-            <a href="${escapeHtml(v.youtube_url || 'https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts')}" target="_blank" rel="noopener noreferrer" class="v-thumb">
-              ${thumbUrl ? `<img src="${thumbUrl}" alt="YouTube Short" loading="lazy">` : `<div style="font-size:36px;">▶️</div>`}
-              ${badge3d}
-              <span class="v-badge-live">🟢 חי ב-YouTube</span>
-            </a>
-            <div class="v-body">
-              <div class="v-title">${escapeHtml(v.title || 'MindTrap 3D Short')}</div>
-              <div class="v-stats-row">
-                <span>📅 ${escapeHtml(v.date || '')} • ${escapeHtml(v.niche || '')}</span>
-                <span>👁️ <strong style="color:var(--accent-gold);">${views.toLocaleString()}</strong> צפיות</span>
-              </div>
-              <div style="display:flex; gap:8px; margin-top:auto;">
-                ${v.youtube_url ? `<a href="${escapeHtml(v.youtube_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-red" style="flex:1; font-size:12px; padding:8px;">▶️ צפה ב-YouTube ↗</a>` : ''}
-                ${v.drive_url ? `<a href="${escapeHtml(v.drive_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:12px; padding:8px 12px;">📁 Drive ↗</a>` : ''}
-              </div>
+          <div class="pillar-row">
+            <div class="pillar-top">
+              <span><strong>${label}</strong> <span style="color:var(--muted);">(${g.count} סרטונים)</span></span>
+              <span style="font-family:var(--mono);">${g.views.toLocaleString()} צפיות</span>
             </div>
+            <div class="pillar-track"><div class="pillar-fill" style="width:${pct}%; background:${g.color};"></div></div>
           </div>
         `;
       }).join('');
     }
 
-    function renderOffersTable() {
-      const tbody = document.getElementById('offersTableBody');
-      tbody.innerHTML = AFFILIATE_OFFERS.map((o, idx) => `
+    function renderLatest3D(vids) {
+      const list = vids.filter(is3DVideo).slice().sort((a,b) => String(b.date||'').localeCompare(String(a.date||''))).slice(0, 4);
+      if (!list.length) {
+        document.getElementById('latest3dList').innerHTML = '<div style="color:var(--muted); font-size:12px;">ממתין לסרטון ה-3D הבא מהענן...</div>';
+        return;
+      }
+      document.getElementById('latest3dList').innerHTML = list.map(v => {
+        const id = ytId(v.youtube_url);
+        const thumb = id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : '';
+        return `
+          <div class="funnel-step" style="gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+              ${thumb ? `<img src="${thumb}" class="vid-thumb" alt="thumb" loading="lazy" />` : ''}
+              <div style="min-width:0;">
+                <a class="vid-title" style="font-size:12.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" href="${esc(v.youtube_url)}" target="_blank" rel="noopener noreferrer">${esc(String(v.title||'').split('#')[0])}</a>
+                <div class="vid-meta">${esc(v.date)} • <span style="color:var(--gold);">${(Number(v.views)||0).toLocaleString()} צפיות</span></div>
+              </div>
+            </div>
+            <a class="btn" style="padding:4px 9px; font-size:11px;" href="${esc(v.youtube_url)}" target="_blank" rel="noopener noreferrer">צפה ↗</a>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setVideoFilter(f, btn) {
+      videoFilter = f;
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderVideosTable();
+    }
+
+    function renderVideosTable() {
+      const vids = (data.videos || []).slice();
+      const baseline = getChannelBaseline(vids);
+      const q = (document.getElementById('vidSearch')?.value || '').trim().toLowerCase();
+      const sort = document.getElementById('vidSort')?.value || 'date';
+
+      let rows = vids.map(v => {
+        const views = Number(v.views) || 0;
+        const outlier = views / baseline;
+        return { ...v, _views: views, _outlier: outlier, _is3d: is3DVideo(v) };
+      });
+
+      if (videoFilter === '3d') rows = rows.filter(r => r._is3d);
+      if (videoFilter === 'outliers') rows = rows.filter(r => r._outlier >= 1.5);
+      if (q) rows = rows.filter(r => (String(r.title) + ' ' + String(r.niche)).toLowerCase().includes(q));
+
+      if (sort === 'views') rows.sort((a,b) => b._views - a._views);
+      else if (sort === 'outlier') rows.sort((a,b) => b._outlier - a._outlier);
+      else rows.sort((a,b) => String(b.timestamp || b.date || '').localeCompare(String(a.timestamp || a.date || '')));
+
+      const tbody = document.getElementById('videosTableBody');
+      if (!rows.length) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--muted); padding:24px;">לא נמצאו סרטונים תואמים.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = rows.map(r => {
+        const id = ytId(r.youtube_url);
+        const thumb = id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : '';
+        const mult = r._outlier.toFixed(1);
+        const outCls = r._outlier >= 2.0 ? 'pill-green' : (r._outlier >= 1.0 ? 'pill-gold' : 'pill-dim');
+        const estUsd = ((r._views / 1000) * (r._is3d ? 0.12 : 0.05)).toFixed(2);
+        return `
+          <tr>
+            <td>
+              <div class="vid-cell">
+                ${thumb ? `<img src="${thumb}" class="vid-thumb" loading="lazy" alt="thumb" />` : ''}
+                <div>
+                  <a class="vid-title" href="${esc(r.youtube_url)}" target="_blank" rel="noopener noreferrer">${esc(String(r.title||'').split('#')[0])}</a>
+                  <span class="vid-meta">${id ? 'youtu.be/' + id : ''}</span>
+                </div>
+              </div>
+            </td>
+            <td>${r._is3d ? '<span class="pill pill-gold">✨ 3D Studio</span>' : '<span class="pill pill-dim">Legacy</span>'}</td>
+            <td style="font-family:var(--mono); color:var(--muted);">${esc(r.date || '')}</td>
+            <td style="font-family:var(--mono); font-weight:800;">${r._views.toLocaleString()}</td>
+            <td><span class="pill ${outCls}">${mult}x</span></td>
+            <td style="font-family:var(--mono); color:var(--green);">$${estUsd}</td>
+            <td>
+              <div style="display:flex; gap:6px;">
+                <a class="btn" style="padding:4px 8px; font-size:11px;" href="${esc(r.youtube_url)}" target="_blank" rel="noopener noreferrer">YouTube</a>
+                ${r.drive_url ? `<a class="btn" style="padding:4px 8px; font-size:11px;" href="${esc(r.drive_url)}" target="_blank" rel="noopener noreferrer">Drive</a>` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function setChartMetric(m, btn) {
+      chartMetric = m;
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      drawTrendChart();
+    }
+
+    function drawTrendChart() {
+      const canvas = document.getElementById('trendCanvas');
+      if (!canvas) return;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      if (rect.width < 40) return;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      const W = rect.width, H = rect.height;
+      const pad = { top: 18, right: 20, bottom: 32, left: 46 };
+      const plotW = W - pad.left - pad.right;
+      const plotH = H - pad.top - pad.bottom;
+
+      const raw = (data.daily_summaries || []).slice().sort((a,b) => String(a.date).localeCompare(String(b.date)));
+      const points = raw.length ? raw : [{ date: '2026-11-19', views: 0, videos_count: 0 }];
+      const vals = points.map(p => chartMetric === 'views' ? (Number(p.views)||0) : (Number(p.videos_count)||0));
+      const maxV = Math.max(5, ...vals) * 1.18;
+
+      ctx.clearRect(0, 0, W, H);
+
+      // Subtle horizontal gridlines
+      ctx.strokeStyle = '#22222b';
+      ctx.lineWidth = 1;
+      ctx.fillStyle = '#71717a';
+      ctx.font = '600 11px "JetBrains Mono", monospace';
+      ctx.textAlign = 'right';
+      for (let i = 0; i <= 4; i++) {
+        const y = pad.top + (plotH * i) / 4;
+        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(W - pad.right, y); ctx.stroke();
+        const labelVal = Math.round(maxV * (1 - i / 4));
+        ctx.fillText(labelVal.toLocaleString(), pad.left - 8, y + 4);
+      }
+
+      const stepX = points.length > 1 ? plotW / (points.length - 1) : plotW / 2;
+      const coords = points.map((p, idx) => ({
+        x: points.length > 1 ? pad.left + idx * stepX : pad.left + plotW / 2,
+        y: pad.top + plotH - (vals[idx] / maxV) * plotH,
+        label: String(p.date || '').slice(5),
+        val: vals[idx]
+      }));
+
+      // Area fill
+      const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + plotH);
+      grad.addColorStop(0, chartMetric === 'views' ? 'rgba(224,173,72,0.34)' : 'rgba(16,185,129,0.34)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.beginPath();
+      ctx.moveTo(coords[0].x, pad.top + plotH);
+      coords.forEach(c => ctx.lineTo(c.x, c.y));
+      ctx.lineTo(coords[coords.length - 1].x, pad.top + plotH);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Stroke line
+      ctx.beginPath();
+      coords.forEach((c, i) => i === 0 ? ctx.moveTo(c.x, c.y) : ctx.lineTo(c.x, c.y));
+      ctx.strokeStyle = chartMetric === 'views' ? '#e0ad48' : '#10b981';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Dots & labels
+      ctx.textAlign = 'center';
+      coords.forEach(c => {
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#09090b';
+        ctx.fill();
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = chartMetric === 'views' ? '#e0ad48' : '#10b981';
+        ctx.stroke();
+
+        ctx.fillStyle = '#e4e4e7';
+        ctx.font = '700 11px "JetBrains Mono", monospace';
+        ctx.fillText(c.val.toLocaleString(), c.x, c.y - 10);
+
+        ctx.fillStyle = '#8e8e9c';
+        ctx.font = '600 11px "JetBrains Mono", monospace';
+        ctx.fillText(c.label, c.x, H - 10);
+      });
+    }
+
+    function runRevenueSim() {
+      const sViews = Number(document.getElementById('simShorts').value);
+      const sRpm = Number(document.getElementById('simRpm').value);
+      const lViews = Number(document.getElementById('simLong').value);
+      const ctr = Number(document.getElementById('simCtr').value) / 100;
+      const conv = Number(document.getElementById('simConv').value) / 100;
+
+      document.getElementById('simShortsLbl').innerText = sViews.toLocaleString();
+      document.getElementById('simRpmLbl').innerText = `$${sRpm.toFixed(2)}`;
+      document.getElementById('simLongLbl').innerText = lViews.toLocaleString();
+      document.getElementById('simCtrLbl').innerText = `${(ctr * 100).toFixed(2)}%`;
+      document.getElementById('simConvLbl').innerText = `${(conv * 100).toFixed(1)}%`;
+
+      const adsShorts = (sViews / 1000) * sRpm;
+      const adsLong = (lViews / 1000) * 6.0; // Tier-1 psychology/tech long-form avg ~$6 RPM
+      const vaultClicks = (sViews + lViews) * ctr;
+      const affRev = vaultClicks * conv * 18.0;
+      const total = adsShorts + adsLong + affRev;
+
+      document.getElementById('simAdsShorts').innerText = `$${Math.round(adsShorts).toLocaleString()}`;
+      document.getElementById('simAdsLong').innerText = `$${Math.round(adsLong).toLocaleString()}`;
+      document.getElementById('simAffRev').innerText = `$${Math.round(affRev).toLocaleString()}`;
+      document.getElementById('simTotalUsd').innerText = `$${Math.round(total).toLocaleString()}`;
+      document.getElementById('simTotalIls').innerText = `≈ ₪${Math.round(total * 3.7).toLocaleString()} / חודש`;
+    }
+
+    function renderOffers() {
+      document.getElementById('offersBody').innerHTML = OFFERS.map((o, i) => `
         <tr>
-          <td style="font-weight:800;">${escapeHtml(o.name)}</td>
-          <td><span class="tag-pill">${escapeHtml(o.network)}</span></td>
-          <td style="color:var(--accent-green); font-weight:800;">${escapeHtml(o.payout)}</td>
-          <td><a href="${escapeHtml(o.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold); font-family:'JetBrains Mono',monospace; font-size:12px;">${escapeHtml(o.url)}</a></td>
-          <td><button class="btn btn-outline" style="padding:6px 12px; font-size:12px;" onclick="copyPinnedComment(${idx})">📋 העתק תגובה (#ad)</button></td>
+          <td><strong>${esc(o.name)}</strong></td>
+          <td><span class="pill pill-dim">${esc(o.net)}</span></td>
+          <td style="font-family:var(--mono); color:var(--green); font-weight:700;">${esc(o.pay)}</td>
+          <td><a href="${esc(o.url)}" target="_blank" style="color:var(--gold); font-family:var(--mono); font-size:11.5px;">${esc(o.url)}</a></td>
+          <td><button class="btn" style="padding:4px 10px; font-size:11px;" onclick="copyOffer(${i})">📋 העתק</button></td>
         </tr>
       `).join('');
     }
 
-    function copyPinnedComment(idx) {
-      const offer = AFFILIATE_OFFERS[idx];
-      if (!offer) return;
-      navigator.clipboard.writeText(offer.comment);
-      showToast("✅ התגובה הועתקה ללוח!");
+    function copyOffer(i) {
+      navigator.clipboard.writeText(OFFERS[i].comment);
+      toast('✅ תגובת השותפים (#ad) הועתקה ללוח');
     }
 
-    function setFilter(type, btnEl) {
-      document.querySelectorAll('.f-pill').forEach(p => p.classList.remove('active'));
-      if (btnEl) btnEl.classList.add('active');
-      const today = new Date().toISOString().substring(0, 10);
-      const yesterday = new Date(Date.now() - 86400000).toISOString().substring(0, 10);
-      if (type === 'all') currentFilterDay = 'all';
-      else if (type === 'today') currentFilterDay = today;
-      else if (type === 'yesterday') currentFilterDay = yesterday;
-      document.getElementById('datePicker').value = currentFilterDay === 'all' ? '' : currentFilterDay;
-      renderKPIs();
-      renderVideos();
+    function renderQueue(liveVids) {
+      const liveTitles = liveVids.map(v => String(v.title || '').toLowerCase());
+      document.getElementById('queueBody').innerHTML = STUDIO_QUEUE.map(ep => {
+        const aired = liveTitles.some(t => t.includes(ep.title.slice(0, 26).toLowerCase()));
+        return `
+          <tr>
+            <td>${aired ? '<span class="pill pill-green">🟢 שודר חי</span>' : '<span class="pill pill-gold">⏳ בתור הענן</span>'}</td>
+            <td><strong>${esc(ep.title)}</strong></td>
+            <td><span class="pill pill-dim">${esc(ep.niche)}</span></td>
+            <td style="font-family:var(--mono); color:var(--muted);">${esc(ep.diorama)}</td>
+          </tr>
+        `;
+      }).join('');
     }
 
-    function applyCustomDate(val) {
-      if (!val) { setFilter('all'); return; }
-      document.querySelectorAll('.f-pill').forEach(p => p.classList.remove('active'));
-      currentFilterDay = val;
-      document.getElementById('datePicker').value = val;
-      renderKPIs();
-      renderVideos();
+    function scoreTitle() {
+      const raw = document.getElementById('titleInput').value.trim();
+      const core = raw.split('#')[0].trim();
+      let score = 50;
+      const notes = [];
+      if (core.length >= 28 && core.length <= 68) { score += 18; notes.push('✅ אורך אידיאלי למובייל'); }
+      else { notes.push('⚠️ כדאי לשמור כותרת בין 30–68 תווים'); }
+      if (/^(why|how|the|what)\b/i.test(core)) { score += 12; notes.push('✅ פתיחת סקרנות חזקה'); }
+      if (/\d|%|\$/.test(core)) { score += 10; notes.push('✅ מספר קונקרטי מושך עין'); }
+      const tags = (raw.match(/#\w+/g) || []).length;
+      if (tags >= 1 && tags <= 4) { score += 8; notes.push('✅ כמות האשטאגים נקייה'); }
+      else if (tags > 5) { score -= 12; notes.push('❌ יותר מדי האשטאגים (שמור 2–4)'); }
+      if (/brainrot|wait till the end|99% fail|illegal/i.test(raw)) { score -= 25; notes.push('❌ ביטויי ספאם/קליקבייט פוגעים באמון'); }
+      score = Math.max(10, Math.min(100, score));
+
+      const el = document.getElementById('scoreNum');
+      el.innerText = score;
+      el.style.color = score >= 80 ? 'var(--green)' : (score >= 60 ? 'var(--gold)' : 'var(--red)');
+      document.getElementById('scoreFeedback').innerHTML = notes.join(' &nbsp;•&nbsp; ');
     }
 
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      toast.innerText = msg;
-      toast.style.display = 'block';
-      setTimeout(() => toast.style.display = 'none', 3500);
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.style.display = 'block';
+      setTimeout(() => t.style.display = 'none', 3000);
     }
+
+    window.addEventListener('resize', () => {
+      if (document.getElementById('view-overview').classList.contains('active')) drawTrendChart();
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderAll();
+      renderOffers();
+      runRevenueSim();
+      scoreTitle();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      fetchLive();
+    });
   </script>
 </body>
 </html>
