@@ -1,36 +1,36 @@
 {
   "framework": "The YouTube Formula (Derral Eves) + 2026 Shorts Retention OS",
-  "avg_catalog_formula_score": 98.8,
+  "avg_catalog_formula_score": 97.2,
   "adaptive_buckets": {
-    "updated_at": "2026-11-19T12:26:21Z",
-    "channel_median_views": 40.0,
+    "updated_at": "2026-11-20T09:55:14Z",
+    "channel_median_views": 10.0,
     "recommended_focus_bucket": "mind_traps",
     "weights": {
-      "mind_traps": 0.3646,
-      "decision_paradoxes": 0.2213,
-      "money_math_traps": 0.207,
-      "ai_system_secrets": 0.207
+      "mind_traps": 0.348,
+      "decision_paradoxes": 0.1862,
+      "money_math_traps": 0.2026,
+      "ai_system_secrets": 0.2632
     },
     "buckets": {
       "mind_traps": {
         "label": "Psychology & Mind Traps",
         "playlist": "MindTrap 3D: Psychology & Mind Traps",
-        "videos_count": 3,
+        "videos_count": 4,
         "total_views": 355,
-        "avg_views": 177.5,
-        "outlier_x": 4.44,
+        "avg_views": 118.3,
+        "outlier_x": 11.83,
         "base_weight": 0.35,
-        "adaptive_weight": 0.3646
+        "adaptive_weight": 0.348
       },
       "decision_paradoxes": {
         "label": "Decision Paradoxes & Game Theory",
         "playlist": "MindTrap 3D: Decision Paradoxes & Game Theory",
-        "videos_count": 1,
-        "total_views": 0,
-        "avg_views": 0.0,
-        "outlier_x": 1.0,
+        "videos_count": 2,
+        "total_views": 8,
+        "avg_views": 4.0,
+        "outlier_x": 0.4,
         "base_weight": 0.25,
-        "adaptive_weight": 0.2213
+        "adaptive_weight": 0.1862
       },
       "money_math_traps": {
         "label": "Money Math & Pricing Illusions",
@@ -40,7 +40,7 @@
         "avg_views": 0.0,
         "outlier_x": 1.0,
         "base_weight": 0.2,
-        "adaptive_weight": 0.207
+        "adaptive_weight": 0.2026
       },
       "ai_system_secrets": {
         "label": "How AI & Algorithms Work",
@@ -48,9 +48,9 @@
         "videos_count": 1,
         "total_views": 40,
         "avg_views": 40.0,
-        "outlier_x": 1.0,
+        "outlier_x": 4.0,
         "base_weight": 0.2,
-        "adaptive_weight": 0.207
+        "adaptive_weight": 0.2632
       }
     }
   },
@@ -64,7 +64,7 @@
       "score": 98,
       "grade": "A+",
       "title_chars": 49,
-      "est_duration_sec": 68.2
+      "est_duration_sec": 72.5
     },
     {
       "id": "loss_aversion_scale",
@@ -75,7 +75,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 51,
-      "est_duration_sec": 60.0
+      "est_duration_sec": 63.8
     },
     {
       "id": "supermarket_maze_trap",
@@ -86,7 +86,7 @@
       "score": 98,
       "grade": "A+",
       "title_chars": 50,
-      "est_duration_sec": 63.5
+      "est_duration_sec": 67.5
     },
     {
       "id": "jam_choice_overload",
@@ -97,7 +97,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 39,
-      "est_duration_sec": 60.4
+      "est_duration_sec": 64.2
     },
     {
       "id": "ben_franklin_favor",
@@ -108,7 +108,7 @@
       "score": 98,
       "grade": "A+",
       "title_chars": 44,
-      "est_duration_sec": 67.8
+      "est_duration_sec": 72.1
     },
     {
       "id": "zeigarnik_open_loop",
@@ -119,7 +119,95 @@
       "score": 98,
       "grade": "A+",
       "title_chars": 45,
-      "est_duration_sec": 60.8
+      "est_duration_sec": 64.6
+    },
+    {
+      "id": "sunk_cost_trap",
+      "title": "Why You Keep Watching a Bad Movie You Paid For",
+      "niche": "mind_traps",
+      "diorama": "balance_scale",
+      "hook_badge": "PAID = TRAPPED BRAIN",
+      "score": 92,
+      "grade": "A+",
+      "title_chars": 46,
+      "est_duration_sec": 69.2
+    },
+    {
+      "id": "anchoring_first_number",
+      "title": "How One Random First Number Hijacks Every Price",
+      "niche": "mind_traps",
+      "diorama": "balance_scale",
+      "hook_badge": "1ST NUMBER HIJACKS YOU",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 47,
+      "est_duration_sec": 67.5
+    },
+    {
+      "id": "spotlight_effect_ring",
+      "title": "Why Nobody Notices Your Embarrassing Mistake",
+      "niche": "mind_traps",
+      "diorama": "birthday_ring",
+      "hook_badge": "NOBODY ACTUALLY NOTICED",
+      "score": 92,
+      "grade": "A+",
+      "title_chars": 44,
+      "est_duration_sec": 64.6
+    },
+    {
+      "id": "ikea_effort_bias",
+      "title": "Why Building Something Yourself Inflates Its Value",
+      "niche": "mind_traps",
+      "diorama": "decoy_counter",
+      "hook_badge": "EFFORT = FAKE VALUE",
+      "score": 92,
+      "grade": "A+",
+      "title_chars": 50,
+      "est_duration_sec": 63.3
+    },
+    {
+      "id": "bystander_crowd_trap",
+      "title": "Why a Crowded Room Helps Slower Than One Stranger",
+      "niche": "mind_traps",
+      "diorama": "birthday_ring",
+      "hook_badge": "BIG CROWD = ZERO HELP",
+      "score": 92,
+      "grade": "A+",
+      "title_chars": 49,
+      "est_duration_sec": 61.7
+    },
+    {
+      "id": "mere_exposure_loop",
+      "title": "Why Songs You Hated Quietly Become Your Favorites",
+      "niche": "mind_traps",
+      "diorama": "slot_scroll",
+      "hook_badge": "REPEATED = TRUSTED",
+      "score": 92,
+      "grade": "A+",
+      "title_chars": 49,
+      "est_duration_sec": 62.5
+    },
+    {
+      "id": "halo_first_impression",
+      "title": "How One Good First Impression Hides Every Red Flag",
+      "niche": "mind_traps",
+      "diorama": "balance_scale",
+      "hook_badge": "1 TRAIT BLINDS YOUR BRAIN",
+      "score": 98,
+      "grade": "A+",
+      "title_chars": 50,
+      "est_duration_sec": 59.6
+    },
+    {
+      "id": "baader_meinhof_illusion",
+      "title": "Why Buying One Red Car Makes You Spot Them Everywhere",
+      "niche": "mind_traps",
+      "diorama": "supermarket_maze",
+      "hook_badge": "1 CAR = EVERYWHERE NOW",
+      "score": 92,
+      "grade": "A+",
+      "title_chars": 53,
+      "est_duration_sec": 60.0
     },
     {
       "id": "monty_hall_trap",
@@ -130,7 +218,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 50,
-      "est_duration_sec": 61.6
+      "est_duration_sec": 65.4
     },
     {
       "id": "birthday_paradox_ring",
@@ -141,7 +229,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 49,
-      "est_duration_sec": 56.1
+      "est_duration_sec": 59.6
     },
     {
       "id": "braess_traffic_paradox",
@@ -152,7 +240,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 43,
-      "est_duration_sec": 58.8
+      "est_duration_sec": 62.5
     },
     {
       "id": "cobra_effect_incentives",
@@ -163,7 +251,7 @@
       "score": 98,
       "grade": "A+",
       "title_chars": 48,
-      "est_duration_sec": 56.5
+      "est_duration_sec": 60.0
     },
     {
       "id": "compounding_hockey_stick",
@@ -174,7 +262,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 51,
-      "est_duration_sec": 60.4
+      "est_duration_sec": 64.2
     },
     {
       "id": "subscription_drip_illusion",
@@ -185,7 +273,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 48,
-      "est_duration_sec": 60.0
+      "est_duration_sec": 63.8
     },
     {
       "id": "shrinkflation_geometry",
@@ -196,7 +284,7 @@
       "score": 98,
       "grade": "A+",
       "title_chars": 46,
-      "est_duration_sec": 62.4
+      "est_duration_sec": 66.2
     },
     {
       "id": "rule_of_72_clock",
@@ -207,7 +295,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 46,
-      "est_duration_sec": 56.9
+      "est_duration_sec": 60.4
     },
     {
       "id": "infinite_scroll_slot",
@@ -218,7 +306,7 @@
       "score": 92,
       "grade": "A+",
       "title_chars": 45,
-      "est_duration_sec": 60.0
+      "est_duration_sec": 63.8
     },
     {
       "id": "how_ai_reads_vectors",
@@ -229,7 +317,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 42,
-      "est_duration_sec": 56.1
+      "est_duration_sec": 59.6
     },
     {
       "id": "ai_attention_spotlight",
@@ -240,7 +328,7 @@
       "score": 98,
       "grade": "A+",
       "title_chars": 38,
-      "est_duration_sec": 58.4
+      "est_duration_sec": 62.1
     },
     {
       "id": "algorithm_twelve_seconds",
@@ -251,7 +339,7 @@
       "score": 100,
       "grade": "A+",
       "title_chars": 47,
-      "est_duration_sec": 60.0
+      "est_duration_sec": 63.8
     }
   ],
   "retention_targets": {
@@ -259,7 +347,7 @@
     "avg_percentage_viewed_pct": 85,
     "pattern_interrupt_sec": 4.8,
     "max_title_chars": 60,
-    "daily_warmup_uploads": 1,
+    "daily_warmup_uploads": 3,
     "hybrid_longform_min_minutes": 8
   }
 }

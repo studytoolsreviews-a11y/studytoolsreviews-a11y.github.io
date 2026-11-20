@@ -1,8 +1,36 @@
 {
-  "updated_at": "2026-11-19T12:26:21Z",
+  "updated_at": "2026-11-20T09:55:14Z",
   "channel_name": "MindTrap Workbench",
   "tiktok_rewards_rule": "Videos >= 60s qualify for TikTok Creator Rewards Program (higher Tier-1 RPM).",
   "items": [
+    {
+      "episode_id": "supermarket_maze_trap",
+      "title": "Why Milk Is Always Hidden at the Back of the Store",
+      "niche": "mind_traps",
+      "diorama": "supermarket_maze",
+      "duration_sec": 62.1,
+      "tiktok_rewards_eligible": true,
+      "renderedAt": "2026-11-20T09:55:14.013386",
+      "youtube_url": "https://www.youtube.com/shorts/P6RNEZqOckQ",
+      "drive_url": "https://drive.google.com/file/d/1kVv5v17aYbR27_VMWm_UgoUvx27J69xN/view?usp=drivesdk",
+      "direct_mp4_download": "https://drive.google.com/uc?export=download&id=1kVv5v17aYbR27_VMWm_UgoUvx27J69xN",
+      "tiktok_caption": "Why Milk Is Always Hidden at the Back of the Store\n\nWhat is the one store layout trick that always catches you when you only meant to grab one item?\n\nFree AI & Math Tools Vault (#ad) in bio -> https://studytoolsreviews-a11y.github.io/vault.html\n#mindtrap #psychology #cognitivebias #3danimation #learnontiktok #howitworks",
+      "reels_caption": "Why Milk Is Always Hidden at the Back of the Store — built in 3D miniature on our workbench.\n\nWhat is the one store layout trick that always catches you when you only meant to grab one item?\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #behavioraleconomics #3danimation #visualexplainer #reels"
+    },
+    {
+      "episode_id": "birthday_paradox_ring",
+      "title": "Why Just 23 People Guarantee a 50% Birthday Match",
+      "niche": "decision_paradoxes",
+      "diorama": "birthday_ring",
+      "duration_sec": 61.0,
+      "tiktok_rewards_eligible": true,
+      "renderedAt": "2026-11-19T17:06:35.169135",
+      "youtube_url": "https://www.youtube.com/shorts/7Q-Ctf2409k",
+      "drive_url": "https://drive.google.com/file/d/1s1MdU30UCHaZYweSL3GPhEcqVTtYAtLQ/view?usp=drivesdk",
+      "direct_mp4_download": "https://drive.google.com/uc?export=download&id=1s1MdU30UCHaZYweSL3GPhEcqVTtYAtLQ",
+      "tiktok_caption": "Why Just 23 People Guarantee a 50% Birthday Match\n\nHave you ever been in a small class or team where two people turned out to have the exact same birthday?\n\nFree AI & Math Tools Vault (#ad) in bio -> https://studytoolsreviews-a11y.github.io/vault.html\n#mindtrap #paradox #gametheory #math #3danimation #learnontiktok",
+      "reels_caption": "Why Just 23 People Guarantee a 50% Birthday Match — built in 3D miniature on our workbench.\n\nHave you ever been in a small class or team where two people turned out to have the exact same birthday?\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #paradox #probability #gametheory #3danimation #reels"
+    },
     {
       "episode_id": "loss_aversion_scale",
       "title": "Why Losing $100 Hurts Twice As Much As Winning $100",

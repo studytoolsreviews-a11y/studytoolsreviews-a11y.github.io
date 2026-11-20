@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindTrap Workbench // Creator Revenue OS</title>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="no-referrer" />
+  <title>AskOrson 3D Studio // Creator Revenue OS</title>
+  <link rel="icon" type="image/png" href="askorson_avatar.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
@@ -341,9 +344,9 @@
   <!-- CLEAN EXECUTIVE SIDEBAR -->
   <aside>
     <a class="brand" href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer">
-      <div class="brand-mark">MT</div>
+      <img class="brand-mark" src="askorson_avatar.png" alt="AskOrson" style="padding:0;object-fit:cover;border:1.5px solid rgba(224,173,72,0.75);box-shadow:0 0 14px rgba(224,173,72,0.28);">
       <div>
-        <div class="brand-name">MindTrap Workbench</div>
+        <div class="brand-name">AskOrson 3D Studio</div>
         <div class="brand-sub"><span class="live-dot"></span><span id="syncState">מחובר לענן 24/7</span></div>
       </div>
     </a>
@@ -373,8 +376,8 @@
       <a class="ext-link" href="https://www.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw/shorts" target="_blank" rel="noopener noreferrer"><span>ערוץ YouTube החי</span><span>↗</span></a>
       <a class="ext-link" href="https://studio.youtube.com/channel/UCfmv-T4zdphWSW-yDLzNLMw" target="_blank" rel="noopener noreferrer"><span>YouTube Studio</span><span>↗</span></a>
       <a class="ext-link" href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer"><span>GitHub Actions 3D</span><span>↗</span></a>
-      <a class="ext-link" id="sideSheetLink" href="https://docs.google.com/spreadsheets/d/13-ITmQGdetgKz-NPPceDri8Fwze5EtZG-x-3UzjWNjI/edit" target="_blank" rel="noopener noreferrer"><span>Google Sheets</span><span>↗</span></a>
-      <a class="ext-link" id="sideDriveLink" href="https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i" target="_blank" rel="noopener noreferrer"><span>Google Drive</span><span>↗</span></a>
+      <a class="ext-link" href="https://sheets.google.com" target="_blank" rel="noopener noreferrer"><span>Google Sheets</span><span>↗</span></a>
+      <a class="ext-link" href="https://drive.google.com" target="_blank" rel="noopener noreferrer"><span>Google Drive</span><span>↗</span></a>
       <a class="ext-link" href="https://studytoolsreviews-a11y.github.io/vault.html" target="_blank" rel="noopener noreferrer"><span>AI &amp; Math Vault</span><span>↗</span></a>
       <a class="ext-link" href="https://studytoolsreviews-a11y.github.io/stories.html" target="_blank" rel="noopener noreferrer"><span>SEO Video Archive</span><span>↗</span></a>
     </div>
@@ -504,7 +507,7 @@
             </div>
 
             <div class="alert-strip" id="bottleneckNote">
-              🎯 <strong>הפעולה הכי משתלמת כרגע (The YouTube Formula):</strong> אמת טלפון + תכונות מתקדמות ב-YouTube Studio, שמור על <strong>Short 1 איכותי ביום (18:00)</strong> ללא קישורים/תגובות בוט, ונתח אחרי 48 שעות את מדד <code>Viewed vs. Swiped Away</code> (יעד 70%+).
+              🎯 <strong>אסטרטגיה פעילה (AskOrson — NVIDIA GPU Host + 3D Studio):</strong> <strong>3 סרטוני 3D איכותיים ביום (60–80 שנ')</strong> במרווח בטוח של 6 שעות (11:00 / 17:00 / 23:00), ממוקדים 100% בנישת <code>mind_traps</code> (פסיכולוגיה) ללא קישורים/תגובות בוט.
             </div>
           </div>
         </div>
@@ -526,7 +529,7 @@
             <div class="card-head">
               <div>
                 <div class="card-title">שידורי 3D Studio אחרונים באוויר</div>
-                <div class="card-sub">60–105 שניות • תלת-ממד מקורי • אודיו נקי</div>
+                <div class="card-sub">60–80 שניות • תלת-ממד מקורי • אודיו נקי</div>
               </div>
               <button class="btn" onclick="openView('videos', document.querySelectorAll('.nav-item')[1])">כל הסרטונים ←</button>
             </div>
@@ -540,9 +543,9 @@
         <div class="card">
           <div class="toolbar">
             <div class="seg">
-              <button class="active" onclick="setVideoFilter('all', this)">הכל</button>
-              <button onclick="setVideoFilter('3d', this)">✨ 3D Studio בלבד</button>
+              <button class="active" onclick="setVideoFilter('3d', this)">✨ 3D Studio בלבד</button>
               <button onclick="setVideoFilter('outliers', this)">🔥 Outliers (1.5x+)</button>
+              <button onclick="setVideoFilter('all', this)">הכל (כולל Legacy)</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
               <input class="search-in" id="vidSearch" placeholder="חפש כותרת או נישה..." oninput="renderVideosTable()" />
@@ -582,7 +585,7 @@
               <span class="pill pill-green" id="fCatalogGrade">A+</span>
             </div>
             <div class="kpi-val" id="fCatalogScore">98.8</div>
-            <div class="kpi-foot">18 פרקים • כותרות ≤ 58 תווים • 0 האשטאגים בכותרת</div>
+            <div class="kpi-foot">26 פרקים (14 פסיכולוגיה) • כותרות ≤ 58 תווים • 0 האשטאגים</div>
           </div>
 
           <div class="card">
@@ -636,7 +639,7 @@
             <div class="funnel-step"><span>1. <strong>Packaging First (CTR):</strong> כותרות ≤ 58 תווים ללא האשטאגים + סקרנות ומספרים</span><span class="pill pill-green">פעיל</span></div>
             <div class="funnel-step"><span>2. <strong>3-Second Hook &amp; Open Loop:</strong> אפס הקדמות היסטוריות — ניגוד מיידי ב-12 מילים ראשונות</span><span class="pill pill-green">פעיל</span></div>
             <div class="funnel-step"><span>3. <strong>Frame-1 Visual Hook Stamp:</strong> תג פליז/אובסידיאן 2–4 מילים (0.0–2.65s) לעצירת גלילה בהשתק</span><span class="pill pill-green">פעיל</span></div>
-            <div class="funnel-step"><span>4. <strong>Pattern Interrupts:</strong> איפוס קשב קולנועי במצלמה כל 4.8s + צליל Workbench כל 9.6s</span><span class="pill pill-green">פעיל</span></div>
+            <div class="funnel-step"><span>4. <strong>Pattern Interrupts:</strong> איפוס קשב קולנועי במצלמה כל 4.8s + מעבר אודיו סטודיו כל 9.6s</span><span class="pill pill-green">פעיל</span></div>
             <div class="funnel-step"><span>5. <strong>4 Content Buckets (Session Time):</strong> שיוך אוטומטי ל-4 פלייליסטים נפרדים ביוטיוב</span><span class="pill pill-green">פעיל</span></div>
             <div class="funnel-step"><span>6. <strong>Hybrid Funnel 16:9 (ימי ראשון):</strong> איחוד 6–8 סרטונים מה-Drive לקומפילציית 8+ דק' עם פרקים</span><span class="pill pill-green">פעיל</span></div>
           </div>
@@ -796,10 +799,12 @@
             </div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>סלוט</th><th>שעון UTC</th><th>שעון ישראל</th><th>מטרה (The YouTube Formula + אנטי-ספאם)</th></tr></thead>
+                <thead><tr><th>סלוט</th><th>שעון UTC</th><th>שעון ישראל</th><th>מטרה (מקסימום יומי בטוח — ממוקד פסיכולוגיה)</th></tr></thead>
                 <tbody>
-                  <tr><td><strong>יומי 3D</strong></td><td><code>16:00</code></td><td>18:00</td><td>Short 1 ביום בשעה קבועה (ללא קישורים/תגובות בוט, עם Hook Badge + Pattern Interrupts)</td></tr>
-                  <tr><td><strong>16:9 שבועי</strong></td><td><code>ראשון 18:00</code></td><td>ראשון 20:00</td><td>Hybrid Funnel: איחוד 6–8 פרקי 3D מה-Drive לדוקו 8–10 דק' עם Chapters (≤ 34MB, Mid-Roll RPM)</td></tr>
+                  <tr><td><strong>סלוט 1 (בוקר)</strong></td><td><code>09:00</code></td><td>11:00</td><td>AskOrson 3D Studio (60–80s, 30fps) — שיא אירופה ובריטניה</td></tr>
+                  <tr><td><strong>סלוט 2 (אחה"צ)</strong></td><td><code>15:00</code></td><td>17:00</td><td>AskOrson 3D Studio (60–80s, 30fps) — שיא ישראל + בוקר ארה"ב</td></tr>
+                  <tr><td><strong>סלוט 3 (לילה)</strong></td><td><code>21:00</code></td><td>23:00</td><td>AskOrson 3D Studio (60–80s, 30fps) — פריים-טיים ערב ארה"ב</td></tr>
+                  <tr><td><strong>16:9 שבועי</strong></td><td><code>ראשון 18:00</code></td><td>ראשון 20:00</td><td>Hybrid Funnel: איחוד 6–8 פרקי 3D מה-Drive לדוקו 8–10 דק' עם Chapters (Mid-Roll RPM)</td></tr>
                 </tbody>
               </table>
             </div>
@@ -811,7 +816,7 @@
           <div class="card-head">
             <div>
               <div class="card-title">📱 הפצה כפולה: TikTok Creator Rewards (60s+) &amp; Instagram Reels</div>
-              <div class="card-sub">כל סרטוני ה-3D מעל 60 שניות — זכאים ל-RPM גבוה ב-TikTok Rewards ($0.40–$1.00 / 1K צפיות). הורד MP4 והעתק תיאור בלחיצה!</div>
+              <div class="card-sub">כל סרטוני ה-3D באורך 60–80 שניות — זכאים ל-RPM גבוה ב-TikTok Rewards ($0.40–$1.00 / 1K צפיות). הורד MP4 והעתק תיאור בלחיצה!</div>
             </div>
             <div style="display:flex; gap:8px;">
               <a class="btn" href="https://www.tiktok.com/tiktokstudio/upload" target="_blank" rel="noopener noreferrer">העלאה ל-TikTok ↗</a>
@@ -838,8 +843,8 @@
         <div class="card">
           <div class="card-head">
             <div>
-              <div class="card-title">תור הפרקים והדיורמות התלת-ממדיות בקטלוג (18 פרקים • ציון Formula A+)</div>
-              <div class="card-sub">הרובוט בענן בוחר אוטומטית מהדלי המוביל (Adaptive Weights) ללא כפילויות</div>
+              <div class="card-title">תור הפרקים והדיורמות התלת-ממדיות בקטלוג (26 פרקים • 14 פרקי פסיכולוגיה ותורת המשחקים • ציון Formula A+)</div>
+              <div class="card-sub">הרובוט בענן רץ כעת 3 פעמים ביום ממוקד על נישת הפסיכולוגיה (mind_traps) ללא כפילויות</div>
             </div>
             <a class="btn btn-primary" href="https://github.com/studytoolsreviews-a11y/ai-tools-affiliate/actions/workflows/cloud_shorts_pipeline.yml" target="_blank" rel="noopener noreferrer">⚡ הרץ פרק עכשיו ↗</a>
           </div>
@@ -858,7 +863,7 @@
           <div class="card">
             <div class="card-head">
               <div>
-                <div class="card-title">מאגרי רעיונות חינמיים לערוץ MindTrap</div>
+                <div class="card-title">מאגרי רעיונות חינמיים לערוץ AskOrson</div>
                 <div class="card-sub">עובדות ותופעות מדעיות אינן מוגנות בזכויות יוצרים — מאות רעיונות מוכנים</div>
               </div>
             </div>
@@ -910,6 +915,14 @@
       { title: "Why 6 Jars of Jam Outsold 24 by 10 to 1", badge: "6 JARS BEAT 24 (10X)", niche: "mind_traps", diorama: "jam_table" },
       { title: "Why Asking a Small Favor Wins Over Any Rival", badge: "FAVOR WINS ANY RIVAL", niche: "mind_traps", diorama: "balance_scale" },
       { title: "Why Unfinished Tasks Drain Your Brain All Day", badge: "THE OPEN-LOOP BRAIN DRAIN", niche: "mind_traps", diorama: "drip_tank" },
+      { title: "Why You Keep Watching a Bad Movie You Paid For", badge: "PAID = TRAPPED BRAIN", niche: "mind_traps", diorama: "balance_scale" },
+      { title: "How One Random First Number Hijacks Every Price", badge: "1ST NUMBER HIJACKS YOU", niche: "mind_traps", diorama: "balance_scale" },
+      { title: "Why Nobody Notices Your Embarrassing Mistake", badge: "NOBODY ACTUALLY NOTICED", niche: "mind_traps", diorama: "birthday_ring" },
+      { title: "Why Building Something Yourself Inflates Its Value", badge: "EFFORT = FAKE VALUE", niche: "mind_traps", diorama: "decoy_counter" },
+      { title: "Why a Crowded Room Helps Slower Than One Stranger", badge: "BIG CROWD = ZERO HELP", niche: "mind_traps", diorama: "birthday_ring" },
+      { title: "Why Songs You Hated Quietly Become Your Favorites", badge: "REPEATED = TRUSTED", niche: "mind_traps", diorama: "slot_scroll" },
+      { title: "How One Good First Impression Hides Every Red Flag", badge: "1 TRAIT BLINDS YOUR BRAIN", niche: "mind_traps", diorama: "balance_scale" },
+      { title: "Why Buying One Red Car Makes You Spot Them Everywhere", badge: "1 CAR = EVERYWHERE NOW", niche: "mind_traps", diorama: "supermarket_maze" },
       { title: "Why Just 23 People Guarantee a 50% Birthday Match", badge: "23 PEOPLE = 50% MATCH", niche: "decision_paradoxes", diorama: "birthday_ring" },
       { title: "Why Building a New Road Makes Traffic Worse", badge: "NEW ROADS = MORE TRAFFIC", niche: "decision_paradoxes", diorama: "traffic_bridge" },
       { title: "Why Paying for the Wrong Metric Always Backfires", badge: "WRONG METRIC BACKFIRES", niche: "decision_paradoxes", diorama: "balance_scale" },
@@ -924,7 +937,7 @@
     ];
 
     const OFFERS = [
-      { name: "MindTrap AI & Math Vault", net: "Direct Hub", pay: "$15–$25 CPA", url: LIVE_VAULT_URL, comment: `Free AI, Study & Decision Tools Vault (#ad): ${LIVE_VAULT_URL}` },
+      { name: "AskOrson AI & Math Vault", net: "Direct Hub", pay: "$15–$25 CPA", url: LIVE_VAULT_URL, comment: `Free AI, Study & Decision Tools Vault (#ad): ${LIVE_VAULT_URL}` },
       { name: "Notion AI Workspace", net: "PartnerStack", pay: "$25 CPA", url: `${LIVE_VAULT_URL}?offer=ai-tool`, comment: `Close open mental loops & organize notes with Notion AI (#ad): ${LIVE_VAULT_URL}?offer=ai-tool` },
       { name: "Rows AI Spreadsheets", net: "Impact", pay: "$15 CPA", url: `${LIVE_VAULT_URL}?offer=ai-excel`, comment: `AI Spreadsheet Assistant (#ad): ${LIVE_VAULT_URL}?offer=ai-excel` },
       { name: "Gamma AI Slides", net: "PartnerStack", pay: "$20 CPA", url: `${LIVE_VAULT_URL}?offer=ai-slides`, comment: `Build clean decks fast with Gamma AI (#ad): ${LIVE_VAULT_URL}?offer=ai-slides` },
@@ -936,6 +949,7 @@
     const AUTO_SYNC_TTL_MS = 120000; // Auto-refresh YouTube Data API every 2 minutes on open/return
 
     const KNOWN_3D_IDS = {
+      '7Q-Ctf2409k': { bucket: 'decision_paradoxes', drive_url: 'https://drive.google.com/file/d/1s1MdU30UCHaZYweSL3GPhEcqVTtYAtLQ/view?usp=drivesdk' },
       'BMyafgyHPd0': { bucket: 'mind_traps', drive_url: '' },
       'HM8EnphUE7M': { bucket: 'decision_paradoxes', drive_url: 'https://drive.google.com/file/d/1Wh-8UqeM9iTRNht9sLAPN5mtFYW0YBA6/view?usp=drivesdk' },
       '9Y6mdItITW4': { bucket: 'mind_traps', drive_url: 'https://drive.google.com/file/d/1JSNtf_ebruI_l0v_vfiUcuIIzIupbIL0/view?usp=drivesdk' }
@@ -962,7 +976,7 @@
 
     let data = loadCachedLive() || { status: 'loading', channel_subscribers: 0, total_videos: 0, total_views: 0, total_clicks: 0, total_revenue_usd: 0, daily_summaries: [], videos: [] };
     let chartMetric = 'views';
-    let videoFilter = 'all';
+    let videoFilter = '3d';
     let syncInFlight = false;
 
     const VIEW_TITLES = {
@@ -976,6 +990,11 @@
 
     function esc(s) {
       return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
+    function safeUrl(u) {
+      const s = String(u || '').trim();
+      return /^https:\/\//i.test(s) ? esc(s) : '#';
     }
 
     function ytId(url) {
@@ -1019,7 +1038,7 @@
       if (t.includes('slot machine') || t.includes('vector cube') || t.includes('modern ai') || t.includes('self-attention') || t.includes('algorithms')) {
         return { bucket: 'ai_system_secrets', is3d: true };
       }
-      if (t.includes('popcorn') || t.includes('losing $100') || t.includes('milk') || t.includes('jars of jam') || t.includes('small favor') || t.includes('unfinished tasks') || t.includes('#mindtrap')) {
+      if (t.includes('popcorn') || t.includes('losing $100') || t.includes('milk') || t.includes('jars of jam') || t.includes('small favor') || t.includes('unfinished tasks') || t.includes('#askorson')) {
         return { bucket: 'mind_traps', is3d: true };
       }
       // Match against STUDIO_QUEUE catalog titles
@@ -1051,7 +1070,7 @@
           niche: cls.bucket,
           _is3d: cls.is3d,
           drive_url: driveUrl,
-          duration_sec: (feedMatch && feedMatch.duration_sec) || v.duration_sec || (cls.is3d ? 65 : 15)
+          duration_sec: (feedMatch && feedMatch.duration_sec) || v.duration_sec || (cls.is3d ? 68 : 15)
         };
       });
       return { ...rawPayload, videos: enrichedVideos };
@@ -1075,7 +1094,7 @@
 
     function updateCountdown() {
       const now = new Date();
-      const slotsUtc = [16 * 60];
+      const slotsUtc = [9 * 60, 15 * 60, 21 * 60];
       const nowMin = now.getUTCHours() * 60 + now.getUTCMinutes();
       let nextMin = slotsUtc.find(m => m > nowMin);
       let diffSec = 0;
@@ -1175,9 +1194,6 @@
       const count3d = vids.filter(is3DVideo).length;
       const baseline = getChannelBaseline(vids);
 
-      if (data.sheet_url) document.getElementById('sideSheetLink').href = data.sheet_url;
-      if (data.drive_folder_url) document.getElementById('sideDriveLink').href = data.drive_folder_url;
-
       document.getElementById('navVidCount').innerText = totalVids;
       document.getElementById('kpiViews').innerText = totalViews.toLocaleString();
       document.getElementById('kpiAvgPill').innerText = `ממוצע ${avg}/וידאו`;
@@ -1269,11 +1285,11 @@
             <div style="display:flex; align-items:center; gap:10px; min-width:0;">
               ${thumb ? `<img src="${thumb}" class="vid-thumb" alt="thumb" loading="lazy" />` : ''}
               <div style="min-width:0;">
-                <a class="vid-title" style="font-size:12.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" href="${esc(v.youtube_url)}" target="_blank" rel="noopener noreferrer">${esc(String(v.title||'').split('#')[0])}</a>
+                <a class="vid-title" style="font-size:12.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" href="${safeUrl(v.youtube_url)}" target="_blank" rel="noopener noreferrer">${esc(String(v.title||'').split('#')[0])}</a>
                 <div class="vid-meta">${esc(v.date)} • <span style="color:var(--gold);">${(Number(v.views)||0).toLocaleString()} צפיות</span></div>
               </div>
             </div>
-            <a class="btn" style="padding:4px 9px; font-size:11px;" href="${esc(v.youtube_url)}" target="_blank" rel="noopener noreferrer">צפה ↗</a>
+            <a class="btn" style="padding:4px 9px; font-size:11px;" href="${safeUrl(v.youtube_url)}" target="_blank" rel="noopener noreferrer">צפה ↗</a>
           </div>
         `;
       }).join('');
@@ -1324,7 +1340,7 @@
               <div class="vid-cell">
                 ${thumb ? `<img src="${thumb}" class="vid-thumb" loading="lazy" alt="thumb" />` : ''}
                 <div>
-                  <a class="vid-title" href="${esc(r.youtube_url)}" target="_blank" rel="noopener noreferrer">${esc(String(r.title||'').split('#')[0])}</a>
+                  <a class="vid-title" href="${safeUrl(r.youtube_url)}" target="_blank" rel="noopener noreferrer">${esc(String(r.title||'').split('#')[0])}</a>
                   <span class="vid-meta">${id ? 'youtu.be/' + id : ''}</span>
                 </div>
               </div>
@@ -1336,8 +1352,8 @@
             <td style="font-family:var(--mono); color:var(--green);">$${estUsd}</td>
             <td>
               <div style="display:flex; gap:6px;">
-                <a class="btn" style="padding:4px 8px; font-size:11px;" href="${esc(r.youtube_url)}" target="_blank" rel="noopener noreferrer">YouTube</a>
-                ${r.drive_url ? `<a class="btn" style="padding:4px 8px; font-size:11px;" href="${esc(r.drive_url)}" target="_blank" rel="noopener noreferrer">Drive</a>` : ''}
+                <a class="btn" style="padding:4px 8px; font-size:11px;" href="${safeUrl(r.youtube_url)}" target="_blank" rel="noopener noreferrer">YouTube</a>
+                ${r.drive_url ? `<a class="btn" style="padding:4px 8px; font-size:11px;" href="${safeUrl(r.drive_url)}" target="_blank" rel="noopener noreferrer">Drive</a>` : ''}
               </div>
             </td>
           </tr>
@@ -1708,14 +1724,15 @@
           const fid = dUrl.split('/file/d/')[1].split('/')[0];
           dl = `https://drive.google.com/uc?export=download&id=${fid}`;
         }
+        const durSec = Number(v.duration_sec) || 68;
         merged.push({
           title: cleanT,
-          duration_sec: v.duration_sec || 65,
-          tiktok_rewards_eligible: true,
+          duration_sec: durSec,
+          tiktok_rewards_eligible: durSec >= 60,
           direct_mp4_download: dl,
           drive_url: dUrl,
-          tiktok_caption: `${cleanT}\n\nFree AI & Math Tools Vault (#ad) in bio -> ${LIVE_VAULT_URL}\n#mindtrap #psychology #3danimation #learnontiktok #howitworks`,
-          reels_caption: `${cleanT} — built in 3D miniature on our workbench.\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #3danimation #visualexplainer #reels`
+          tiktok_caption: `${cleanT}\n\nFree AI & Math Tools Vault (#ad) in bio -> ${LIVE_VAULT_URL}\n#askorson #psychology #3danimation #learnontiktok #howitworks`,
+          reels_caption: `${cleanT} — explained by Orson in 3D Studio.\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#askorson #psychologyfacts #3danimation #visualexplainer #reels`
         });
       });
       (crossFeedItems || []).forEach(it => {
@@ -1732,15 +1749,21 @@
       }
 
       window._cpItems = items;
-      tbody.innerHTML = items.map((it, idx) => `
+      tbody.innerHTML = items.map((it, idx) => {
+        const dur = Number(it.duration_sec) || 68;
+        const badge = dur >= 60
+          ? `<span class="pill pill-green">${dur}s • זכאי Rewards ✓</span>`
+          : `<span class="pill pill-gold">${dur}s • High-Retention Short</span>`;
+        return `
         <tr>
           <td><strong>${esc(it.title)}</strong></td>
-          <td><span class="pill pill-green">${it.duration_sec || 65}s • זכאי Rewards ✓</span></td>
-          <td>${it.direct_mp4_download ? `<a class="btn btn-primary" style="padding:4px 9px; font-size:11px;" href="${esc(it.direct_mp4_download)}" target="_blank" rel="noopener noreferrer">⬇️ הורד MP4</a>` : `<a class="btn" style="padding:4px 9px; font-size:11px;" href="https://drive.google.com/drive/folders/1oF6Y7e1zojPQ8tGCCm-pVF2wPVWmNI9i" target="_blank" rel="noopener noreferrer">פתח Drive ↗</a>`}</td>
+          <td>${badge}</td>
+          <td>${it.direct_mp4_download ? `<a class="btn btn-primary" style="padding:4px 9px; font-size:11px;" href="${safeUrl(it.direct_mp4_download)}" target="_blank" rel="noopener noreferrer">⬇️ הורד MP4</a>` : `<a class="btn" style="padding:4px 9px; font-size:11px;" href="https://drive.google.com" target="_blank" rel="noopener noreferrer">פתח Drive ↗</a>`}</td>
           <td><button class="btn" style="padding:4px 9px; font-size:11px;" onclick="copyCp(${idx}, 'tiktok')">📋 העתק TikTok</button></td>
           <td><button class="btn" style="padding:4px 9px; font-size:11px;" onclick="copyCp(${idx}, 'reels')">📋 העתק Reels</button></td>
         </tr>
-      `).join('');
+      `;
+      }).join('');
     }
 
     function copyCp(idx, platform) {
