@@ -1,8 +1,36 @@
 {
-  "updated_at": "2026-11-20T09:55:14Z",
+  "updated_at": "2026-11-21T10:03:02Z",
   "channel_name": "MindTrap Workbench",
   "tiktok_rewards_rule": "Videos >= 60s qualify for TikTok Creator Rewards Program (higher Tier-1 RPM).",
   "items": [
+    {
+      "episode_id": "ben_franklin_favor",
+      "title": "Why Asking a Small Favor Wins Over Any Rival",
+      "niche": "mind_traps",
+      "diorama": "balance_scale",
+      "duration_sec": 70.9,
+      "tiktok_rewards_eligible": true,
+      "renderedAt": "2026-11-21T10:03:02.268492",
+      "youtube_url": "https://www.youtube.com/shorts/OAa3LxxtdJw",
+      "drive_url": "https://drive.google.com/file/d/1FPaB7o09WDqsOzN_a1Pxt9UCpcd6Lo3_/view?usp=drivesdk",
+      "direct_mp4_download": "https://drive.google.com/uc?export=download&id=1FPaB7o09WDqsOzN_a1Pxt9UCpcd6Lo3_",
+      "tiktok_caption": "Why Asking a Small Favor Wins Over Any Rival\n\nHave you ever tried the Ben Franklin Effect in work or school — did asking for advice change how someone treated you?\n\nFree AI & Math Tools Vault (#ad) in bio -> https://studytoolsreviews-a11y.github.io/vault.html\n#mindtrap #psychology #cognitivebias #3danimation #learnontiktok #howitworks",
+      "reels_caption": "Why Asking a Small Favor Wins Over Any Rival — built in 3D miniature on our workbench.\n\nHave you ever tried the Ben Franklin Effect in work or school — did asking for advice change how someone treated you?\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #behavioraleconomics #3danimation #visualexplainer #reels"
+    },
+    {
+      "episode_id": "jam_choice_overload",
+      "title": "Why 6 Jars of Jam Outsold 24 by 10 to 1",
+      "niche": "mind_traps",
+      "diorama": "jam_table",
+      "duration_sec": 68.0,
+      "tiktok_rewards_eligible": true,
+      "renderedAt": "2026-11-20T22:05:20.469898",
+      "youtube_url": "https://www.youtube.com/shorts/OlPVNsfdd3E",
+      "drive_url": "https://drive.google.com/file/d/1JBtbwpybB6iAjM3edUE0NbhAwwFMwpqx/view?usp=drivesdk",
+      "direct_mp4_download": "https://drive.google.com/uc?export=download&id=1JBtbwpybB6iAjM3edUE0NbhAwwFMwpqx",
+      "tiktok_caption": "Why 6 Jars of Jam Outsold 24 by 10 to 1\n\nHave you ever spent 20 minutes scrolling a streaming menu with hundreds of titles and ended up watching nothing?\n\nFree AI & Math Tools Vault (#ad) in bio -> https://studytoolsreviews-a11y.github.io/vault.html\n#mindtrap #psychology #cognitivebias #3danimation #learnontiktok #howitworks",
+      "reels_caption": "Why 6 Jars of Jam Outsold 24 by 10 to 1 — built in 3D miniature on our workbench.\n\nHave you ever spent 20 minutes scrolling a streaming menu with hundreds of titles and ended up watching nothing?\n\nExplore our Free AI & Math Tools Vault (#ad) via bio link.\n#mindtrap #psychologyfacts #behavioraleconomics #3danimation #visualexplainer #reels"
+    },
     {
       "episode_id": "supermarket_maze_trap",
       "title": "Why Milk Is Always Hidden at the Back of the Store",

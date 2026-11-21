@@ -2,35 +2,35 @@
   "framework": "The YouTube Formula (Derral Eves) + 2026 Shorts Retention OS",
   "avg_catalog_formula_score": 97.2,
   "adaptive_buckets": {
-    "updated_at": "2026-11-20T09:55:14Z",
-    "channel_median_views": 10.0,
+    "updated_at": "2026-11-21T10:03:02Z",
+    "channel_median_views": 21.0,
     "recommended_focus_bucket": "mind_traps",
     "weights": {
-      "mind_traps": 0.348,
-      "decision_paradoxes": 0.1862,
-      "money_math_traps": 0.2026,
-      "ai_system_secrets": 0.2632
+      "mind_traps": 0.3319,
+      "decision_paradoxes": 0.2279,
+      "money_math_traps": 0.1983,
+      "ai_system_secrets": 0.2418
     },
     "buckets": {
       "mind_traps": {
         "label": "Psychology & Mind Traps",
         "playlist": "MindTrap 3D: Psychology & Mind Traps",
-        "videos_count": 4,
-        "total_views": 355,
-        "avg_views": 118.3,
-        "outlier_x": 11.83,
+        "videos_count": 6,
+        "total_views": 396,
+        "avg_views": 79.2,
+        "outlier_x": 3.77,
         "base_weight": 0.35,
-        "adaptive_weight": 0.348
+        "adaptive_weight": 0.3319
       },
       "decision_paradoxes": {
         "label": "Decision Paradoxes & Game Theory",
         "playlist": "MindTrap 3D: Decision Paradoxes & Game Theory",
         "videos_count": 2,
-        "total_views": 8,
-        "avg_views": 4.0,
-        "outlier_x": 0.4,
+        "total_views": 54,
+        "avg_views": 27.0,
+        "outlier_x": 1.29,
         "base_weight": 0.25,
-        "adaptive_weight": 0.1862
+        "adaptive_weight": 0.2279
       },
       "money_math_traps": {
         "label": "Money Math & Pricing Illusions",
@@ -40,7 +40,7 @@
         "avg_views": 0.0,
         "outlier_x": 1.0,
         "base_weight": 0.2,
-        "adaptive_weight": 0.2026
+        "adaptive_weight": 0.1983
       },
       "ai_system_secrets": {
         "label": "How AI & Algorithms Work",
@@ -48,9 +48,9 @@
         "videos_count": 1,
         "total_views": 40,
         "avg_views": 40.0,
-        "outlier_x": 4.0,
+        "outlier_x": 1.9,
         "base_weight": 0.2,
-        "adaptive_weight": 0.2632
+        "adaptive_weight": 0.2418
       }
     }
   },
